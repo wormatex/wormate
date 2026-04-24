@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wormy Loader</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .description-text { 
+            border: 1px solid #ccc; 
+            padding: 15px; 
+            margin-top: 10px;
+            min-height: 100px;
+        }
+        button { padding: 8px 16px; font-size: 16px; cursor: pointer; }
+        a.wm-room { 
+            display: inline-block; 
+            margin: 5px; 
+            padding: 5px 10px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        a.wm-room:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+
+<h2>Wormy Loader Örneği</h2>
+<button id="loadBtn">/load.json Dosyasını Yükle</button>
+<div class="description-text">
+    <!-- İçerik buraya yüklenecek -->
+    <p>Henüz yüklenmedi. Butona tıkla.</p>
+</div>
+
+<script>
+// v736 objesi - POST ile gönderilecek veri
+const v736 = {
+    userId: 123,
+    action: "loadRooms",
+    timestamp: Date.now()
+};
+
+// vO3.L nesnesi (örnek implementasyon)
+const vO3 = {
+    L: {
+        Si: {
+            Se: function() {
+                console.log("Si.Se() çağrıldı - Ön işlem yapılıyor");
+                // Burada ön temizlik veya hazırlık işlemleri yapılabilir
+            }
+        },
+        bo: function(wormyId) {
+            console.log(`bo() çağrıldı - Wormy ID: ${wormyId}`);
+            alert(`Odaya gidiliyor: ${wormyId}`);
+            // Gerçek uygulamada: window.location.href = `/room/${wormyId}`;
+        }
+    }
+};
+
+// Asıl kodunuz - düzeltilmiş ve tamamlanmış hali
+async function loadWormyData(xUrl) {
+    try {
+        const response = await fetch(xUrl + "/load.json", {
+            headers: {
+                "Content-Type": "application/json"
+            },
+            method: "POST",
+            body: JSON.stringify(v736)
+        });
+
+        const p755 = await response.text();  // <- DÜZELTİLDİ: return ile zincirleme
+        
+        let v747 = vO3.L;
+        $(".description-text").html(p755).find("a.wm-room").click(function(p756) {
+            p756.preventDefault();
+            v747.Si.Se();
+            v747.bo(this.dataset.wormy);
+        });
+        
+        console.log("Yükleme başarılı, click olayları eklendi");
+    } catch (error) {
+        console.error("Hata oluştu:", error);
+        $(".description-text").html("<p style='color:red'>Yükleme hatası: " + error.message + "</p>");
+    }
+}
+
+// Test amaçlı mock data döndüren fake bir sunucu simülasyonu
+// (Gerçek sunucunuz yoksa çalışması için)
+function setupMockServer() {
+    // Gerçek bir backend olmadan test edebilmek için fetch'i taklit ediyoruz
+    const originalFetch = window.fetch;
+    window.fetch = function(url, options) {
+        if (url.endsWith("/load.json") && options.method === "POST") {
+            console.log("Mock sunucuya istek gönderildi:", options.body);
+            const mockHtml = `
+                <h3>Odalar</h3>
+                <a href="#" class="wm-room" data-wormy="wormy_101">Oda 101 (Wormy)</a><br>
+                <a href="#" class="wm-room" data-wormy="wormy_202">Oda 202 (Wormy)</a><br>
+                <a href="#" class="wm-room" data-wormy="wormy_303">Oda 303 (Wormy)</a>
+                <p><i>Bu mock veridir. Gerçek sunucuya bağlanmak isterseniz xUrl değişkenini düzenleyin.</i></p>
+            `;
+            return Promise.resolve({
+                text: () => Promise.resolve(mockHtml)
+            });
+        }
+        return originalFetch(url, options);
+    };
+}
+
+// Sayfa yüklendiğinde
+$(document).ready(function() {
+    // Mock sunucuyu aktif et (gerçek backend yoksa test için)
+    setupMockServer();
+    
+    // xUrl değişkeni - kendi sunucu adresinizle değiştirin
+    const xUrl = "https://api.example.com";  // Gerçek URL'nizi yazın
+    
+    $("#loadBtn").click(function() {
+        loadWormyData(xUrl);
+    });
+    
+    // İsteğe bağlı: Sayfa açılırken otomatik yüklemek isterseniz:
+    // loadWormyData(xUrl);
+});
+</script>
+
+</body>
+</html>
