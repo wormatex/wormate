@@ -1,7 +1,7 @@
 'use strict';
 
-const zUrl = "https://ii7modysmp-hue.github.io/wormatrix";
-const xUrl = "https://ii7modysmp-hue.github.io/wormatrix";
+const zUrl = "https://wormatex.github.io/wormate";
+const xUrl = "https://wormatex.github.io/wormate";
 
 var Z = {
   positions: {
