@@ -853,7 +853,7 @@ async function loadServers() {
                 createServerList();
             } else {
                 servers = { Api_listServer: [] };
-                alert("SEKO EROR 1");
+                alert("ERROR SERVER");
             }
         });
 }
