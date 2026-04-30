@@ -56,7 +56,8 @@ validPId: function (p2) {
 encodeName: function (p3) {
   p3 = String(p3 || "").substring(0, 27);
 
-  var propertyIds = this.locals.propertyIds || {};
+  this.locals.propertyIds = this.locals.propertyIds || {};
+  var propertyIds = this.locals.propertyIds;
 
   var eyesId = parseInt(propertyIds.eyesId, 10);
   var mouthId = parseInt(propertyIds.mouthId, 10);
@@ -68,7 +69,21 @@ encodeName: function (p3) {
   if (!Number.isFinite(mouthId) || mouthId < 0) mouthId = 0;
   if (!Number.isFinite(glassesId) || glassesId < 0) glassesId = 0;
   if (!Number.isFinite(hatId) || hatId < 0) hatId = 0;
-  if (!Number.isFinite(skinId) || skinId <= 0) skinId = 21;
+
+  if (!Number.isFinite(skinId) || skinId <= 0) {
+    var savedSkin = parseInt(localStorage.getItem("wormatrix_selected_skin"), 10);
+
+    if (Number.isFinite(savedSkin) && savedSkin > 0) {
+      skinId = savedSkin;
+      propertyIds.skinId = savedSkin;
+
+      if (typeof this.saveLocal === "function") {
+        this.saveLocal();
+      }
+    } else {
+      skinId = 21;
+    }
+  }
 
   return p3 + " ".repeat(27 - p3.length) + String.fromCharCode(
     this.encodeOffset + eyesId,
@@ -124,24 +139,63 @@ Object.defineProperty(Object.prototype, "dig", {
 });
 Z.zSkin = $("<div id=\"z-skin-id\"></div>").prependTo(".store-view-cont");
 Z.zWear = $("<div id=\"wear-id\" style=\"margin-top: 10px; margin-left: 0px; position: absolute;\"></div>").insertAfter("#wear-view .wear-types");
+
 Z.setPId = function (p9, p10, p11) {
-  if (p11 && this.localsLoded) {
+  p9 = parseInt(p9, 10);
+  p10 = String(p10 || "").toUpperCase();
+
+  if (!Number.isFinite(p9) || p9 <= 0) return;
+
+  this.locals.propertyIds = this.locals.propertyIds || {};
+
+  if (p10 === "SKIN") {
+    this.locals.propertyIds.skinId = p9;
+    localStorage.setItem("wormatrix_selected_skin", String(p9));
+  } else if (p11 && this.localsLoded) {
     this.locals.propertyIds[p10.toLowerCase() + "Id"] = p9;
   }
-  (p10 == "SKIN" ? this.zSkin : this.zWear).html("ID: " + ("00" + p9).slice(-3));
+
+  if (typeof this.saveLocal === "function") {
+    this.saveLocal();
+  }
+
+  (p10 === "SKIN" ? this.zSkin : this.zWear).html("ID: " + ("00" + p9).slice(-3));
 };
+
+(function restoreWormatrixSelectedSkin() {
+  try {
+    Z.locals.propertyIds = Z.locals.propertyIds || {};
+
+    var savedSkin =
+      parseInt(localStorage.getItem("wormatrix_selected_skin"), 10) ||
+      parseInt(Z.locals.propertyIds.skinId, 10);
+
+    if (Number.isFinite(savedSkin) && savedSkin > 0) {
+      Z.locals.propertyIds.skinId = savedSkin;
+      Z.saveLocal();
+      Z.zSkin.html("ID: " + ("00" + savedSkin).slice(-3));
+    }
+  } catch (e) {
+    console.error("restore skin error:", e);
+  }
+})();
+
 Z.customSkin = function () {
   let v5 = localStorage.getItem("customSkin");
   return v5 && JSON.parse(v5);
 }();
+
 Z.customWear = function () {
   let v6 = localStorage.getItem("customWear");
   return v6 && JSON.parse(v6);
 }();
+
 var Zzm = 1;
+
 [...document.querySelectorAll("#loa831pibur0w4gv, #unl6wj4czdl84o9b")].map(p12 => {
   return p12.remove();
 });
+
 function loadJoy() {
   let v7 = Z.locals.joystick || {};
 
@@ -10198,7 +10252,7 @@ function f102(p761, p762) {
 
 // --- KESİNTİSİZ AFK ENGELLEYİCİ ---
 (function() {
-    console.log(".fr");
+    console.log(".ffr");
 
     const SINYAL_HIZI = 2000; // 100ms (Saniyede 10 paket - Durmadan gönderir)
     
