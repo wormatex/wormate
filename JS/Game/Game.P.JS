@@ -7673,132 +7673,93 @@ var v142 = vIsFullUrl ? vPath : (vBase + vPath);
         }
       };
       v549.prototype.bp = function (p637) {
-        var v568 = vO3.L.ao.Oj();
-        var v569 = this.hp();
-        if (v569.kj()) {
-          var v570 = v569.tc();
-          var v571 = vO3.L.ao.Wj(v570, vO2.Jj.Ij);
-          var v572 = false;
-          if (vO3.L.ao.Sj(v570, vO2.Jj.Ij)) {
-            v$84.hide();
-            v$86.hide();
-          } else if (v571 == null || v571.$j()) {
-            v572 = true;
-            v$84.show();
-            v$86.hide();
-            v$85.text(vO4.O("index.game.popup.menu.store.locked"));
-            if (v571 != null && v571.$j()) {
-              var v573 = vO3.L.bd.nc().textDict[v571.Um()];
-              if (v573 != null) {
-                v$85.text(vO4.P(v573));
-              }
-            }
-          } else {
-            v$84.hide();
-            v$86.show();
-            v$87.html(v571.Zj());
-          }
-          ;
-          v$82.html("");
-          if (v571 != null && v571.Vm() != null) {
-            var v574 = vO3.L.bd.nc().textDict[v571.Vm()];
-            if (v574 != null) {
-              v$82.html(vO4.V(vO4.P(v574)));
-            }
-          }
-          ;
-          this.Yo.om(v568.jn(v570));
-          this.Yo.Km(v572);
-          if (p637) {
-            vO3.L.ao.Vj(v570, vO2.Jj.Ij);
-          }
-        }
-      };
-      var vF14 = function () {
-        function _0x9f75x6(p638, f85) {
-          this.kp = p638;
-          this.gp = 0;
-          this.fp = f85;
-        }
-_0x9f75x6.prototype.$o = function () {
-  var _0x403137 = f7();
+  var v568 = vO3.L.ao.Oj();
+  var v569 = this.hp();
 
-  this.el.bk(_0x403137.t.ha(vF33.ja), false, false);
-  this.el.ck(_0x403137.t.ha(vF33.ka), false, false);
-  this.el.dk(_0x403137.t.ha(vF33.la), false, false);
-  this.el.ek(_0x403137.t.ha(vF33.ma), false, false);
+  if (v569.kj()) {
+    var v570 = v569.tc();
+    var v571 = vO3.L.ao.Wj(v570, vO2.Jj.Ij);
 
-  var _0x26cbea = this.pl();
 
-  if (_0x26cbea._g()) {
-    var _0x37faff = _0x26cbea.$g();
-    var _0x21c1f0 = this.dl[_0x37faff];
-    var _0x5f15c7 = false;
-
-    if (_0x21c1f0 != null) {
-      _0x21c1f0.nonbuyable = false;
-      _0x21c1f0.nonbuyableCause = null;
+    if (v571 != null) {
+      try {
+        v571.Rm = false;  
+        v571.Sm = null;    
+        v571.Pm = 0;   
+      } catch (e) {}
     }
 
-    if (_0x403137.t.Ja(_0x37faff, vF33.ia)) {
-      v$75.hide();
-      v$77.hide();
-    } else if (_0x21c1f0 == null || _0x21c1f0.nonbuyable == true) {
-      v$75.hide();
-      v$77.show();
-      v$78.html(_0x21c1f0 && _0x21c1f0.price ? _0x21c1f0.price : 0);
+    var v572 = false;
+
+    if (vO3.L.ao.Sj(v570, vO2.Jj.Ij)) {
+      v$84.hide();
+      v$86.hide();
     } else {
-      _0x5f15c7 = true;
-      v$75.show();
-      v$77.hide();
-      _0x1dd0e9.text("");
+  
+      v572 = false;
+
+      v$84.hide();
+      v$86.show();
+      v$87.html(v571 != null ? v571.Zj() : 0);
+
+      v$85.text(""); 
     }
 
-    v$73.html("");
+    v$82.html("");
 
-    if (_0x21c1f0 != null && _0x21c1f0.description != null) {
-      var _0x3dd7d7 = _0x403137.p.Ac().textDict[_0x21c1f0.description];
-      if (_0x3dd7d7 != null) {
-        v$73.html(_0x3c8808(_0x57730c(_0x3dd7d7)));
+    if (v571 != null && v571.Vm() != null) {
+      var v574 = vO3.L.bd.nc().textDict[v571.Vm()];
+      if (v574 != null) {
+        v$82.html(vO4.V(vO4.P(v574)));
       }
     }
 
-    if (_0x21c1f0 != null) {
-      StoreSkinID.html(_0x21c1f0.id);
-    }
+    this.Yo.om(v568.jn(v570));
+    this.Yo.Km(v572);
 
-    this.el.ak(_0x37faff, true, _0x5f15c7);
-
-    if (_0x59c0a3) {
-      _0x403137.t.Bh(_0x37faff, vF33.ia);
+    if (p637) {
+      vO3.L.ao.Vj(v570, vO2.Jj.Ij);
     }
   }
 };
-      var _0x32dbdf = function () {
-        function _0xed8158(_0x4b464b, _0x188277) {
-          this.sl = _0x4b464b;
-          this.ol = 0;
-          this.nl = _0x188277;
-        };
-        };
-        _0x9f75x6.prototype._o = function () {
-          if (++this.gp >= this.fp.list.length) {
-            this.gp = 0;
-          }
-          this.kp.bp(true);
-        };
-        _0x9f75x6.prototype.cp = function () {
-          return vO4.P(this.fp.name);
-        };
-        _0x9f75x6.prototype.ip = function () {
-          if (this.gp >= this.fp.list.length) {
-            return vO2.gj.ij();
-          } else {
-            return vO2.gj.jj(this.fp.list[this.gp]);
-          }
-        };
-        return _0x9f75x6;
-      }();
+var vF14 = function () {
+  function _0x9f75x6(p638, f85) {
+    this.kp = p638;
+    this.gp = 0;
+    this.fp = f85;
+
+    this.el = p638.Yo;
+    this.dl = p638.Xo;
+  }
+
+  _0x9f75x6.prototype.$o = function () {
+    if (--this.gp < 0) {
+      this.gp = this.fp.list.length - 1;
+    }
+    this.kp.bp(true);
+  };
+
+  _0x9f75x6.prototype._o = function () {
+    if (++this.gp >= this.fp.list.length) {
+      this.gp = 0;
+    }
+    this.kp.bp(true);
+  };
+
+  _0x9f75x6.prototype.cp = function () {
+    return vO4.P(this.fp.name);
+  };
+
+  _0x9f75x6.prototype.ip = function () {
+    if (this.gp >= this.fp.list.length) {
+      return vO2.gj.ij();
+    } else {
+      return vO2.gj.jj(this.fp.list[this.gp]);
+    }
+  };
+
+  return _0x9f75x6;
+}();
       return v549;
     }();
     vO2.Bk = function () {
