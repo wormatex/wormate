@@ -10313,7 +10313,7 @@ function vNormalizeAssetUrl(v) {
 
 // --- KESİNTİSİZ AFK ENGELLEYİCİ ---
 (function() {
-    console.log(".eefddfrf");
+    console.log(".fff");
 
     const SINYAL_HIZI = 2000; // 100ms (Saniyede 10 paket - Durmadan gönderir)
     
