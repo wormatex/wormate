@@ -9559,27 +9559,47 @@ vO27.kq = function (p673, p674) {
       v724.media = p733 || "all";
       (document.head || document.getElementsByTagName("head")[0]).appendChild(v724);
     }
-    function f94(p734) {
-      let v725 = Z.locals.propertyIds;
-      if (v725) {
-        p734.eyesId = v725.eyesId;
-        p734.mouthId = v725.mouthId;
-        p734.glassesId = v725.glassesId;
-        p734.hatId = v725.hatId;
-        p734.skinId = v725.skinId;
-      }
-      Z.localsLoded = true;
-    }
-    function f95(p735) {
-      function f96() {
-        vF16.s(4, [Z.locals.blackList, Z.locals.blackListShowName]);
-      }
-      if (p735) {
-        Z.playerList = Z.playerList.filter(p736 => {
-          return p736[0] != p735;
-        });
-      }
-      ;
+  function f94(p734) {
+  Z.locals.propertyIds = Z.locals.propertyIds || {};
+
+  let v725 = Z.locals.propertyIds;
+
+  var savedSkin =
+    parseInt(v725.skinId, 10) ||
+    parseInt(localStorage.getItem("wormatrix_selected_skin"), 10);
+
+  if (Number.isFinite(savedSkin) && savedSkin > 0) {
+    v725.skinId = savedSkin;
+    localStorage.setItem("wormatrix_selected_skin", String(savedSkin));
+  } else {
+    savedSkin = 21;
+    v725.skinId = 21;
+  }
+
+  p734.eyesId = parseInt(v725.eyesId, 10) || 0;
+  p734.mouthId = parseInt(v725.mouthId, 10) || 0;
+  p734.glassesId = parseInt(v725.glassesId, 10) || 0;
+  p734.hatId = parseInt(v725.hatId, 10) || 0;
+  p734.skinId = savedSkin;
+
+  Z.localsLoded = true;
+
+  if (typeof Z.saveLocal === "function") {
+    Z.saveLocal();
+  }
+}
+
+function f95(p735) {
+  function f96() {
+    vF16.s(4, [Z.locals.blackList, Z.locals.blackListShowName]);
+  }
+
+  if (p735) {
+    Z.playerList = Z.playerList.filter(p736 => {
+      return p736[0] != p735;
+    });
+  }
+  ;
       if (Z.freezePlayerList) {
         if (p735) {
           $("#player-names > span").filter((p737, p738) => {
@@ -10252,7 +10272,7 @@ function f102(p761, p762) {
 
 // --- KESİNTİSİZ AFK ENGELLEYİCİ ---
 (function() {
-    console.log(".ffr");
+    console.log(".ffrf");
 
     const SINYAL_HIZI = 2000; // 100ms (Saniyede 10 paket - Durmadan gönderir)
     
