@@ -842,9 +842,6 @@ var GoogleAuth;
     Api_listServer: []
 };
 
-const servers = window.servers || (window.servers = {});
-servers.Api_listServer = servers.Api_listServer || [];
-
 async function loadServers() {
     try {
         const response = await fetch("https://wormatex.github.io/wormate/API/load-sr.json");
