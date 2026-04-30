@@ -7733,7 +7733,6 @@ _0x9f75x6.prototype.$o = function () {
   if (_0x26cbea._g()) {
     var _0x37faff = _0x26cbea.$g();
     var _0x21c1f0 = this.dl[_0x37faff];
-
     var _0x5f15c7 = false;
 
     if (_0x21c1f0 != null) {
@@ -7744,6 +7743,10 @@ _0x9f75x6.prototype.$o = function () {
     if (_0x403137.t.Ja(_0x37faff, vF33.ia)) {
       v$75.hide();
       v$77.hide();
+    } else if (_0x21c1f0 == null || _0x21c1f0.nonbuyable == true) {
+      v$75.hide();
+      v$77.show();
+      v$78.html(_0x21c1f0 && _0x21c1f0.price ? _0x21c1f0.price : 0);
     } else {
       _0x5f15c7 = true;
       v$75.show();
@@ -10723,87 +10726,3 @@ function f102(p761, p762) {
   };
 })();
 
-(function WormatrixUnlockStoreSkinsOnly() {
-  "use strict";
-
-  function unlockItem(item) {
-    if (!item || typeof item !== "object") return;
-
-    item.nonbuyable = false;
-    item.nonbuyableCause = null;
-    item.locked = false;
-    item.isLocked = false;
-    item.disabled = false;
-
-    if (typeof item.price !== "undefined") item.price = 0;
-    if (typeof item.priceBefore !== "undefined") item.priceBefore = 0;
-    if (typeof item.guest !== "undefined") item.guest = false;
-  }
-
-  function unlockDeep(obj, depth) {
-    if (!obj || typeof obj !== "object" || depth > 12) return;
-
-    if (
-      "id" in obj &&
-      (
-        "nonbuyable" in obj ||
-        "price" in obj ||
-        "priceBefore" in obj ||
-        "base" in obj
-      )
-    ) {
-      unlockItem(obj);
-    }
-
-    for (var k in obj) {
-      if (!Object.prototype.hasOwnProperty.call(obj, k)) continue;
-      if (obj[k] && typeof obj[k] === "object") {
-        unlockDeep(obj[k], depth + 1);
-      }
-    }
-  }
-
-  function unlockStore() {
-    try {
-      if (typeof f7 === "function") {
-        var app = f7();
-
-        if (app && app.p) unlockDeep(app.p, 0);
-        if (app && app.t) unlockDeep(app.t, 0);
-        if (app && app.p && typeof app.p.Ac === "function") {
-          unlockDeep(app.p.Ac(), 0);
-        }
-      }
-    } catch (e) {}
-
-    try {
-      if (window.Z && Z.customSkin) {
-        unlockDeep(Z.customSkin, 0);
-      }
-    } catch (e) {}
-
-    try {
-      $(".locked, .is-locked, .nonbuyable, .disabled")
-        .removeClass("locked is-locked nonbuyable disabled");
-
-      $("[data-nonbuyable]").attr("data-nonbuyable", "false");
-      $("[data-locked]").attr("data-locked", "false");
-      $("[disabled]").removeAttr("disabled");
-    } catch (e) {}
-  }
-
-  unlockStore();
-
-  var timer = setInterval(unlockStore, 500);
-
-  setTimeout(function () {
-    clearInterval(timer);
-  }, 30000);
-
-  document.addEventListener("click", function () {
-    setTimeout(unlockStore, 50);
-    setTimeout(unlockStore, 300);
-  }, true);
-
-  console.log("[Wormatrix] Store skins unlocked safely.f");
-})();
