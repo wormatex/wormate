@@ -10101,7 +10101,7 @@ function f102(p761, p762) {
     return /^(data:|blob:)/i.test(v);
   }
 
- function vNormalizeAssetUrl(v) {
+function vNormalizeAssetUrl(v) {
   if (typeof v !== "string") {
     return v;
   }
@@ -10120,7 +10120,6 @@ function f102(p761, p762) {
     return location.protocol + v;
   }
 
-
   if (vIsAbsoluteUrl(v)) {
     var vProxy = vGetAssetProxy();
 
@@ -10128,26 +10127,11 @@ function f102(p761, p762) {
       return vProxy + encodeURIComponent(v);
     }
 
-    return v;
+    return "";
   }
 
   return v;
 }
-
-    if (vIsProtocolRelative(v)) {
-      v = location.protocol + v;
-    }
-
-    if (vIsAbsoluteUrl(v)) {
-      var vProxy = vGetAssetProxy();
-      if (vProxy) {
-        return vProxy + encodeURIComponent(v);
-      }
-      return "";
-    }
-
-    return v;
-  }
 
   function vNormalizeObjectAssets(vObj) {
     if (!vObj || typeof vObj !== "object") {
