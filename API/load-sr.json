@@ -1,509 +1,752 @@
 {
-    "success": true,
-    "servers": [
-        {
-            "id": 9,
-            "name": "<div id='svhiep'> <div class='ten'>07. W-X</div> <div class='valu'>DE_7</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "peru",
-            "serverUrl": "wss://fra-c.wormate.io:32095/wormy",
-            "status": 1
-        },
-        {
-            "id": 8,
-            "name": "<div id='svhiep'> <div class='ten'>08. W-X</div> <div class='valu'>DE_8</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "peru",
-            "serverUrl": "wss://fra-c.wormate.io:32262/wormy",
-            "status": 1
-        },
-        {
-            "id": 7,
-            "name": "<div id='svhiep'> <div class='ten'>07. W-X</div> <div class='valu'>DE_7</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "peru",
-            "serverUrl": "wss://fra-c.wormate.io:32026/wormy",
-            "status": 1
-        },
-        {
-            "id": 6,
-            "name": "<div id='svhiep'> <div class='ten'>06. W-X</div> <div class='valu'>DE_6</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "peru",
-            "serverUrl": "wss://fra-c.wormate.io:32285/wormy",
-            "status": 1
-        },
-        {
-            "id": 5,
-            "name": "<div id='svhiep'> <div class='ten'>05. W-X</div> <div class='valu'>DE_5</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "peru",
-            "serverUrl": "wss://fra-c.wormate.io:32064/wormy",
-            "status": 1
-        },
-        {
-            "id": 4,
-            "name": "<div id='svhiep'> <div class='ten'>04. W-X</div> <div class='valu'>DE_4</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "peru",
-            "serverUrl": "wss://fra-c.wormate.io:32609/wormy",
-            "status": 1
-        },
-        {
-            "id": 3,
-            "name": "<div id='svhiep'> <div class='ten'>03. W-X</div> <div class='valu'>DE_3</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "peru",
-            "serverUrl": "wss://fra-c.wormate.io:32103/wormy",
-            "status": 1
-        },
-        {
-            "id": 2,
-            "name": "<div id='svhiep'> <div class='ten'>02. ! 𝑲𝑨𝑹𝑨</div> <div class='valu'>DE_2</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "peru", 
-            "serverUrl": "wss://fra-c.wormate.io:32053/wormy",
-            "status": 1
-        },
-        {
-            "id": 1,
-            "name": "<div id='svhiep'> <div class='ten'>01. 𝑩𝑴𝑾 𝑰𝑹𝑨𝑸</div> <div class='valu'>DE_1</div> <div class='img-team'><img src='https://i.ibb.co/hxhNhGvZ/4cd277eaee7941a6759aaa730250b4dd.jpg' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "peru",
-            "serverUrl": "wss://fra-c.wormate.io:32053/wormy",
-            "status": 1
-        },
-        {
-            "id": 476,
-            "name": "<div id='svhiep'> <div class='ten'>07. W-X</div> <div class='valu'>UAE_7</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "mexico",
-            "serverUrl": "wss://fra-c.wormate.io:31050/wormy",
-            "status": 1
-        },
-        {
-            "id": 475,
-            "name": "<div id='svhiep'> <div class='ten'>06. W-X</div> <div class='valu'>UAE_6</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "mexico",
-            "serverUrl": "wss://fra-c.wormate.io:31280/wormy",
-            "status": 1
-        },
-        {
-            "id": 474,
-            "name": "<div id='svhiep'> <div class='ten'>05. W-X</div> <div class='valu'>UAE_5</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "mexico",
-            "serverUrl": "wss://fra-c.wormate.io:32262/wormy",
-            "status": 1
-        },
-        {
-            "id": 473,
-            "name": "<div id='svhiep'> <div class='ten'>04. W-X</div> <div class='valu'>UAE_4</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "mexico",
-            "serverUrl": "wss://fra-c.wormate.io:32064/wormy",
-            "status": 1
-        },
-        {
-            "id": 472,
-            "name": "<div id='svhiep'> <div class='ten'>03. W-X</div> <div class='valu'>UAE_3</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "mexico",
-            "serverUrl": "wss://fra-c.wormate.io:32103/wormy",
-            "status": 1
-        },
-        {
-            "id": 471,
-            "name": "<div id='svhiep'> <div class='ten'>02. W-X</div> <div class='valu'>UAE_2</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "mexico",
-            "serverUrl": "wss://fra-c.wormate.io:32609/wormy",
-            "status": 1
-        },
-        {
-            "id": 470,
-            "name": "<div id='svhiep'> <div class='ten'>01. W-X</div> <div class='valu'>UAE_1</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "mexico",
-            "serverUrl": "wss://fra-c.wormate.io:32053/wormy",
-            "status": 1
-        },
-        {
-            "id": 76,
-            "name": "<div id='svhiep'> <div class='ten'>07. W-X</div> <div class='valu'>US_7</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "eeuu",
-            "serverUrl": "wss://fra-c.wormate.io:32285/wormy",
-            "status": 1
-        },
-        {
-            "id": 75,
-            "name": "<div id='svhiep'> <div class='ten'>06. W-X</div> <div class='valu'>US_6</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "eeuu",
-            "serverUrl": "wss://fra-c.wormate.io:32095/wormy",
-            "status": 1
-        },
-        {
-            "id": 74,
-            "name": "<div id='svhiep'> <div class='ten'>05. W-X</div> <div class='valu'>US_5</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "eeuu",
-            "serverUrl": "wss://fra-c.wormate.io:32262/wormy",
-            "status": 1
-        },
-        {
-            "id": 73,
-            "name": "<div id='svhiep'> <div class='ten'>04. W-X</div> <div class='valu'>US_4</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "eeuu",
-            "serverUrl": "wss://fra-c.wormate.io:32064/wormy",
-            "status": 1
-        },
-        {
-            "id": 72,
-            "name": "<div id='svhiep'> <div class='ten'>03. W-X</div> <div class='valu'>US_3</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "eeuu",
-            "serverUrl": "wss://fra-c.wormate.io:32103/wormy",
-            "status": 1
-        },
-        {
-            "id": 71,
-            "name": "<div id='svhiep'> <div class='ten'>02. W-X</div> <div class='valu'>US_2</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "eeuu",
-            "serverUrl": "wss://fra-c.wormate.io:32609/wormy",
-            "status": 1
-        },
-        {
-            "id": 70,
-            "name": "<div id='svhiep'> <div class='ten'>01. W-X</div> <div class='valu'>US_1</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "eeuu",
-            "serverUrl": "wss://fra-c.wormate.io:32053/wormy",
-            "status": 1
-        },
-        {
-            "id": 406,
-            "name": "<div id='svhiep'> <div class='ten'>07. W-X</div> <div class='valu'>LT_7</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "canada",
-            "serverUrl": "wss://fra-c.wormate.io:32285/wormy",
-            "status": 1
-        },
-        {
-            "id": 405,
-            "name": "<div id='svhiep'> <div class='ten'>06. W-X</div> <div class='valu'>LT_6</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "canada",
-            "serverUrl": "wss://fra-c.wormate.io:32095/wormy",
-            "status": 1
-        },
-        {
-            "id": 404,
-            "name": "<div id='svhiep'> <div class='ten'>05. W-X</div> <div class='valu'>LT_5</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "canada",
-            "serverUrl": "wss://fra-c.wormate.io:32262/wormy",
-            "status": 1
-        },
-        {
-            "id": 403,
-            "name": "<div id='svhiep'> <div class='ten'>04. W-X</div> <div class='valu'>LT_4</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "canada",
-            "serverUrl": "wss://fra-c.wormate.io:32064/wormy",
-            "status": 1
-        },
-        {
-            "id": 402,
-            "name": "<div id='svhiep'> <div class='ten'>03. W-X</div> <div class='valu'>LT_3</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "canada",
-            "serverUrl": "wss://fra-c.wormate.io:32103/wormy",
-            "status": 1
-        },
-        {
-            "id": 401,
-            "name": "<div id='svhiep'> <div class='ten'>02. W-X</div> <div class='valu'>LT_2</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "canada",
-            "serverUrl": "wss://fra-c.wormate.io:32609/wormy",
-            "status": 1
-        },
-        {
-            "id": 400,
-            "name": "<div id='svhiep'> <div class='ten'>01. W-X</div> <div class='valu'>LT_1</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "canada",
-            "serverUrl": "wss://fra-c.wormate.io:32053/wormy",
-            "status": 1
-        },
-        {
-            "id": 277,
-            "name": "<div id='svhiep'> <div class='ten'>07. W-X</div> <div class='valu'>BR_7</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "germania",
-            "serverUrl": "wss://fra-c.wormate.io:32285/wormy",
-            "status": 1
-        },
-        {
-            "id": 276,
-            "name": "<div id='svhiep'> <div class='ten'>06. W-X</div> <div class='valu'>BR_6</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "germania",
-            "serverUrl": "wss://fra-c.wormate.io:32262/wormy",
-            "status": 1
-        },
-        {
-            "id": 275,
-            "name": "<div id='svhiep'> <div class='ten'>05. W-X</div> <div class='valu'>BR_5</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "germania",
-            "serverUrl": "wss://fra-c.wormate.io:32095/wormy",
-            "status": 1
-        },
-        {
-            "id": 274,
-            "name": "<div id='svhiep'> <div class='ten'>04. W-X</div> <div class='valu'>BR_4</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "germania",
-            "serverUrl": "wss://fra-c.wormate.io:32064/wormy",
-            "status": 1
-        },
-        {
-            "id": 273,
-            "name": "<div id='svhiep'> <div class='ten'>03. W-X</div> <div class='valu'>BR_3</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "germania",
-            "serverUrl": "wss://fra-c.wormate.io:32103/wormy",
-            "status": 1
-        },
-        {
-            "id": 272,
-            "name": "<div id='svhiep'> <div class='ten'>02. W-X</div> <div class='valu'>BR_2</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "germania",
-            "serverUrl": "wss://fra-c.wormate.io:32609/wormy",
-            "status": 1
-        },
-        {
-            "id": 271,
-            "name": "<div id='svhiep'> <div class='ten'>01. W-X</div> <div class='valu'>BR_1</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "germania",
-            "serverUrl": "wss://fra-c.wormate.io:32053/wormy",
-            "status": 1
-        },
-        {
-            "id": 206,
-            "name": "<div id='svhiep'> <div class='ten'>07. W-X</div> <div class='valu'>FR_7</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "francia",
-            "serverUrl": "wss://fra-c.wormate.io:32285/wormy",
-            "status": 1
-        },
-        {
-            "id": 205,
-            "name": "<div id='svhiep'> <div class='ten'>06. W-X</div> <div class='valu'>FR_6</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "francia",
-            "serverUrl": "wss://fra-c.wormate.io:32262/wormy",
-            "status": 1
-        },
-        {
-            "id": 204,
-            "name": "<div id='svhiep'> <div class='ten'>05. W-X</div> <div class='valu'>FR_5</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "francia",
-            "serverUrl": "wss://fra-c.wormate.io:32095/wormy",
-            "status": 1
-        },
-        {
-            "id": 203,
-            "name": "<div id='svhiep'> <div class='ten'>04. W-X</div> <div class='valu'>FR_4</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "francia",
-            "serverUrl": "wss://fra-c.wormate.io:32064/wormy",
-            "status": 1
-        },
-        {
-            "id": 202,
-            "name": "<div id='svhiep'> <div class='ten'>03. W-X</div> <div class='valu'>FR_3</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "francia",
-            "serverUrl": "wss://fra-c.wormate.io:32103/wormy",
-            "status": 1
-        },
-        {
-            "id": 201,
-            "name": "<div id='svhiep'> <div class='ten'>02. W-X</div> <div class='valu'>FR_2</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "francia",
-            "serverUrl": "wss://fra-c.wormate.io:32609/wormy",
-            "status": 1
-        },
-        {
-            "id": 200,
-            "name": "<div id='svhiep'> <div class='ten'>01. W-X</div> <div class='valu'>FR_1</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "francia",
-            "serverUrl": "wss://fra-c.wormate.io:32053/wormy",
-            "status": 1
-        },
-        {
-            "id": 146,
-            "name": "<div id='svhiep'> <div class='ten'>07. W-X</div> <div class='valu'>SG_7</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "singapur",
-            "serverUrl": "wss://fra-c.wormate.io:32285/wormy",
-            "status": 1
-        },
-        {
-            "id": 145,
-            "name": "<div id='svhiep'> <div class='ten'>06. W-X</div> <div class='valu'>SG_6</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "singapur",
-            "serverUrl": "wss://fra-c.wormate.io:32262/wormy",
-            "status": 1
-        },
-        {
-            "id": 144,
-            "name": "<div id='svhiep'> <div class='ten'>05. W-X</div> <div class='valu'>SG_5</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "singapur",
-            "serverUrl": "wss://fra-c.wormate.io:32095/wormy",
-            "status": 1
-        },
-        {
-            "id": 143,
-            "name": "<div id='svhiep'> <div class='ten'>04. W-X</div> <div class='valu'>SG_4</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "singapur",
-            "serverUrl": "wss://fra-c.wormate.io:32064/wormy",
-            "status": 1
-        },
-        {
-            "id": 142,
-            "name": "<div id='svhiep'> <div class='ten'>03. W-X</div> <div class='valu'>SG_3</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "singapur",
-            "serverUrl": "wss://fra-c.wormate.io:32103/wormy",
-            "status": 1
-        },
-        {
-            "id": 141,
-            "name": "<div id='svhiep'> <div class='ten'>02. W-X</div> <div class='valu'>SG_2</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "singapur",
-            "serverUrl": "wss://fra-c.wormate.io:32609/wormy",
-            "status": 1
-        },
-        {
-            "id": 140,
-            "name": "<div id='svhiep'> <div class='ten'>01. W-X</div> <div class='valu'>SG_1</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "singapur",
-            "serverUrl": "wss://fra-c.wormate.io:32053/wormy",
-            "status": 1
-        },
-        {
-            "id": 606,
-            "name": "<div id='svhiep'> <div class='ten'>07. W-X</div> <div class='valu'>JP_7</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "japon",
-            "serverUrl": "wss://fra-c.wormate.io:32285/wormy",
-            "status": 1
-        },
-        {
-            "id": 605,
-            "name": "<div id='svhiep'> <div class='ten'>06. W-X</div> <div class='valu'>JP_6</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "japon",
-            "serverUrl": "wss://fra-c.wormate.io:32262/wormy",
-            "status": 1
-        },
-        {
-            "id": 604,
-            "name": "<div id='svhiep'> <div class='ten'>05. W-X</div> <div class='valu'>JP_5</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "japon",
-            "serverUrl": "wss://fra-c.wormate.io:32095/wormy",
-            "status": 1
-        },
-        {
-            "id": 603,
-            "name": "<div id='svhiep'> <div class='ten'>04. W-X</div> <div class='valu'>JP_4</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "japon",
-            "serverUrl": "wss://fra-c.wormate.io:32064/wormy",
-            "status": 1
-        },
-        {
-            "id": 602,
-            "name": "<div id='svhiep'> <div class='ten'>03. W-X</div> <div class='valu'>JP_3</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "japon",
-            "serverUrl": "wss://fra-c.wormate.io:32103/wormy",
-            "status": 1
-        },
-        {
-            "id": 601,
-            "name": "<div id='svhiep'> <div class='ten'>02. W-X</div> <div class='valu'>JP_2</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "japon",
-            "serverUrl": "wss://fra-c.wormate.io:32609/wormy",
-            "status": 1
-        },
-        {
-            "id": 600,
-            "name": "<div id='svhiep'> <div class='ten'>01. W-X</div> <div class='valu'>JP_1</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "japon",
-            "serverUrl": "wss://fra-c.wormate.io:32053/wormy",
-            "status": 1
-        },
-        {
-            "id": 706,
-            "name": "<div id='svhiep'> <div class='ten'>07. W-X</div> <div class='valu'>IN_7</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "australia",
-            "serverUrl": "wss://fra-c.wormate.io:32262/wormy",
-            "status": 1
-        },
-        {
-            "id": 705,
-            "name": "<div id='svhiep'> <div class='ten'>06. W-X</div> <div class='valu'>IN_6</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "australia",
-            "serverUrl": "wss://fra-c.wormate.io:32262/wormy",
-            "status": 1
-        },
-        {
-            "id": 704,
-            "name": "<div id='svhiep'> <div class='ten'>05. W-X</div> <div class='valu'>IN_5</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "australia",
-            "serverUrl": "wss://fra-c.wormate.io:32095/wormy",
-            "status": 1
-        },
-        {
-            "id": 703,
-            "name": "<div id='svhiep'> <div class='ten'>04. W-X</div> <div class='valu'>IN_4</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "australia",
-            "serverUrl": "wss://fra-c.wormate.io:32064/wormy",
-            "status": 1
-        },
-        {
-            "id": 702,
-            "name": "<div id='svhiep'> <div class='ten'>03. W-X</div> <div class='valu'>IN_3</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "australia",
-            "serverUrl": "wss://fra-c.wormate.io:32103/wormy",
-            "status": 1
-        },
-        {
-            "id": 701,
-            "name": "<div id='svhiep'> <div class='ten'>02. W-X</div> <div class='valu'>IN_2</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "australia",
-            "serverUrl": "wss://fra-c.wormate.io:32609/wormy",
-            "status": 1
-        },
-        {
-            "id": 700,
-            "name": "<div id='svhiep'> <div class='ten'>01. W-X</div> <div class='valu'>IN_1</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "australia",
-            "serverUrl": "wss://fra-c.wormate.io:32053/wormy",
-            "status": 1
-        },
-        {
-            "id": 546,
-            "name": "<div id='svhiep'> <div class='ten'>07. W-X</div> <div class='valu'>AU_7</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "granbretana",
-            "serverUrl": "wss://fra-c.wormate.io:32285/wormy",
-            "status": 1
-        },
-        {
-            "id": 545,
-            "name": "<div id='svhiep'> <div class='ten'>06. W-X</div> <div class='valu'>AU_6</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "granbretana",
-            "serverUrl": "wss://fra-c.wormate.io:32262/wormy",
-            "status": 1
-        },
-        {
-            "id": 544,
-            "name": "<div id='svhiep'> <div class='ten'>05. W-X</div> <div class='valu'>AU_5</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "granbretana",
-            "serverUrl": "wss://fra-c.wormate.io:32095/wormy",
-            "status": 1
-        },
-        {
-            "id": 543,
-            "name": "<div id='svhiep'> <div class='ten'>04. W-X</div> <div class='valu'>AU_4</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "granbretana",
-            "serverUrl": "wss://fra-c.wormate.io:32064/wormy",
-            "status": 1
-        },
-        {
-            "id": 542,
-            "name": "<div id='svhiep'> <div class='ten'>03. W-X</div> <div class='valu'>AU_3</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "granbretana",
-            "serverUrl": "wss://fra-c.wormate.io:32103/wormy",
-            "status": 1
-        },
-        {
-            "id": 541,
-            "name": "<div id='svhiep'> <div class='ten'>02. W-X</div> <div class='valu'>AU_2</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "granbretana",
-            "serverUrl": "wss://fra-c.wormate.io:32609/wormy",
-            "status": 1
-        },
-        {
-            "id": 540,
-            "name": "<div id='svhiep'> <div class='ten'>01. W-X</div> <div class='valu'>AU_1</div> <div class='img-team'><img src='https://i.ibb.co/p6D2BpfQ/VE92krc.png' style='width:35px; height:35px; border-radius:50%; object-fit:cover; box-shadow:0 2px 5px rgba(0,0,0,0.2);'/></div> </div>",
-            "region": "granbretana",
-            "serverUrl": "wss://fra-c.wormate.io:32053/wormy",
-            "status": 1
+  "success": true,
+  "servers": [
+    {
+      "id": 1,
+      "name": "01 ₳V̶Ⱡ🌊₳V̶₳Ł₳NCHE🌊",
+      "connection": "wss://sao-a.wormate.io:30560/wormy",
+      "room": "1br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_AVL.png",
+      "socialLink": "https://www.instagram.com/avl_wormate?igsh=MzRlOXdlOTd1bmNu"
+    },
+    {
+      "id": 2,
+      "name": "02 WGA -TIMES",
+      "connection": "wss://sao-a.wormate.io:31106/wormy",
+      "room": "2br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_WGATIMES.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 3,
+      "name": "03 т5☪ Turma da 5ª Série",
+      "connection": "wss://sao-a.wormate.io:31713/wormy",
+      "room": "3br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_5SERIE02.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 4,
+      "name": "04 FAMILIA BBW",
+      "connection": "wss://sao-a.wormate.io:32476/wormy",
+      "room": "4br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_BBW.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 5,
+      "name": "05 FX",
+      "connection": "wss://sao-a.wormate.io:31750/wormy",
+      "room": "5br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_FXNOVO.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 6,
+      "name": "06 COWBOY",
+      "connection": "wss://sao-a.wormate.io:31713/wormy",
+      "room": "6br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_COWBOY04.png",
+      "socialLink": "https://www.tiktok.com/@cbltcowboyclipes"
+    },
+    {
+      "id": 7,
+      "name": "07 CLÃ-DESTINO",
+      "connection": "wss://sao-a.wormate.io:30135/wormy",
+      "room": "7br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_CLADESTINO.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 8,
+      "name": "08 🎭FAMÍLIA ⅤǤÐ🎭",
+      "connection": "wss://dal-b.wormate.io:31750/wormy",
+      "room": "8br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_VGA.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 9,
+      "name": "09 Øℭℭ 💣ØRĐEM ℭØM ℭĀØS💣",
+      "connection": "wss://dal-b.wormate.io:30135/wormy",
+      "room": "9br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_ORDEM.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 10,
+      "name": "10 RNG",
+      "connection": "wss://sao-a.wormate.io:32476/wormy",
+      "room": "10br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_RNG02.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 11,
+      "name": "11 FVG",
+      "connection": "wss://sao-a.wormate.io:31975/wormy",
+      "room": "11br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_FVG01.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 12,
+      "name": "12 FAMÍLIA CSG",
+      "connection": "wss://dal-b.wormate.io:30135/wormy",
+      "room": "12br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_CSG.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 13,
+      "name": "13 ɢʅ DAVID RAPU®️ 🐛",
+      "connection": "wss://sao-a.wormate.io:31975/wormy",
+      "room": "13br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_DAVID.png",
+      "socialLink": "https://www.facebook.com/GLDavidRapu"
+    },
+    {
+      "id": 14,
+      "name": "14 Tik Tok 💥 Duchine 💥 Falido",
+      "connection": "wss://sao-a.wormate.io:31091/wormy",
+      "room": "14br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_FALIDO.png",
+      "socialLink": "https://www.tiktok.com/@duchinepereira?_t=8eOyrFS8Oqk&_r=1"
+    },
+    {
+      "id": 15,
+      "name": "15 TIMES NEWS 1",
+      "connection": "wss://sao-a.wormate.io:31106/wormy",
+      "room": "15br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "wss:wormworld.io"
+    },
+    {
+      "id": 16,
+      "name": "16 TIMES NEWS 2",
+      "connection": "wss://vin-a.wormate.io:32638/wormy",
+      "room": "16br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "wss:wormworld.io"
+    },
+    {
+      "id": 17,
+      "name": "17 TIMES NEWS 3",
+      "connection": "wss://dal-b.wormate.io:31555/wormy",
+      "room": "17br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "wss:wormworld.io"
+    },
+    {
+      "id": 18,
+      "name": "18 🎀 GANG DO LACINHO 🎀",
+      "connection": "wss://sao-a.wormate.io:30809/wormy",
+      "room": "18br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_LACINHOS.png",
+      "socialLink": "https://www.tiktok.com/@juhlacinho?_t=8lw2EJdkGJC&_r=1"
+    },
+    {
+      "id": 19,
+      "name": "19 FAMÍLIA VLP",
+      "connection": "wss://sao-a.wormate.io:30392/wormy",
+      "room": "19br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_VLP.png",
+      "socialLink": "https://tiktok.com/@volpeof"
+    },
+    {
+      "id": 20,
+      "name": "20 🦋Butterfly",
+      "connection": "wss://sao-a.wormate.io:30171/wormy",
+      "room": "20br",
+      "category": "br",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_BORBOLETA.png",
+      "socialLink": "https://www.tiktok.com/@butterflyylive?_t=8l0kxGD4Mca&_r=1"
+    },
+    {
+      "id": 21,
+      "name": "01 [AG] AguzGamer",
+      "connection": "wss://vin-a.wormate.io:30407/wormy",
+      "room": "1us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/sala_45.png",
+      "socialLink": "https://wormworld.io/team/aguz-gamer/"
+    },
+    {
+      "id": 22,
+      "name": "02 NEWS",
+      "connection": "wss://hil-a.wormate.io:30171/wormy",
+      "room": "2us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 23,
+      "name": "03 DF GAMING",
+      "connection": "wss://dal-b.wormate.io:31750/wormy",
+      "room": "3us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_DF.png",
+      "socialLink": "https://www.tiktok.com/@donfrankie?_t=ZT-8u4fAo8WMAg&_r=1"
+    },
+    {
+      "id": 24,
+      "name": "04 TF WENDYS",
+      "connection": "wss://hil-a.wormate.io:32111/wormy",
+      "room": "4us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_WENDS.png",
+      "socialLink": "https://www.facebook.com/LaWendyss?mibextid=LQQJ4d"
+    },
+    {
+      "id": 25,
+      "name": "05 GYA 09",
+      "connection": "wss://hil-a.wormate.io:30536/wormy",
+      "room": "5us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_GYA.png",
+      "socialLink": "https://www.facebook.com/search/top?q=gya09"
+    },
+    {
+      "id": 26,
+      "name": "06 SUPGAMING",
+      "connection": "wss://hil-a.wormate.io:31279/wormy",
+      "room": "6us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_SUP.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 27,
+      "name": "07 LA REYNA DEL SUR",
+      "connection": "wss://hil-a.wormate.io:32111/wormy",
+      "room": "7us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_RDSNOVO.png",
+      "socialLink": "https://www.facebook.com/lareynadelsur28?mibextid=ZbWKwL"
+    },
+    {
+      "id": 28,
+      "name": "08 FF FAMILY FOREVER",
+      "connection": "wss://hil-a.wormate.io:30162/wormy",
+      "room": "8us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_FOREVER.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 29,
+      "name": "09 TNS",
+      "connection": "wss://vin-a.wormate.io:32368/wormy",
+      "room": "9us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 30,
+      "name": "10 DAVID RAPU",
+      "connection": "wss://hil-a.wormate.io:30296/wormy",
+      "room": "10us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 31,
+      "name": "11 THE MAGIC DRAGON",
+      "connection": "wss://dal-b.wormate.io:32584/wormy",
+      "room": "11us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_DRAGON.png",
+      "socialLink": "https://wormworld.io/active"
+    },
+    {
+      "id": 32,
+      "name": "12 02 TEAMS YINYI and IZA",
+      "connection": "wss://hil-a.wormate.io:31555/wormy",
+      "room": "12us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_YINKI.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 33,
+      "name": "13 2 TEAMS 3  NEWS",
+      "connection": "wss://sao-a.wormate.io:30072/wormy",
+      "room": "13us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 34,
+      "name": "14 01 TEAMS",
+      "connection": "wss://hil-a.wormate.io:31000/wormy",
+      "room": "14us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 35,
+      "name": "15 NEWS",
+      "connection": "wss://hil-a.wormate.io:32746/wormy",
+      "room": "15us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 36,
+      "name": "16 NEWS",
+      "connection": "wss://hil-a.wormate.io:32403/wormy",
+      "room": "16us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 37,
+      "name": "17 NEWS",
+      "connection": "wss://vin-a.wormate.io:32465/wormy",
+      "room": "17us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 38,
+      "name": "18 NEWS",
+      "connection": "wss://hil-a.wormate.io:30296/wormy",
+      "room": "18us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 39,
+      "name": "19 NEWS",
+      "connection": "wss://hil-a.wormate.io:30162/wormy",
+      "room": "19us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 40,
+      "name": "20 NEWS",
+      "connection": "wss://hil-a.wormate.io:32091/wormy",
+      "room": "20us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 41,
+      "name": "21 NEWS",
+      "connection": "wss://hil-a.wormate.io:32214/wormy",
+      "room": "21us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 42,
+      "name": "22 NEWS",
+      "connection": "wss://hil-a.wormate.io:30042/wormy",
+      "room": "22us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 43,
+      "name": "23 NEWS",
+      "connection": "wss://hil-a.wormate.io:32746/wormy",
+      "room": "23us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 44,
+      "name": "24 NEWS",
+      "connection": "wss://hil-a.wormate.io:30296/wormy",
+      "room": "24us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 45,
+      "name": "25 NEWS",
+      "connection": "wss://dal-b.wormate.io:30135/wormy",
+      "room": "25us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 46,
+      "name": "26 NEW DRAGON BALL",
+      "connection": "wss://vin-a.wormate.io:30407/wormy",
+      "room": "26us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 47,
+      "name": "27 NEW",
+      "connection": "wss://sin-a.wormate.io:31750/wormy",
+      "room": "27us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 48,
+      "name": "28 NEW",
+      "connection": "wss://hil-a.wormate.io:30208/wormy",
+      "room": "28us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 49,
+      "name": "29 NEW TEST",
+      "connection": "wss://vin-a.wormate.io:30332/wormy",
+      "room": "29us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 50,
+      "name": "30 NEW TEST",
+      "connection": "wss://hil-a.wormate.io:32746/wormy",
+      "room": "30us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 51,
+      "name": "31 WWC - VIRGÍNIA",
+      "connection": "wss://vin-a.wormate.io:30703/wormy",
+      "room": "31us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 52,
+      "name": "32 WWC - VIRGÍNIA",
+      "connection": "wss://vin-a.wormate.io:31026/wormy",
+      "room": "32us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 53,
+      "name": "33 WWC - VIRGÍNIA",
+      "connection": "wss://vin-a.wormate.io:31142/wormy",
+      "room": "33us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 54,
+      "name": "34 WWC - VIRGÍNIA",
+      "connection": "wss://vin-a.wormate.io:31211/wormy",
+      "room": "34us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 55,
+      "name": "35 WWC - VIRGÍNIA",
+      "connection": "wss://vin-a.wormate.io:31311/wormy",
+      "room": "35us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 56,
+      "name": "36 WWC - VIRGÍNIA",
+      "connection": "wss://vin-a.wormate.io:31516/wormy",
+      "room": "36us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 57,
+      "name": "37 WWC - VIRGÍNIA",
+      "connection": "wss://vin-a.wormate.io:32053/wormy",
+      "room": "37us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 58,
+      "name": "38 WWC - VIRGÍNIA",
+      "connection": "wss://vin-a.wormate.io:32212/wormy",
+      "room": "38us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 59,
+      "name": "39 WWC - VIRGÍNIA",
+      "connection": "wss://sao-a.wormate.io:31163/wormy",
+      "room": "39us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 60,
+      "name": "40 WWC - VIRGÍNIA",
+      "connection": "wss://vin-a.wormate.io:32500/wormy",
+      "room": "40us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 61,
+      "name": "41 WWC -DALLAS",
+      "connection": "wss://dal-b.wormate.io:30809/wormy",
+      "room": "41us",
+      "category": "us",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 62,
+      "name": "01 SUP TANNER GAMING",
+      "connection": "wss://hil-a.wormate.io:30162/wormy",
+      "room": "1ca",
+      "category": "ca",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_SUP_TANER.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 63,
+      "name": "02 NEWS-news",
+      "connection": "wss://dal-b.wormate.io:31091/wormy",
+      "room": "2ca",
+      "category": "ca",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 64,
+      "name": "03 NEWS-news",
+      "connection": "wss://dal-b.wormate.io:31230/wormy",
+      "room": "3ca",
+      "category": "ca",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 65,
+      "name": "04 NEWS-news",
+      "connection": "wss://dal-b.wormate.io:31282/wormy",
+      "room": "4ca",
+      "category": "ca",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 66,
+      "name": "05 NEWS-news",
+      "connection": "wss://dal-b.wormate.io:31290/wormy",
+      "room": "5ca",
+      "category": "ca",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 67,
+      "name": "06 NEWS- tiozão",
+      "connection": "wss://dal-b.wormate.io:30135/wormy",
+      "room": "6ca",
+      "category": "ca",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 68,
+      "name": "07 NEWS- news",
+      "connection": "wss://dal-b.wormate.io:30165/wormy",
+      "room": "7ca",
+      "category": "ca",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 69,
+      "name": "08 NEWS - FEG",
+      "connection": "wss://dal-b.wormate.io:30339/wormy",
+      "room": "8ca",
+      "category": "ca",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 70,
+      "name": "09 NEWS",
+      "connection": "wss://dal-b.wormate.io:31084/wormy",
+      "room": "9ca",
+      "category": "ca",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 71,
+      "name": "10 NEWS- tnt",
+      "connection": "wss://dal-b.wormate.io:30786/wormy",
+      "room": "10ca",
+      "category": "ca",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 72,
+      "name": "01 NRG",
+      "connection": "wss://dal-b.wormate.io:32584/wormy",
+      "room": "1mx",
+      "category": "mx",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_NRG04.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 73,
+      "name": "02 WWC",
+      "connection": "wss://sin-a.wormate.io:30703/wormy",
+      "room": "2mx",
+      "category": "mx",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 74,
+      "name": "03 WWC",
+      "connection": "wss://sin-a.wormate.io:31211/wormy",
+      "room": "3mx",
+      "category": "mx",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 75,
+      "name": "04 WWC",
+      "connection": "wss://sin-a.wormate.io:32053/wormy",
+      "room": "4mx",
+      "category": "mx",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 76,
+      "name": "05 WWC",
+      "connection": "wss://sin-a.wormate.io:32212/wormy",
+      "room": "5mx",
+      "category": "mx",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 77,
+      "name": "06 WWC",
+      "connection": "wss://sin-a.wormate.io:30135/wormy",
+      "room": "6mx",
+      "category": "mx",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 78,
+      "name": "07 WWC",
+      "connection": "wss://sin-a.wormate.io:31216/wormy",
+      "room": "7mx",
+      "category": "mx",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io"
+    },
+    {
+      "id": 79,
+      "name": "01 TAKTIK",
+      "connection": "wss://fra-c.wormate.io:30055/wormy",
+      "room": "1de",
+      "category": "de",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_TAKTIKLER.png",
+      "socialLink": "https://www.tiktok.com/@taktiksavasi?_t=8pTbWcGfkBd&_r=1"
+    },
+    {
+      "id": 80,
+      "name": "02 NEW",
+      "connection": "wss://fra-c.wormate.io:30259/wormy",
+      "room": "2de",
+      "category": "de",
+      "image": "https://asserts.wormworld.io/rooms/favicon128x128.png",
+      "socialLink": "https://wormworld.io/active"
+    },
+    {
+      "id": 81,
+      "name": "03 فلسطيني ولا",
+      "connection": "wss://fra-c.wormate.io:30055/wormy",
+      "room": "3de",
+      "category": "de",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_PALESTINA.png",
+      "socialLink": "https://www.tiktok.com/@falastinee11?_t=ZS-8v5naIEIxhl&_r=1"
+    },
+    {
+      "id": 82,
+      "name": "04 SAMSON",
+      "connection": "wss://fra-c.wormate.io:30055/wormy",
+      "room": "4de",
+      "category": "de",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_SAMSOM.png",
+      "socialLink": "https://www.tiktok.com/@samsonshow.no?_t=8kSYv8Q9B9K&_r=1"
+    },
+    {
+      "id": 83,
+      "name": "05 KENT AViZE",
+      "connection": "wss://fra-c.wormate.io:30140/wormy",
+      "room": "5de",
+      "category": "de",
+      "image": "https://asserts.wormworld.io/rooms/TEAM_KENT.png",
+      "socialLink": "https://www.tiktok.com/@kentavize?_t=ZS-8sCxxzZSuoe&_r=1"
         }
     ]
 }
