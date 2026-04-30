@@ -1062,12 +1062,57 @@ function createServerList() {
         const serverUrl = servers.Api_listServer[a].serverUrl;
         const serverName = servers.Api_listServer[a].name || serverUrl;
         const region = servers.Api_listServer[a].region;
+        const image = servers.Api_listServer[a].image || "";
 
         const item = document.createElement("p");
         item.id = "wormatrix_room_item_" + a;
         item.className = "selectSala";
-        item.innerHTML = serverName;
         item.value = serverUrl;
+
+        item.innerHTML = `
+            <div style="
+                width:100%;
+                display:flex;
+                align-items:center;
+                gap:8px;
+                overflow:hidden;
+            ">
+                <img src="${image}"
+                     onerror="this.style.display='none';"
+                     style="
+                        width:34px;
+                        height:34px;
+                        min-width:34px;
+                        min-height:34px;
+                        object-fit:cover;
+                        border-radius:7px;
+                        border:1px solid rgba(127,176,46,.85);
+                        background:rgba(0,0,0,.25);
+                     ">
+                <div style="
+                    flex:1;
+                    overflow:hidden;
+                    white-space:normal;
+                    line-height:1.35;
+                ">
+                    <div style="
+                        color:#fff;
+                        font-weight:bold;
+                        font-size:13px;
+                        text-shadow:0 1px 2px #000;
+                    ">${serverName}</div>
+
+                    <div style="
+                        color:rgba(255,255,255,.65);
+                        font-size:10px;
+                        margin-top:2px;
+                        overflow:hidden;
+                        text-overflow:ellipsis;
+                        white-space:nowrap;
+                    ">${serverUrl}</div>
+                </div>
+            </div>
+        `;
 
         $(item).attr("data-region", region);
         $(item).attr("data-server-url", serverUrl);
