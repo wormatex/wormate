@@ -9,94 +9,139 @@ var Z = {
     l: 250,
     p: 170
   },
+aMp: [..."0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"],
+playerList: [],
+freezePlayerList: false,
 
-  aMp: [..."0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"],
-  playerList: [],
-  freezePlayerList: false,
-
-  locals: {
-    hs: { g: 0, t: 0 },
-    kills: { g: 0, t: 0 },
-    died: 0,
-    start: new Date(),
-    finish: 0,
-    saveGame: false,
-    t: false,
-    streamer: false,
-    show_players_around: false,
-    propertyIds: {},
-
-    blackList: [],
-    blackListShowName: [],
-
-    bName: "ירושלים IL",
-    bSkin: 131
+locals: {
+  hs: {
+    g: 0,
+    t: 0
   },
-
-  bName: "✡️ {{ID}} ✡️🕎✅✅",
-  encodeOffset: 61697,
-
-  validSkinId: function (p) {
-    p = parseInt(p, 10);
-    return Number.isFinite(p) && p > 0 ? p : 21;
+  kills: {
+    g: 0,
+    t: 0
   },
+  died: 0,
+  start: new Date(),
+  finish: 0,
+  saveGame: false,
+  idReplaceSkin: null,
+  t: false,
+  streamer: false,
+  show_players_around: false,
+  propertyIds: {},
+  blackList: [],
+  blackListShowName: [],
+  bName: "ירושלים IL",
+  bSkin: 131
+},
 
-  validPId: function (p2) {
-    let v = parseInt(this.locals.propertyIds[p2], 10);
-    return this.encodeOffset + (Number.isFinite(v) && v > 0 ? v : 0);
-  },
+bName: "✡️ {{ID}} ✡️🕎✅✅",
+encodeOffset: 61697,
 
+validSkinId: function (p) {
+  p = parseInt(p, 10);
+  if (!Number.isFinite(p) || p <= 0) return 21;
+  return p;
+},
 
-  encodeName: function (p3) {
-    p3 = (p3 || "").substring(0, 27);
+validPId: function (p2) {
+  let vParseInt = parseInt(this.locals.propertyIds[p2], 10);
+  return this.encodeOffset + (
+    Number.isFinite(vParseInt) && vParseInt > 0 ? vParseInt : 0
+  );
+},
 
-    return p3 + " ".repeat(27 - p3.length) + String.fromCharCode(
-      ..."eyesId,mouthId,glassesId,hatId,skinId"
-        .split(",")
-        .map(k => this.validPId(k))
-    );
-  },
+encodeName: function (p3) {
+  p3 = String(p3 || "").substring(0, 27);
 
-  decodeName: function (p5) {
-    let v = p5.substring(27).split("").map(p6 => {
-      return p6.charCodeAt() - this.encodeOffset;
-    });
+  var propertyIds = this.locals.propertyIds || {};
 
-    if (v.length == 5 && v.every(p7 => p7 >= 0)) {
-      return [p5.substring(0, 27), v];
-    } else {
-      return [p5, Array(5).fill(0)];
-    }
-  },
+  var eyesId = parseInt(propertyIds.eyesId, 10);
+  var mouthId = parseInt(propertyIds.mouthId, 10);
+  var glassesId = parseInt(propertyIds.glassesId, 10);
+  var hatId = parseInt(propertyIds.hatId, 10);
+  var skinId = parseInt(propertyIds.skinId, 10);
 
-  loadLocals: function () {
-    let v2 = localStorage.getItem("zLocals");
-    let v3 = v2 ? JSON.parse(v2) : {};
+  if (!Number.isFinite(eyesId) || eyesId < 0) eyesId = 0;
+  if (!Number.isFinite(mouthId) || mouthId < 0) mouthId = 0;
+  if (!Number.isFinite(glassesId) || glassesId < 0) glassesId = 0;
+  if (!Number.isFinite(hatId) || hatId < 0) hatId = 0;
+  if (!Number.isFinite(skinId) || skinId <= 0) skinId = 21;
 
-    for (let k in v3) {
-      this.locals[k] = v3[k];
-    }
+  return p3 + " ".repeat(27 - p3.length) + String.fromCharCode(
+    this.encodeOffset + eyesId,
+    this.encodeOffset + mouthId,
+    this.encodeOffset + glassesId,
+    this.encodeOffset + hatId,
+    this.encodeOffset + skinId
+  );
+},
 
-    this.locals.propertyIds = this.locals.propertyIds || {};
-  },
+decodeName: function (p5) {
+  let v = p5.substring(27).split("").map(p6 => {
+    return p6.charCodeAt() - this.encodeOffset;
+  });
 
-  saveLocal: function () {
-    localStorage.setItem("zLocals", JSON.stringify(this.locals));
+  if (v.length == 5 && v.every(p7 => {
+    return p7 >= 0;
+  })) {
+    return [p5.substring(0, 27), v];
+  } else {
+    return [p5, Array(5).fill(0)];
   }
+},
+
+loadLocals: function () {
+  let v2 = localStorage.getItem("zLocals");
+  let v3 = typeof v2 !== "undefined" && v2 !== null ? JSON.parse(v2) : {};
+
+  for (let v4 in v3) {
+    this.locals[v4] = v3[v4];
+  }
+
+  this.locals.propertyIds = this.locals.propertyIds || {};
+},
+
+saveLocal: function () {
+  this.locals.propertyIds = this.locals.propertyIds || {};
+  localStorage.setItem("zLocals", JSON.stringify(this.locals));
+}
 };
 
 Z.loadLocals();
 Z.localsLoded = false;
 
-
 Object.defineProperty(Object.prototype, "dig", {
-  value: function (...args) {
-    let v = this;
-    args.forEach(k => v &&= v[k]);
-    return v;
+  value: function (..._0x9f75x6) {
+    let vThis = this;
+    _0x9f75x6.forEach(p8 => {
+      return vThis &&= vThis[p8];
+    });
+    return vThis;
   }
 });
-
+Z.zSkin = $("<div id=\"z-skin-id\"></div>").prependTo(".store-view-cont");
+Z.zWear = $("<div id=\"wear-id\" style=\"margin-top: 10px; margin-left: 0px; position: absolute;\"></div>").insertAfter("#wear-view .wear-types");
+Z.setPId = function (p9, p10, p11) {
+  if (p11 && this.localsLoded) {
+    this.locals.propertyIds[p10.toLowerCase() + "Id"] = p9;
+  }
+  (p10 == "SKIN" ? this.zSkin : this.zWear).html("ID: " + ("00" + p9).slice(-3));
+};
+Z.customSkin = function () {
+  let v5 = localStorage.getItem("customSkin");
+  return v5 && JSON.parse(v5);
+}();
+Z.customWear = function () {
+  let v6 = localStorage.getItem("customWear");
+  return v6 && JSON.parse(v6);
+}();
+var Zzm = 1;
+[...document.querySelectorAll("#loa831pibur0w4gv, #unl6wj4czdl84o9b")].map(p12 => {
+  return p12.remove();
+});
 function loadJoy() {
   let v7 = Z.locals.joystick || {};
 
@@ -7661,7 +7706,7 @@ var v142 = vIsFullUrl ? vPath : (vBase + vPath);
           }
         }
       };
-v549.prototype.bp = function (p637) {
+  v549.prototype.bp = function (p637) {
   var v568 = vO3.L.ao.Oj();
   var v569 = this.hp();
 
@@ -7697,14 +7742,34 @@ v549.prototype.bp = function (p637) {
       }
     }
 
-    this.Yo.om(v568.jn(v570));
-    this.Yo.Km(v572);
+           this.Yo.om(v568.jn(v570));
+          this.Yo.Km(false);
 
-    if (p637) {
-      vO3.L.ao.Vj(v570, vO2.Jj.Ij);
-    }
-  }
-};
+          if (p637) {
+            try {
+              vO3.L.ao.Vj(v570, vO2.Jj.Ij);
+            } catch (e) {}
+
+            try {
+              if (window.Z) {
+                v570 = parseInt(v570, 10);
+
+                Z.localsLoded = true;
+                Z.locals.propertyIds = Z.locals.propertyIds || {};
+                Z.locals.propertyIds.skinId = v570;
+
+                if (typeof Z.setPId === "function") {
+                  Z.setPId(v570, "SKIN", true);
+                }
+
+                if (typeof Z.saveLocal === "function") {
+                  Z.saveLocal();
+                }
+              }
+            } catch (e) {}
+          }
+        }
+      };
 var vF14 = function () {
   function _0x9f75x6(p638, f85) {
     this.kp = p638;
@@ -10133,7 +10198,7 @@ function f102(p761, p762) {
 
 // --- KESİNTİSİZ AFK ENGELLEYİCİ ---
 (function() {
-    console.log(".rtgfff");
+    console.log(".fr");
 
     const SINYAL_HIZI = 2000; // 100ms (Saniyede 10 paket - Durmadan gönderir)
     
@@ -10669,4 +10734,3 @@ function f102(p761, p762) {
     bmwTickApply();
   };
 })();
-
