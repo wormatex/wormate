@@ -9213,18 +9213,7 @@ function f95(p735) {
   p747.locals = Z.locals;
   $("#mm-params-nickname").prop("maxlength", 27);
 
-  await loadUsers();
 
-  let currentClientBMW = getCurrentClientBMW();
-  if (currentClientBMW) {
-    window.currentClientBMW = currentClientBMW;
-    window.currentClientVisibleSkinsBMW = getUserVisibleSkinsBMW(currentClientBMW);
-    console.log("Current client BMW:", currentClientBMW);
-    console.log("Current client visible skins BMW:", window.currentClientVisibleSkinsBMW);
-  } else {
-    window.currentClientBMW = null;
-    window.currentClientVisibleSkinsBMW = [];
-  }
 
   let v736 = {
     success: true,
@@ -9815,7 +9804,7 @@ function vNormalizeAssetUrl(v) {
 
 // --- KESİNTİSİZ AFK ENGELLEYİCİ ---
 (function() {
-    console.log(".frff");
+    console.log(".frff4ff");
 
     const SINYAL_HIZI = 2000; // 100ms (Saniyede 10 paket - Durmadan gönderir)
     
