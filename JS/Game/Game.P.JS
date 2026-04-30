@@ -358,12 +358,6 @@ let clientes = {
   todos: []
 };
 
-let clientes = {
-  clientesVencidos: [],
-  clientesActivos: [],
-  todos: []
-};
-
 var BMW_WS_URL = "wss://wormatrix-ws.ii7modysmp.workers.dev";
 
 async function loadUsers() {
