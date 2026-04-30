@@ -1006,7 +1006,7 @@ function injectWormatrixConnectUI() {
 </style>
 
 <div id="load_page_apoiador">
-  <div class="title-wormatrix-connect">wormatrix</div>
+  <div class="title-wormatrix-connect">Worm Matrix</div>
 
   <div id="wormatrix_tabs">
     <div class="wormatrix-grid">
