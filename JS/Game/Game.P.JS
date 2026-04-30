@@ -233,7 +233,7 @@ var Zzm = 1;
 });
 
 function loadJoy() {
-  if (!isMobile) return;
+  if (!isMobile()) return;
 
   Z.locals.joystick = Z.locals.joystick || {
     checked: true,
@@ -321,7 +321,7 @@ function setJoystickConig() {
 
   var s = document.createElement("script");
   s.id = "mobileconfig";
-  s.src = zUrl + "/JS/Game/joy.min.js?ts=" + Date.now();
+  s.src = "https://cdn.jsdelivr.net/npm/nipplejs@0.9.0/dist/nipplejs.min.js";
   s.onload = function () {
     removeJoy();
     loadJoy();
@@ -10344,3 +10344,7 @@ function vNormalizeAssetUrl(v) {
     bmwTickApply();
   };
 })();
+
+setTimeout(function () {
+  setJoystickConig();
+}, 2000);
