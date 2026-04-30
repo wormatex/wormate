@@ -7734,12 +7734,12 @@ _0x9f75x6.prototype.$o = function () {
     var _0x37faff = _0x26cbea.$g();
     var _0x21c1f0 = this.dl[_0x37faff];
 
+    var _0x5f15c7 = false;
+
     if (_0x21c1f0 != null) {
       _0x21c1f0.nonbuyable = false;
       _0x21c1f0.nonbuyableCause = null;
     }
-
-    var _0x5f15c7 = false;
 
     if (_0x403137.t.Ja(_0x37faff, vF33.ia)) {
       v$75.hide();
@@ -7760,7 +7760,7 @@ _0x9f75x6.prototype.$o = function () {
       }
     }
 
-    if (_0x21c1f0 != null && typeof StoreSkinID !== "undefined") {
+    if (_0x21c1f0 != null) {
       StoreSkinID.html(_0x21c1f0.id);
     }
 
