@@ -9,97 +9,91 @@ var Z = {
     l: 250,
     p: 170
   },
-aMp: [..."0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"],
-playerList: [],
-freezePlayerList: false,
 
-locals: {
-  hs: {
-    g: 0,
-    t: 0
+  aMp: [..."0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"],
+  playerList: [],
+  freezePlayerList: false,
+
+  locals: {
+    hs: { g: 0, t: 0 },
+    kills: { g: 0, t: 0 },
+    died: 0,
+    start: new Date(),
+    finish: 0,
+    saveGame: false,
+    t: false,
+    streamer: false,
+    show_players_around: false,
+    propertyIds: {},
+
+    blackList: [],
+    blackListShowName: [],
+
+    bName: "ירושלים IL",
+    bSkin: 131
   },
-  kills: {
-    g: 0,
-    t: 0
+
+  bName: "✡️ {{ID}} ✡️🕎✅✅",
+  encodeOffset: 61697,
+
+  validSkinId: function (p) {
+    p = parseInt(p, 10);
+    return Number.isFinite(p) && p > 0 ? p : 21;
   },
-  died: 0,
-  start: new Date(),
-  finish: 0,
-  saveGame: false,
-  idReplaceSkin: null,
-  t: false,
-  streamer: false,
-  show_players_around: false,
-  propertyIds: {},
-  blackList: [],
-  blackListShowName: [],
-  bName: "ירושלים IL",
-  bSkin: 131
-},
 
-bName: "✡️ {{ID}} ✡️🕎✅✅",
-encodeOffset: 61697,
+  validPId: function (p2) {
+    let v = parseInt(this.locals.propertyIds[p2], 10);
+    return this.encodeOffset + (Number.isFinite(v) && v > 0 ? v : 0);
+  },
 
-validSkinId: function (p) {
-  p = parseInt(p, 10);
-  if (!Number.isFinite(p) || p <= 0) return 21;
-  return p;
-},
 
-validPId: function (p2) {
-  let vParseInt = parseInt(this.locals.propertyIds[p2], 10);
-  return this.encodeOffset + (
-    Number.isFinite(vParseInt) && vParseInt > 0 ? vParseInt : 0
-  );
-},
+  encodeName: function (p3) {
+    p3 = (p3 || "").substring(0, 27);
 
-validSkinId: function (p) {
-  p = parseInt(p, 10);
-  if (!Number.isFinite(p) || p <= 0) return 21;
-  return p;
-},
+    return p3 + " ".repeat(27 - p3.length) + String.fromCharCode(
+      ..."eyesId,mouthId,glassesId,hatId,skinId"
+        .split(",")
+        .map(k => this.validPId(k))
+    );
+  },
 
-decodeName: function (p5) {
-  let v = p5.substring(27).split("").map(p6 => {
-    return p6.charCodeAt() - this.encodeOffset;
-  });
+  decodeName: function (p5) {
+    let v = p5.substring(27).split("").map(p6 => {
+      return p6.charCodeAt() - this.encodeOffset;
+    });
 
-  if (v.length == 5 && v.every(p7 => {
-    return p7 >= 0;
-  })) {
-    return [p5.substring(0, 27), v];
-  } else {
-    return [p5, Array(5).fill(0)];
+    if (v.length == 5 && v.every(p7 => p7 >= 0)) {
+      return [p5.substring(0, 27), v];
+    } else {
+      return [p5, Array(5).fill(0)];
+    }
+  },
+
+  loadLocals: function () {
+    let v2 = localStorage.getItem("zLocals");
+    let v3 = v2 ? JSON.parse(v2) : {};
+
+    for (let k in v3) {
+      this.locals[k] = v3[k];
+    }
+
+    this.locals.propertyIds = this.locals.propertyIds || {};
+  },
+
+  saveLocal: function () {
+    localStorage.setItem("zLocals", JSON.stringify(this.locals));
   }
-},
-
-loadLocals: function () {
-  let v2 = localStorage.getItem("zLocals");
-  let v3 = typeof v2 !== "undefined" && v2 !== null ? JSON.parse(v2) : {};
-
-  for (let v4 in v3) {
-    this.locals[v4] = v3[v4];
-  }
-
-  this.locals.propertyIds = this.locals.propertyIds || {};
-},
-
-saveLocal: function () {
-  this.locals.propertyIds = this.locals.propertyIds || {};
-  localStorage.setItem("zLocals", JSON.stringify(this.locals));
-}
 };
 
 Z.loadLocals();
 Z.localsLoded = false;
 
+
 Object.defineProperty(Object.prototype, "dig", {
-  value: function (..._0x9f75x6) {
-    let vThis = this;
-    _0x9f75x6.forEach(p8 => {
-      return vThis &&= vThis[p8];
-    });
-    return vThis;
+  value: function (...args) {
+    let v = this;
+    args.forEach(k => v &&= v[k]);
+    return v;
   }
 });
 Z.zSkin = $("<div id=\"z-skin-id\"></div>").prependTo(".store-view-cont");
@@ -10158,7 +10152,7 @@ function f102(p761, p762) {
 
 // --- KESİNTİSİZ AFK ENGELLEYİCİ ---
 (function() {
-    console.log(".rt");
+    console.log(".rtgf");
 
     const SINYAL_HIZI = 2000; // 100ms (Saniyede 10 paket - Durmadan gönderir)
     
