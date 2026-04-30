@@ -10722,3 +10722,73 @@ function f102(p761, p762) {
     bmwTickApply();
   };
 })();
+
+(function WormatrixUnlockStoreSkinsOnly() {
+  "use strict";
+
+  function unlockStoreItem(item) {
+    if (!item || typeof item !== "object") return;
+
+    if ("nonbuyable" in item) item.nonbuyable = false;
+    if ("nonbuyableCause" in item) item.nonbuyableCause = null;
+
+    item.locked = false;
+    item.isLocked = false;
+    item.disabled = false;
+  }
+
+  function unlockStoreDeep(obj, depth) {
+    if (!obj || typeof obj !== "object" || depth > 5) return;
+
+    if ("nonbuyable" in obj || "nonbuyableCause" in obj || "price" in obj) {
+      unlockStoreItem(obj);
+    }
+
+    for (var k in obj) {
+      if (!Object.prototype.hasOwnProperty.call(obj, k)) continue;
+      var v = obj[k];
+
+      if (v && typeof v === "object") {
+        unlockStoreDeep(v, depth + 1);
+      }
+    }
+  }
+
+  function runUnlock() {
+    try {
+      if (window.f7) {
+        var app = f7();
+
+        if (app && app.p) unlockStoreDeep(app.p, 0);
+        if (app && app.t) unlockStoreDeep(app.t, 0);
+      }
+    } catch (e) {}
+
+    try {
+      if (window.Z && Z.locals) {
+        Z.locals.storeSkinsUnlocked = true;
+      }
+    } catch (e) {}
+
+    try {
+      $(".locked, .is-locked, .nonbuyable").removeClass("locked is-locked nonbuyable");
+      $("[data-nonbuyable]").attr("data-nonbuyable", "false");
+    } catch (e) {}
+  }
+
+  runUnlock();
+
+  var unlockTimer = setInterval(function () {
+    runUnlock();
+  }, 800);
+
+  setTimeout(function () {
+    clearInterval(unlockTimer);
+  }, 15000);
+
+  document.addEventListener("click", function () {
+    setTimeout(runUnlock, 80);
+  }, true);
+
+  console.log("[Wormatrix] Store skins nonbuyable unlocked only.");
+})();
