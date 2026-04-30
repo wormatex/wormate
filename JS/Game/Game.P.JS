@@ -7672,7 +7672,7 @@ var v142 = vIsFullUrl ? vPath : (vBase + vPath);
           }
         }
       };
-      v549.prototype.bp = function (p637) {
+  v549.prototype.bp = function (p637) {
   var v568 = vO3.L.ao.Oj();
   var v569 = this.hp();
 
@@ -7680,29 +7680,24 @@ var v142 = vIsFullUrl ? vPath : (vBase + vPath);
     var v570 = v569.tc();
     var v571 = vO3.L.ao.Wj(v570, vO2.Jj.Ij);
 
-
     if (v571 != null) {
       try {
-        v571.Rm = false;  
-        v571.Sm = null;    
-        v571.Pm = 0;   
+        v571.Rm = false;
+        v571.Sm = null;
       } catch (e) {}
     }
 
-    var v572 = false;
+    var v572 = true;
 
     if (vO3.L.ao.Sj(v570, vO2.Jj.Ij)) {
       v$84.hide();
       v$86.hide();
-    } else {
-  
       v572 = false;
-
-      v$84.hide();
-      v$86.show();
-      v$87.html(v571 != null ? v571.Zj() : 0);
-
-      v$85.text(""); 
+    } else {
+      v$84.show();
+      v$86.hide();
+      v$85.text("");
+      v572 = true;
     }
 
     v$82.html("");
