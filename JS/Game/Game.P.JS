@@ -42,7 +42,7 @@ encodeOffset: 61697,
 
 validSkinId: function (p) {
   p = parseInt(p, 10);
-  if (!Number.isFinite(p) || p <= 0) return 21;
+  if (!Number.isFinite(p) || p <= 0) return 1001;
   return p;
 },
 
