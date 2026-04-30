@@ -610,6 +610,7 @@
         8602,
         8623,
         8915,
+        9036,
         9275,
         9287,
         9487,
@@ -2388,6 +2389,40 @@
                 "a_death",
                 "a_ocean"
             ]
+        },
+        {
+            "id": 9036,
+            "guest": false,
+            "nonbuyable": false,
+            "price": 0,
+            "priceBefore": 0,
+            "prime": "c__yllw",
+            "base": [
+                "skin_imported_9036_10",
+                "skin_imported_9036_9",
+                "skin_imported_9036_8",
+                "skin_imported_9036_7",
+                "skin_imported_9036_6",
+                "skin_imported_9036_5",
+                "skin_imported_9036_4",
+                "skin_imported_9036_3",
+                "skin_imported_9036_2",
+                "skin_imported_9036_1",
+                "skin_imported_9036_0"
+            ],
+            "glow": [
+                "a_white",
+                "a_white",
+                "a_white",
+                "a_white",
+                "a_white",
+                "a_white",
+                "a_white",
+                "a_white",
+                "a_white",
+                "a_white",
+                "a_white"
+            ]
         }
     ],
     "skinGroupArrayDict": [
@@ -2460,7 +2495,8 @@
             },
             "list": [
                 "8602",
-                "8915"
+                "8915",
+                "9036"
             ]
         },
         {
@@ -2873,6 +2909,10 @@
         "skin_imported_6819": {
             "custom": true,
             "relativePath": "https:\/\/i.ibb.co\/nMwPWwLc\/skin-6819-1777511428789.png"
+        },
+        "skin_imported_9036": {
+            "custom": true,
+            "relativePath": "https:\/\/i.ibb.co\/zdvvGtK\/skin-9036-1777512137479.png"
         }
     },
     "colorDict": {
@@ -8053,6 +8093,83 @@
         },
         "skin_imported_6819_0": {
             "texture": "skin_imported_6819",
+            "h": 96,
+            "w": 96,
+            "x": 0,
+            "y": 0
+        },
+        "skin_imported_9036_10": {
+            "texture": "skin_imported_9036",
+            "h": 96,
+            "w": 96,
+            "x": 990,
+            "y": 0
+        },
+        "skin_imported_9036_9": {
+            "texture": "skin_imported_9036",
+            "h": 96,
+            "w": 96,
+            "x": 891,
+            "y": 0
+        },
+        "skin_imported_9036_8": {
+            "texture": "skin_imported_9036",
+            "h": 96,
+            "w": 96,
+            "x": 792,
+            "y": 0
+        },
+        "skin_imported_9036_7": {
+            "texture": "skin_imported_9036",
+            "h": 96,
+            "w": 96,
+            "x": 693,
+            "y": 0
+        },
+        "skin_imported_9036_6": {
+            "texture": "skin_imported_9036",
+            "h": 96,
+            "w": 96,
+            "x": 594,
+            "y": 0
+        },
+        "skin_imported_9036_5": {
+            "texture": "skin_imported_9036",
+            "h": 96,
+            "w": 96,
+            "x": 495,
+            "y": 0
+        },
+        "skin_imported_9036_4": {
+            "texture": "skin_imported_9036",
+            "h": 96,
+            "w": 96,
+            "x": 396,
+            "y": 0
+        },
+        "skin_imported_9036_3": {
+            "texture": "skin_imported_9036",
+            "h": 96,
+            "w": 96,
+            "x": 297,
+            "y": 0
+        },
+        "skin_imported_9036_2": {
+            "texture": "skin_imported_9036",
+            "h": 96,
+            "w": 96,
+            "x": 198,
+            "y": 0
+        },
+        "skin_imported_9036_1": {
+            "texture": "skin_imported_9036",
+            "h": 96,
+            "w": 96,
+            "x": 99,
+            "y": 0
+        },
+        "skin_imported_9036_0": {
+            "texture": "skin_imported_9036",
             "h": 96,
             "w": 96,
             "x": 0,
