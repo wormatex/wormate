@@ -604,6 +604,7 @@
         1600,
         5489,
         6536,
+        6819,
         7971,
         8421,
         8602,
@@ -613,6 +614,7 @@
         9287,
         9487,
         9639,
+        9814,
         9822,
         9875,
         9931,
@@ -2322,6 +2324,70 @@
                 "a__orng",
                 "a__orng"
             ]
+        },
+        {
+            "id": 9814,
+            "guest": false,
+            "nonbuyable": false,
+            "price": 0,
+            "priceBefore": 0,
+            "prime": "c___red",
+            "base": [
+                "skin_jabore_93_8",
+                "skin_jabore_93_7",
+                "skin_jabore_93_6",
+                "skin_jabore_93_5",
+                "skin_jabore_93_4",
+                "skin_jabore_93_3",
+                "skin_jabore_93_2",
+                "skin_jabore_93_1",
+                "skin_jabore_93_0"
+            ],
+            "glow": [
+                "a_white",
+                "a_white",
+                "a_white",
+                "a_white",
+                "a_white",
+                "a_white",
+                "a_white",
+                "a_white",
+                "a_white"
+            ]
+        },
+        {
+            "id": 6819,
+            "guest": false,
+            "nonbuyable": false,
+            "price": 0,
+            "priceBefore": 0,
+            "prime": "c__yllw",
+            "base": [
+                "skin_imported_6819_10",
+                "skin_imported_6819_9",
+                "skin_imported_6819_8",
+                "skin_imported_6819_7",
+                "skin_imported_6819_6",
+                "skin_imported_6819_5",
+                "skin_imported_6819_4",
+                "skin_imported_6819_3",
+                "skin_imported_6819_2",
+                "skin_imported_6819_1",
+                "skin_imported_6819_0"
+            ],
+            "glow": [
+                "a_death",
+                "a_death",
+                "a_death",
+                "a_death",
+                "a_death",
+                "a_death",
+                "a_death",
+                "a_death",
+                "a_death",
+                "a_death",
+                "a_ocean"
+            ]
         }
     ],
     "skinGroupArrayDict": [
@@ -2380,7 +2446,9 @@
                 "984",
                 "9822",
                 "9487",
-                "7971"
+                "7971",
+                "9814",
+                "6819"
             ]
         },
         {
@@ -2400,7 +2468,7 @@
             "id": "jkr",
             "img": "https:\/\/i.ibb.co\/69SDQcy\/Picsart-26-03-21-15-57-32-769.webp",
             "name": {
-                "en": "JKR"
+                "en": "JKR BOTS"
             },
             "list": [
                 "764",
@@ -2797,6 +2865,14 @@
         "skin_Absi BMW rooms": {
             "custom": true,
             "relativePath": "https:\/\/i.ibb.co\/nydcfTs\/GEILd-Viq-png.png"
+        },
+        "skin_jabore_93": {
+            "custom": true,
+            "relativePath": "https:\/\/i.ibb.co\/671rznFP\/ASru0pqt-png.png"
+        },
+        "skin_imported_6819": {
+            "custom": true,
+            "relativePath": "https:\/\/i.ibb.co\/nMwPWwLc\/skin-6819-1777511428789.png"
         }
     },
     "colorDict": {
@@ -7840,6 +7916,146 @@
             "h": 170,
             "w": 174,
             "x": 1396,
+            "y": 0
+        },
+        "skin_jabore_93_0": {
+            "texture": "skin_jabore_93",
+            "h": 170,
+            "w": 174,
+            "x": 0,
+            "y": 0
+        },
+        "skin_jabore_93_1": {
+            "texture": "skin_jabore_93",
+            "h": 170,
+            "w": 174,
+            "x": 174,
+            "y": 0
+        },
+        "skin_jabore_93_2": {
+            "texture": "skin_jabore_93",
+            "h": 170,
+            "w": 174,
+            "x": 348,
+            "y": 0
+        },
+        "skin_jabore_93_3": {
+            "texture": "skin_jabore_93",
+            "h": 170,
+            "w": 174,
+            "x": 522,
+            "y": 0
+        },
+        "skin_jabore_93_4": {
+            "texture": "skin_jabore_93",
+            "h": 170,
+            "w": 174,
+            "x": 696,
+            "y": 0
+        },
+        "skin_jabore_93_5": {
+            "texture": "skin_jabore_93",
+            "h": 170,
+            "w": 174,
+            "x": 870,
+            "y": 0
+        },
+        "skin_jabore_93_6": {
+            "texture": "skin_jabore_93",
+            "h": 170,
+            "w": 174,
+            "x": 1044,
+            "y": 0
+        },
+        "skin_jabore_93_7": {
+            "texture": "skin_jabore_93",
+            "h": 170,
+            "w": 174,
+            "x": 1218,
+            "y": 0
+        },
+        "skin_jabore_93_8": {
+            "texture": "skin_jabore_93",
+            "h": 170,
+            "w": 174,
+            "x": 1396,
+            "y": 0
+        },
+        "skin_imported_6819_10": {
+            "texture": "skin_imported_6819",
+            "h": 96,
+            "w": 96,
+            "x": 990,
+            "y": 0
+        },
+        "skin_imported_6819_9": {
+            "texture": "skin_imported_6819",
+            "h": 96,
+            "w": 96,
+            "x": 891,
+            "y": 0
+        },
+        "skin_imported_6819_8": {
+            "texture": "skin_imported_6819",
+            "h": 96,
+            "w": 96,
+            "x": 792,
+            "y": 0
+        },
+        "skin_imported_6819_7": {
+            "texture": "skin_imported_6819",
+            "h": 96,
+            "w": 96,
+            "x": 693,
+            "y": 0
+        },
+        "skin_imported_6819_6": {
+            "texture": "skin_imported_6819",
+            "h": 96,
+            "w": 96,
+            "x": 594,
+            "y": 0
+        },
+        "skin_imported_6819_5": {
+            "texture": "skin_imported_6819",
+            "h": 96,
+            "w": 96,
+            "x": 495,
+            "y": 0
+        },
+        "skin_imported_6819_4": {
+            "texture": "skin_imported_6819",
+            "h": 96,
+            "w": 96,
+            "x": 396,
+            "y": 0
+        },
+        "skin_imported_6819_3": {
+            "texture": "skin_imported_6819",
+            "h": 96,
+            "w": 96,
+            "x": 297,
+            "y": 0
+        },
+        "skin_imported_6819_2": {
+            "texture": "skin_imported_6819",
+            "h": 96,
+            "w": 96,
+            "x": 198,
+            "y": 0
+        },
+        "skin_imported_6819_1": {
+            "texture": "skin_imported_6819",
+            "h": 96,
+            "w": 96,
+            "x": 99,
+            "y": 0
+        },
+        "skin_imported_6819_0": {
+            "texture": "skin_imported_6819",
+            "h": 96,
+            "w": 96,
+            "x": 0,
             "y": 0
         }
     }
