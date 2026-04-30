@@ -470,7 +470,9 @@ async function loadUsers() {
 function wmIsSkinUnlockedForMe(id) {
   id = parseInt(id, 10);
   if (!Number.isFinite(id) || id <= 0) return false;
-  return Array.isArray(window.WM_UNLOCKED_SKINS) && window.WM_UNLOCKED_SKINS.indexOf(id) !== -1;
+
+  return Array.isArray(window.WM_UNLOCKED_SKINS) &&
+         window.WM_UNLOCKED_SKINS.indexOf(id) !== -1;
 }
 
 var GoogleAuth;
@@ -10078,10 +10080,11 @@ function bmwUnlockDeep(obj) {
 
   var seen = new WeakSet();
 
-  function myUnlockedSkin(id) {
+  function isLockedSkin(id) {
     id = parseInt(id, 10);
-    return Array.isArray(window.WM_UNLOCKED_SKINS) &&
-           window.WM_UNLOCKED_SKINS.indexOf(id) !== -1;
+    return window.WM_LOCKED_SKINS &&
+           window.WM_LOCKED_SKINS[id] === true &&
+           !wmIsSkinUnlockedForMe(id);
   }
 
   function walk(x) {
@@ -10094,20 +10097,18 @@ function bmwUnlockDeep(obj) {
       return;
     }
 
-    if (Object.prototype.hasOwnProperty.call(x, "id")) {
-      var id = parseInt(x.id, 10);
+    var id = parseInt(x.id, 10);
 
-      if (Object.prototype.hasOwnProperty.call(x, "nonbuyable")) {
-        if (myUnlockedSkin(id)) {
-          x.nonbuyable = false;
-          x.guest = true;
-          x.price = 0;
-          x.priceBefore = 0;
-          x.nonbuyableCause = null;
-        } else {
-          x.nonbuyable = true;
-          x.guest = false;
-        }
+    if (Object.prototype.hasOwnProperty.call(x, "nonbuyable")) {
+      if (Number.isFinite(id) && isLockedSkin(id)) {
+        x.nonbuyable = true;
+        x.guest = false;
+      } else {
+        x.nonbuyable = false;
+        x.guest = true;
+        x.price = 0;
+        x.priceBefore = 0;
+        x.nonbuyableCause = null;
       }
     }
 
