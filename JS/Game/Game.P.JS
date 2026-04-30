@@ -10101,19 +10101,38 @@ function f102(p761, p762) {
     return /^(data:|blob:)/i.test(v);
   }
 
-  function vNormalizeAssetUrl(v) {
-    if (typeof v !== "string") {
-      return v;
+ function vNormalizeAssetUrl(v) {
+  if (typeof v !== "string") {
+    return v;
+  }
+
+  v = v.trim();
+
+  if (!v) {
+    return v;
+  }
+
+  if (vIsDataOrBlob(v)) {
+    return v;
+  }
+
+  if (vIsProtocolRelative(v)) {
+    return location.protocol + v;
+  }
+
+
+  if (vIsAbsoluteUrl(v)) {
+    var vProxy = vGetAssetProxy();
+
+    if (vProxy) {
+      return vProxy + encodeURIComponent(v);
     }
 
-    v = v.trim();
-    if (!v) {
-      return v;
-    }
+    return v;
+  }
 
-    if (vIsDataOrBlob(v)) {
-      return v;
-    }
+  return v;
+}
 
     if (vIsProtocolRelative(v)) {
       v = location.protocol + v;
