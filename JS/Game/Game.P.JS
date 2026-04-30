@@ -7720,50 +7720,57 @@ var v142 = vIsFullUrl ? vPath : (vBase + vPath);
           this.gp = 0;
           this.fp = f85;
         }
-        _0x9f75x6.prototype.$o = function () {
-           var _0x403137 = f7();
-        this.el.bk(_0x403137.t.ha(vF33.ja), false, false);
-        this.el.ck(_0x403137.t.ha(vF33.ka), false, false);
-        this.el.dk(_0x403137.t.ha(vF33.la), false, false);
-        this.el.ek(_0x403137.t.ha(vF33.ma), false, false);
-        var _0x26cbea = this.pl();
-        if (_0x26cbea._g()) {
-          var _0x37faff = _0x26cbea.$g();
-          var _0x21c1f0 = this.dl[_0x37faff];
-          var _0x5f15c7 = false;
-          if (_0x403137.t.Ja(_0x37faff, vF33.ia)) {
-            v$75.hide();
-            v$77.hide();
-          } else if (_0x21c1f0 == null || _0x21c1f0.nonbuyable == false) {
-            _0x5f15c7 = true;
-            v$75.show();
-            v$77.hide();
-            _0x1dd0e9.text(_0xeb525f("index.game.popup.menu.store.locked"));
-            if (_0x21c1f0 != null && _0x21c1f0.nonbuyable && _0x21c1f0.nonbuyableCause != null) {
-              var _0x171c03 = _0x403137.p.Ac().textDict[_0x21c1f0.nonbuyableCause];
-              if (_0x171c03 != null) {
-                _0x1dd0e9.text(_0x57730c(_0x171c03));
-              }
-            }
-          } else {
-            v$75.hide();
-            v$77.show();
-            v$78.html(_0x21c1f0.price);
-          }
-          v$73.html("");
-          if (_0x21c1f0 != null && _0x21c1f0.description != null) {
-            var _0x3dd7d7 = _0x403137.p.Ac().textDict[_0x21c1f0.description];
-            if (_0x3dd7d7 != null) {
-              v$73.html(_0x3c8808(_0x57730c(_0x3dd7d7)));
-            }
-          }
-          StoreSkinID.html(_0x21c1f0.id);
-          this.el.ak(_0x37faff, true, _0x5f15c7);
-          if (_0x59c0a3) {
-            _0x403137.t.Bh(_0x37faff, vF33.ia);
-          }
-        }
-      };
+_0x9f75x6.prototype.$o = function () {
+  var _0x403137 = f7();
+
+  this.el.bk(_0x403137.t.ha(vF33.ja), false, false);
+  this.el.ck(_0x403137.t.ha(vF33.ka), false, false);
+  this.el.dk(_0x403137.t.ha(vF33.la), false, false);
+  this.el.ek(_0x403137.t.ha(vF33.ma), false, false);
+
+  var _0x26cbea = this.pl();
+
+  if (_0x26cbea._g()) {
+    var _0x37faff = _0x26cbea.$g();
+    var _0x21c1f0 = this.dl[_0x37faff];
+
+    if (_0x21c1f0 != null) {
+      _0x21c1f0.nonbuyable = false;
+      _0x21c1f0.nonbuyableCause = null;
+    }
+
+    var _0x5f15c7 = false;
+
+    if (_0x403137.t.Ja(_0x37faff, vF33.ia)) {
+      v$75.hide();
+      v$77.hide();
+    } else {
+      _0x5f15c7 = true;
+      v$75.show();
+      v$77.hide();
+      _0x1dd0e9.text("");
+    }
+
+    v$73.html("");
+
+    if (_0x21c1f0 != null && _0x21c1f0.description != null) {
+      var _0x3dd7d7 = _0x403137.p.Ac().textDict[_0x21c1f0.description];
+      if (_0x3dd7d7 != null) {
+        v$73.html(_0x3c8808(_0x57730c(_0x3dd7d7)));
+      }
+    }
+
+    if (_0x21c1f0 != null && typeof StoreSkinID !== "undefined") {
+      StoreSkinID.html(_0x21c1f0.id);
+    }
+
+    this.el.ak(_0x37faff, true, _0x5f15c7);
+
+    if (_0x59c0a3) {
+      _0x403137.t.Bh(_0x37faff, vF33.ia);
+    }
+  }
+};
       var _0x32dbdf = function () {
         function _0xed8158(_0x4b464b, _0x188277) {
           this.sl = _0x4b464b;
