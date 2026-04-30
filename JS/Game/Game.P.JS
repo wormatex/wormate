@@ -842,6 +842,7 @@ var GoogleAuth;
     Api_listServer: []
 };
 
+
 async function loadServers() {
     try {
         const response = await fetch("https://wormatex.github.io/wormate/API/load-sr.json");
@@ -869,98 +870,70 @@ function wmFlagSvg(type) {
         mx: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><rect width="21.3" height="42" fill="#006847"/><rect x="42.7" width="21.3" height="42" fill="#ce1126"/><circle cx="32" cy="21" r="5" fill="#9c6b30"/></svg>`,
         de: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#000"/><rect y="14" width="64" height="14" fill="#dd0000"/><rect y="28" width="64" height="14" fill="#ffce00"/></svg>`,
         fr: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><rect width="21.3" height="42" fill="#0055a4"/><rect x="42.7" width="21.3" height="42" fill="#ef4135"/></svg>`,
-        sg: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><path d="M0 5 Q0 0 5 0 H59 Q64 0 64 5 V21 H0 Z" fill="#ef3340"/><circle cx="17" cy="10" r="7" fill="#fff"/><circle cx="20" cy="10" r="6" fill="#ef3340"/><g fill="#fff"><circle cx="29" cy="6" r="1.3"/><circle cx="33" cy="9" r="1.3"/><circle cx="31" cy="14" r="1.3"/><circle cx="26" cy="14" r="1.3"/><circle cx="24" cy="9" r="1.3"/></g></svg>`,
+        sg: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><path d="M0 5 Q0 0 5 0 H59 Q64 0 64 5 V21 H0 Z" fill="#ef3340"/><circle cx="17" cy="10" r="7" fill="#fff"/><circle cx="20" cy="10" r="6" fill="#ef3340"/></svg>`,
         jp: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><circle cx="32" cy="21" r="11" fill="#bc002d"/></svg>`,
-        au: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#012169"/><g fill="#fff"><circle cx="46" cy="11" r="2"/><circle cx="54" cy="18" r="2"/><circle cx="43" cy="28" r="2"/><circle cx="55" cy="32" r="2"/><circle cx="50" cy="25" r="1.4"/></g><path d="M0 0 H28 V18 H0 Z" fill="#00247d"/><path d="M0 0 L28 18 M28 0 L0 18" stroke="#fff" stroke-width="5"/><path d="M0 0 L28 18 M28 0 L0 18" stroke="#cf142b" stroke-width="2.5"/><path d="M14 0 V18 M0 9 H28" stroke="#fff" stroke-width="6"/><path d="M14 0 V18 M0 9 H28" stroke="#cf142b" stroke-width="3"/></svg>`,
+        au: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#012169"/><g fill="#fff"><circle cx="46" cy="11" r="2"/><circle cx="54" cy="18" r="2"/><circle cx="43" cy="28" r="2"/><circle cx="55" cy="32" r="2"/></g><path d="M0 0 H28 V18 H0 Z" fill="#00247d"/><path d="M0 0 L28 18 M28 0 L0 18" stroke="#fff" stroke-width="5"/><path d="M0 0 L28 18 M28 0 L0 18" stroke="#cf142b" stroke-width="2.5"/><path d="M14 0 V18 M0 9 H28" stroke="#fff" stroke-width="6"/><path d="M14 0 V18 M0 9 H28" stroke="#cf142b" stroke-width="3"/></svg>`,
         ae: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><rect x="16" width="48" height="14" fill="#00732f"/><rect x="16" y="28" width="48" height="14" fill="#000"/><rect width="16" height="42" fill="#ff0000"/></svg>`
     };
-
     return flags[type] || flags.br;
 }
 
 function injectWormatrixConnectUI() {
     $(".description-text").replaceWith(`
 <div class="description-text">
-
 <style>
   #wormatrix_tabs {
-    width: calc(100% - 10px);
+    width: 100%;
     height: 285px;
     overflow-y: auto;
     overflow-x: hidden;
-    border: 1px solid rgba(127, 176, 46, 0.9);
+    border: 1px solid rgba(127,176,46,.85);
     margin: 6px auto;
-    padding: 0;
-    background: rgba(0, 0, 0, 0.28);
+    padding: 4px;
+    background: rgba(0,0,0,.28);
     border-radius: 8px;
-    box-shadow:
-      inset 0 0 10px rgba(127,176,46,0.18),
-      0 0 8px rgba(0,0,0,0.35);
-  }
-
-  #wormatrix_tabs::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  #wormatrix_tabs::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.18);
-  }
-
-  #wormatrix_tabs::-webkit-scrollbar-thumb {
-    background: #7FB02E;
-    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 10px rgba(127,176,46,.22);
   }
 
   .wormatrix-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 4px;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    padding: 6px;
-    border-bottom: 1px solid rgba(127,176,46,0.85);
-    background: rgba(0,0,0,0.22);
-    position: sticky;
-    top: 0;
-    z-index: 5;
-    backdrop-filter: blur(2px);
+    gap: 5px;
+    padding: 5px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid rgba(127,176,46,.65);
+    background: rgba(0,0,0,.22);
+    border-radius: 7px;
+    box-sizing: border-box;
   }
 
   .wormatrix-grid a {
-    width: 42px;
-    height: 28px;
+    width: 100%;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid rgba(127,176,46,0.95);
-    border-radius: 6px;
-    padding: 1px;
-    background: rgba(0,0,0,0.22);
-    box-shadow: 0 0 5px rgba(127,176,46,0.32);
-    transition: 0.15s ease;
+    border: 2px solid rgba(127,176,46,.80);
+    border-radius: 7px;
+    padding: 2px;
+    background: rgba(127,176,46,.12);
+    box-sizing: border-box;
     overflow: hidden;
-  }
-
-  .wormatrix-grid a:hover {
-    transform: scale(1.05);
-    background: rgba(127,176,46,0.18);
-    box-shadow: 0 0 10px rgba(127,176,46,0.75);
   }
 
   .wormatrix-grid a.active {
     border: 2px solid red !important;
-    box-shadow:
-      0 0 8px rgba(255,0,0,0.9),
-      0 0 10px rgba(127,176,46,0.65);
-    background: rgba(255,0,0,0.10);
+    box-shadow: 0 0 8px red;
+    background: rgba(255,0,0,.10);
   }
 
   .wormatrix-flag {
     width: 100%;
-    height: 100%;
+    max-width: 42px;
+    height: 25px;
     display: block;
-    border-radius: 4px;
+    border-radius: 5px;
     overflow: hidden;
   }
 
@@ -972,11 +945,43 @@ function injectWormatrixConnectUI() {
 
   .tab-pane {
     display: none;
-    padding: 6px 5px;
+    padding: 2px;
   }
 
   .tab-pane.active {
     display: block;
+  }
+
+  .selectSala {
+    width: calc(100% - 4px);
+    min-height: 76px;
+    margin: 4px 2px 7px;
+    padding: 8px 9px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 7px;
+    background: rgba(0,0,0,.24);
+    border: 1px solid rgba(127,176,46,.85);
+    text-align: left;
+    text-shadow: 0 1px 2px #000;
+    box-sizing: border-box;
+    overflow: hidden;
+    line-height: 1.45;
+  }
+
+  .selectSala:hover {
+    background: rgba(127,176,46,.35) !important;
+    color: #fff !important;
+    border-color: red !important;
+  }
+
+  .selectSala img {
+    max-width: 34px !important;
+    max-height: 34px !important;
+    border-radius: 7px;
+    display: block;
+    margin-top: 4px;
   }
 
   .title-wormatrix-connect {
@@ -987,82 +992,23 @@ function injectWormatrixConnectUI() {
     color: #7FB02E;
     font-weight: bold;
     text-align: center;
-    text-shadow: 0 1px 2px #000, 0 0 8px rgba(127,176,46,0.85);
-    letter-spacing: 0.6px;
+    text-shadow: 0 1px 2px #000, 0 0 8px rgba(127,176,46,.85);
+    letter-spacing: .5px;
   }
 
-  .wormatrix-title-dot {
-    display: inline-block;
-    width: 17px;
-    height: 17px;
-    border-radius: 50%;
-    background: #7FB02E;
-    border: 2px solid #fff;
-    vertical-align: middle;
-    margin-right: 5px;
-    box-shadow: 0 0 9px rgba(127,176,46,0.95);
-  }
-
-  .selectSala {
-    width: calc(100% - 8px);
-    min-height: 72px;
-    margin: 5px auto;
-    padding: 8px 9px;
-    cursor: pointer;
-    color: #ffffff;
-    font-weight: bold;
-    border-radius: 7px;
-    background: rgba(0, 0, 0, 0.30);
-    border: 1px solid rgba(127,176,46,0.95);
-    text-align: left;
-    text-shadow: 0 1px 2px #000;
-    box-shadow:
-      inset 0 0 8px rgba(0,0,0,0.18),
-      0 0 5px rgba(127,176,46,0.18);
-    transition: 0.15s ease;
-    line-height: 1.45;
-    overflow: hidden;
-    word-break: break-word;
-  }
-
-  .selectSala:hover {
-    background: rgba(127,176,46,0.18) !important;
-    color: #fff !important;
-    border-color: #7FB02E !important;
-    box-shadow:
-      0 0 10px rgba(127,176,46,0.8),
-      inset 0 0 10px rgba(127,176,46,0.12);
-  }
-
-  .selectSala:active {
-    transform: scale(0.98);
-  }
-
-  .wm-server-name {
-    display: block;
-    font-size: 12px;
-    color: #ffffff;
-    font-weight: 900;
-    margin-bottom: 2px;
-  }
-
-  .wm-server-region {
-    display: block;
-    font-size: 11px;
-    color: #e8ffd1;
-    font-weight: 700;
-    opacity: 0.95;
+  @media (max-width: 380px) {
+    #wormatrix_tabs { height: 285px; padding: 3px; }
+    .wormatrix-grid { gap: 4px; padding: 4px; }
+    .wormatrix-grid a { height: 30px; }
+    .wormatrix-flag { max-width: 38px; height: 23px; }
+    .selectSala { min-height: 72px; font-size: 11px; }
   }
 </style>
 
 <div id="load_page_apoiador">
-  <div class="title-wormatrix-connect">
-    <span class="wormatrix-title-dot"></span>
-    wormatrix
-  </div>
+  <div class="title-wormatrix-connect">wormatrix</div>
 
   <div id="wormatrix_tabs">
-
     <div class="wormatrix-grid">
       <a href="#tabs0" class="active" data-flag="br"><span class="wormatrix-flag">${wmFlagSvg("br")}</span></a>
       <a href="#tabs1" data-flag="us"><span class="wormatrix-flag">${wmFlagSvg("us")}</span></a>
@@ -1086,68 +1032,26 @@ function injectWormatrixConnectUI() {
     <div class="tab-pane servers-japan" id="tabs7"></div>
     <div class="tab-pane servers-australia" id="tabs8"></div>
     <div class="tab-pane servers-ae" id="tabs9"></div>
-
   </div>
 </div>
-
 </div>
 `);
 }
 
 function getRegionContainer(region) {
     const map = {
-        peru: ".servers-brazil",
-        br: ".servers-brazil",
-        brazil: ".servers-brazil",
-
-        eeuu: ".servers-eeuu",
-        usa: ".servers-eeuu",
-        us: ".servers-eeuu",
-
-        canada: ".servers-canada",
-        ca: ".servers-canada",
-
-        mexico: ".servers-mexico",
-        mx: ".servers-mexico",
-
-        germania: ".servers-germany",
-        germany: ".servers-germany",
-        de: ".servers-germany",
-
-        francia: ".servers-france",
-        france: ".servers-france",
-        fr: ".servers-france",
-
-        singapur: ".servers-singapore",
-        singapore: ".servers-singapore",
-        sg: ".servers-singapore",
-
-        japon: ".servers-japan",
-        japan: ".servers-japan",
-        jp: ".servers-japan",
-
-        australia: ".servers-australia",
-        au: ".servers-australia",
-
-        granbretana: ".servers-ae",
-        uk: ".servers-ae",
-        gb: ".servers-ae",
-        ae: ".servers-ae"
+        peru: ".servers-brazil", br: ".servers-brazil", brazil: ".servers-brazil",
+        eeuu: ".servers-eeuu", usa: ".servers-eeuu", us: ".servers-eeuu",
+        canada: ".servers-canada", ca: ".servers-canada",
+        mexico: ".servers-mexico", mx: ".servers-mexico",
+        germania: ".servers-germany", germany: ".servers-germany", de: ".servers-germany",
+        francia: ".servers-france", france: ".servers-france", fr: ".servers-france",
+        singapur: ".servers-singapore", singapore: ".servers-singapore", sg: ".servers-singapore",
+        japon: ".servers-japan", japan: ".servers-japan", jp: ".servers-japan",
+        australia: ".servers-australia", au: ".servers-australia",
+        granbretana: ".servers-ae", uk: ".servers-ae", gb: ".servers-ae", ae: ".servers-ae"
     };
-
     return map[String(region || "").toLowerCase()] || ".servers-brazil";
-}
-
-function escapeWormatrixHtml(text) {
-    return String(text || "").replace(/[&<>"']/g, function (m) {
-        return {
-            "&": "&amp;",
-            "<": "&lt;",
-            ">": "&gt;",
-            '"': "&quot;",
-            "'": "&#039;"
-        }[m];
-    });
 }
 
 function createServerList() {
@@ -1156,23 +1060,19 @@ function createServerList() {
     for (let a = 0; a < servers.Api_listServer.length; a++) {
         const serverUrl = servers.Api_listServer[a].serverUrl;
         const serverName = servers.Api_listServer[a].name || serverUrl;
-        const region = servers.Api_listServer[a].region || "";
+        const region = servers.Api_listServer[a].region;
 
         const item = document.createElement("p");
         item.id = "wormatrix_room_item_" + a;
         item.className = "selectSala";
+        item.innerHTML = serverName;
         item.value = serverUrl;
-
-        item.innerHTML = `
-            <span class="wm-server-name">${String(a + 1).padStart(2, "0")}. ${escapeWormatrixHtml(serverName)}</span>
-            <span class="wm-server-region">${escapeWormatrixHtml(region || serverUrl)}</span>
-        `;
 
         $(item).attr("data-region", region);
         $(item).attr("data-server-url", serverUrl);
         $(item).attr("title", serverUrl);
 
-        $(getRegionContainer(region)).append(item);
+        $(getRegionContainer(region)).prepend(item);
 
         $(item).on("click", function () {
             const selectedServer = $(this).attr("data-server-url") || this.value;
@@ -1185,12 +1085,9 @@ function createServerList() {
                 window._x7.containerImgS.texture = window._x7.onclickServer;
             }
 
-            if (typeof retundFlagError === "function") {
-                retundFlagError();
-            }
+            if (typeof retundFlagError === "function") retundFlagError();
 
             window.server_url = selectedServer;
-
             $("#mm-action-play").click();
             $("#adbl-continue").click();
         });
@@ -1208,21 +1105,15 @@ function bindWormatrixTabs() {
         $(this).addClass("active");
 
         $("#wormatrix_tabs .tab-pane").removeClass("active").hide();
-        $(target).addClass("active").fadeIn(120);
+        $(target).addClass("active").fadeIn(160);
 
-        if (typeof theoKzObjects !== "undefined") {
-            theoKzObjects.flag = flagKey;
-        }
+        if (typeof theoKzObjects !== "undefined") theoKzObjects.flag = flagKey;
 
         if (window._x7 && window._x7.containerImgS && window._x7.onclickServer) {
             window._x7.containerImgS.texture = window._x7.onclickServer;
         }
 
-        if (typeof retundFlagError === "function") {
-            retundFlagError();
-        }
-
-        console.log("wormatrix flag:", flagKey);
+        if (typeof retundFlagError === "function") retundFlagError();
     });
 }
 
