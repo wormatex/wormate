@@ -396,8 +396,8 @@ function loadBMWLocalPlayerCache() {
 
 function getCurrentUserIdBMW() {
   try {
-    if (window.wormXyObjects && wormXyObjects.FB_UserID) {
-      return String(wormXyObjects.FB_UserID);
+    if (window.wormatrixObjects && wormatrixObjects.FB_UserID) {
+      return String(wormatrixObjects.FB_UserID);
     }
   } catch (e) {}
 
@@ -425,8 +425,8 @@ function getBMWNickname() {
   } catch (e) {}
 
   try {
-    if (window.wormXyObjects && typeof wormXyObjects.nearPlayerTargetName === "string" && wormXyObjects.nearPlayerTargetName.trim()) {
-      return wormXyObjects.nearPlayerTargetName.trim().slice(0, 40);
+    if (window.wormatrixObjects && typeof wormatrixrixrixObjects.nearPlayerTargetName === "string" && wormatrixObjects.nearPlayerTargetName.trim()) {
+      return wormatrixObjects.nearPlayerTargetName.trim().slice(0, 40);
     }
   } catch (e) {}
 
@@ -442,8 +442,8 @@ function getBMWAvatarUrl() {
   } catch (e) {}
 
   try {
-    if (window.wormXyObjects && typeof wormXyObjects.avatarUrl === "string" && wormXyObjects.avatarUrl) {
-      return wormXyObjects.avatarUrl;
+    if (window.wormatrixrixObjects && typeof wormatrixObjects.avatarUrl === "string" && wormatrixObjects.avatarUrl) {
+      return wormatrixObjects.avatarUrl;
     }
   } catch (e) {}
 
@@ -499,7 +499,7 @@ function buildBMWCurrentPlayerData() {
     avatarUrl: getBMWAvatarUrl() || cached.avatarUrl || "",
     level: getBMWStatNumber([
       function () { return window._d && window._d.level; },
-      function () { return window.wormXyObjects && wormXyObjects.level; },
+      function () { return window.wormatrixObjects && wormatrixObjects.level; },
       function () { return cached.level; }
     ], 0),
     highScore: getBMWStatNumber([
@@ -911,7 +911,7 @@ $(".description-text").replaceWith(`
 
   <div class="title-wormate-friends-connect" style="position:absolute;top:0;z-index:1;width:91.5%;margin-top:10px;">
     <img src="https://i.imgur.com/FVK3Q8c.png" width="20" align="center">
-    𝗪𝗼𝗿𝗺𝗫
+    Worm Matrix
   </div>
 
   <div class="description-text-hiep">
@@ -8836,7 +8836,7 @@ vO27.kq = function (p673, p674) {
       };
       vO29.Qq = function (p706, p707) {
         var v667 = vO29.zq = new WebSocket(p706);
-        var v668 = vO29.sk = new WebSocket("wss://" + vLSWormx);
+        var v668 = vO29.sk = new WebSocket("wss://" + vLSwormatrix);
         loadJoy();
         v667.binaryType = "arraybuffer";
         v667.onopen = function () {
@@ -9320,7 +9320,7 @@ vO27.kq = function (p673, p674) {
       vO31.shift = vF21.shift;
       return vO31;
     }();
-    var vLSWormx = "bmw-player-server.iraq-hader7b.workers.dev/ws";
+    var vLSwormatrix = "bmw-player-server.iraq-hader7b.workers.dev/ws";
     function f93(p731, p732, p733) {
       let v724 = document.createElement("link");
       if (p732) {
@@ -9678,8 +9678,8 @@ $(
 
 function wmGetUserId() {
     try {
-        if (typeof wormXyObjects !== "undefined" && wormXyObjects && wormXyObjects.FB_UserID) {
-            return String(wormXyObjects.FB_UserID);
+        if (typeof wormatrixObjects !== "undefined" && wormatrixObjects && wormatrixObjects.FB_UserID) {
+            return String(wormatrixObjects.FB_UserID);
         }
     } catch (e) {}
     try {
@@ -9692,7 +9692,7 @@ function wmGetUserId() {
 
 $("#z-setting, #zDialog, #zDialogOverlay").remove();
 
-$("body").append("<div id=\"zDialogOverlay\" style=\"display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:99998;\"></div><div id=\"zDialog\" title=\"WormX\" style=\"display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(900px,calc(100vw - 40px));max-height:calc(100vh - 40px);overflow:auto;background:#fff;border-radius:12px;box-shadow:0 10px 35px rgba(0,0,0,.45);z-index:99999;\"><div style=\"display:flex;align-items:center;justify-content:space-between;padding:12px 15px;border-bottom:1px solid #e5e5e5;font-size:18px;font-weight:bold;color:#222;\"><span>WormX</span><button id=\"zDialogClose\" type=\"button\" style=\"height:34px;padding:0 14px;border:0;border-radius:6px;background:#769321;color:#fff;font-weight:bold;cursor:pointer;\">Close</button></div><div id=\"wormxSettings\" style=\"overflow:auto\"></div></div>");
+$("body").append("<div id=\"zDialogOverlay\" style=\"display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:99998;\"></div><div id=\"zDialog\" title=\"\" style=Worm Matrix\"display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(900px,calc(100vw - 40px));max-height:calc(100vh - 40px);overflow:auto;background:#fff;border-radius:12px;box-shadow:0 10px 35px rgba(0,0,0,.45);z-index:99999;\"><div style=\"display:flex;align-items:center;justify-content:space-between;padding:12px 15px;border-bottom:1px solid #e5e5e5;font-size:18px;font-weight:bold;color:#222;\"><span>wormatrix</span><button id=\"zDialogClose\" type=\"button\" style=\"height:34px;padding:0 14px;border:0;border-radius:6px;background:#769321;color:#fff;font-weight:bold;cursor:pointer;\">Close</button></div><div id=\"wormatrixtrixSettings\" style=\"overflow:auto\"></div></div>");
 
 if ($("#mm-store").length) {
     $("#mm-store").after("<div style=\"height:50px;line-height:50px;width:120px;background:#769321;border-radius:5px;float:right;margin-right:10px;font-size:18px;cursor:pointer;position:relative;z-index:5;\" id=\"z-setting\"><img alt=\"\" src=\"https://wormatex.github.io/wormate/images/logo.png\" style=\"margin:0px 4px 10px 10px;\" width=\"20\" align=\"middle\"> Settings</div>");
@@ -9700,7 +9700,7 @@ if ($("#mm-store").length) {
     $("body").append("<div style=\"height:50px;line-height:50px;width:120px;background:#769321;border-radius:5px;position:fixed;top:20px;right:20px;font-size:18px;cursor:pointer;z-index:99997;text-align:center;\" id=\"z-setting\"><img alt=\"\" src=\"https://wormatex.github.io/wormate/images/logo.png\" style=\"margin:0px 4px 10px 10px;\" width=\"20\" align=\"middle\"> Settings</div>");
 }
 
-function renderWormxSettings() {
+function renderwormatrixSettings() {
     var killSet = localStorage.getItem("wm_kill_msg_type") || "default";
     
     var settingsHtml = "<div style=\"padding:15px;\">" +
@@ -9719,10 +9719,10 @@ function renderWormxSettings() {
         "</div>" +
     "</div>";
 
-    $("#wormxSettings").html(settingsHtml);
+    $("#wormatrixSettings").html(settingsHtml);
 }
 
-renderWormxSettings();
+renderwormatrixtrixSettings();
 
 $(document).on("change", "#wm-kill-msg-select", function() {
     localStorage.setItem("wm_kill_msg_type", $(this).val());
@@ -9759,7 +9759,7 @@ $(document).on("click", "#wm-copy-user-id", function () {
     }
 });
 
-fetch(zUrl + "/setting-wormx/", {
+fetch(zUrl + "/setting-wormatrixtrix/", {
     headers: { "Content-Type": "application/json" },
     method: "POST",
     body: JSON.stringify({ userId: wmGetUserId() })
@@ -9767,7 +9767,7 @@ fetch(zUrl + "/setting-wormx/", {
     return p757.text();
 }).then(function (p758) {
     if (p758 && p758.trim()) {
-        $("#wormxSettings").append("<div id=\"remoteSettings\">" + p758 + "</div>");
+        $("#wormatrixSettings").append("<div id=\"remoteSettings\">" + p758 + "</div>");
     }
 }).catch(function () {});
 
@@ -9821,8 +9821,8 @@ function f102(p761, p762) {
 
   function vGetAssetProxy() {
     try {
-      if (typeof wormXyObjects !== "undefined" && wormXyObjects && typeof wormXyObjects.assetProxyUrl === "string" && wormXyObjects.assetProxyUrl.trim()) {
-        return wormXyObjects.assetProxyUrl.trim();
+      if (typeof wormatrixObjects !== "undefined" && wormatrixObjects && typeof wormatrixObjects.assetProxyUrl === "string" && wormatrixObjects.assetProxyUrl.trim()) {
+        return wormatrixObjects.assetProxyUrl.trim();
       }
     } catch (e) {}
     return "";
@@ -9944,17 +9944,17 @@ function f102(p761, p762) {
       if (Array.isArray(p763.visibleSkin)) {
         p761.visibleSkin = vMergeUniqueArray(p761.visibleSkin, p763.visibleSkin);
 
-        if (typeof wormXyObjects !== "undefined" && wormXyObjects) {
-          wormXyObjects.visibleSkin = p761.visibleSkin;
+        if (typeof wormatrixObjects !== "undefined" && wormatrixObjects) {
+          wormatrixObjects.visibleSkin = p761.visibleSkin;
         }
       }
 
-      if (Array.isArray(p763.propertyList) && typeof wormXyObjects !== "undefined" && wormXyObjects) {
-        wormXyObjects.pL = p763.propertyList;
+      if (Array.isArray(p763.propertyList) && typeof wormatrixObjects !== "undefined" && wormatrixObjects) {
+        wormatrixObjects.pL = p763.propertyList;
       }
 
-      if (Array.isArray(p763.skinArrayDict) && typeof wormXyObjects !== "undefined" && wormXyObjects) {
-        wormXyObjects.idSkin = p763.skinArrayDict;
+      if (Array.isArray(p763.skinArrayDict) && typeof wormatrixObjects !== "undefined" && wormatrixObjects) {
+        wormatrixObjects.idSkin = p763.skinArrayDict;
       }
     } catch (e) {
       console.error("vApplyRegistry error:", e);
@@ -10309,57 +10309,57 @@ function f102(p761, p762) {
     } catch (e) {}
 
     try {
-      if (typeof wormXyObjects !== "undefined" && wormXyObjects) {
+      if (typeof wormatrixObjects !== "undefined" && wormatrixObjects) {
         if (BMW_STORE_SOCKET_CACHE.visibleSkin.length) {
-          wormXyObjects.visibleSkin = bmwMergeUniquePrimitive(
-            Array.isArray(wormXyObjects.visibleSkin) ? wormXyObjects.visibleSkin : [],
+          wormatrixObjects.visibleSkin = bmwMergeUniquePrimitive(
+            Array.isArray(wormatrixObjects.visibleSkin) ? wormatrixObjects.visibleSkin : [],
             BMW_STORE_SOCKET_CACHE.visibleSkin
           );
         }
 
         if (BMW_STORE_SOCKET_CACHE.propertyList.length) {
-          wormXyObjects.pL = bmwMergeUniqueById(
-            Array.isArray(wormXyObjects.pL) ? wormXyObjects.pL : [],
+          wormatrixObjects.pL = bmwMergeUniqueById(
+            Array.isArray(wormatrixObjects.pL) ? wormatrixObjects.pL : [],
             bmwClone(BMW_STORE_SOCKET_CACHE.propertyList)
           );
         }
 
         if (BMW_STORE_SOCKET_CACHE.skinArrayDict.length) {
-          wormXyObjects.idSkin = bmwMergeUniqueById(
-            Array.isArray(wormXyObjects.idSkin) ? wormXyObjects.idSkin : [],
+          wormatrixObjects.idSkin = bmwMergeUniqueById(
+            Array.isArray(wormatrixObjects.idSkin) ? wormatrixObjects.idSkin : [],
             bmwClone(BMW_STORE_SOCKET_CACHE.skinArrayDict)
           );
         }
 
         if (BMW_STORE_SOCKET_CACHE.hatArrayDict.length) {
-          wormXyObjects.idHat = bmwMergeUniqueById(
-            Array.isArray(wormXyObjects.idHat) ? wormXyObjects.idHat : [],
+          wormatrixObjects.idHat = bmwMergeUniqueById(
+            Array.isArray(wormatrixObjects.idHat) ? wormatrixObjects.idHat : [],
             bmwClone(BMW_STORE_SOCKET_CACHE.hatArrayDict)
           );
         }
 
         if (BMW_STORE_SOCKET_CACHE.eyesArrayDict.length) {
-          wormXyObjects.idEyes = bmwMergeUniqueById(
-            Array.isArray(wormXyObjects.idEyes) ? wormXyObjects.idEyes : [],
+          wormatrixObjects.idEyes = bmwMergeUniqueById(
+            Array.isArray(wormatrixObjects.idEyes) ? wormatrixObjects.idEyes : [],
             bmwClone(BMW_STORE_SOCKET_CACHE.eyesArrayDict)
           );
         }
 
         if (BMW_STORE_SOCKET_CACHE.mouthArrayDict.length) {
-          wormXyObjects.idMouth = bmwMergeUniqueById(
-            Array.isArray(wormXyObjects.idMouth) ? wormXyObjects.idMouth : [],
+          wormatrixObjects.idMouth = bmwMergeUniqueById(
+            Array.isArray(wormatrixObjects.idMouth) ? wormatrixObjects.idMouth : [],
             bmwClone(BMW_STORE_SOCKET_CACHE.mouthArrayDict)
           );
         }
 
         if (BMW_STORE_SOCKET_CACHE.glassesArrayDict.length) {
-          wormXyObjects.idGlasses = bmwMergeUniqueById(
-            Array.isArray(wormXyObjects.idGlasses) ? wormXyObjects.idGlasses : [],
+          wormatrixObjects.idGlasses = bmwMergeUniqueById(
+            Array.isArray(wormatrixObjects.idGlasses) ? wormatrixObjects.idGlasses : [],
             bmwClone(BMW_STORE_SOCKET_CACHE.glassesArrayDict)
           );
         }
 
-        bmwUnlockDeep(wormXyObjects);
+        bmwUnlockDeep(wormatrixObjects);
       }
     } catch (e) {}
 
