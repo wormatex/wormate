@@ -620,7 +620,8 @@
         9875,
         9931,
         29441,
-        86054
+        86054,
+        86055
     ],
     "hatVariantArray": [
         [
@@ -2391,24 +2392,24 @@
             ]
         },
         {
-            "id": 9036,
+            "id": 86055,
             "guest": false,
             "nonbuyable": false,
             "price": 0,
             "priceBefore": 0,
             "prime": "c__yllw",
             "base": [
-                "skin_imported_9036_10",
-                "skin_imported_9036_9",
-                "skin_imported_9036_8",
-                "skin_imported_9036_7",
-                "skin_imported_9036_6",
-                "skin_imported_9036_5",
-                "skin_imported_9036_4",
-                "skin_imported_9036_3",
-                "skin_imported_9036_2",
-                "skin_imported_9036_1",
-                "skin_imported_9036_0"
+                "custom_skin_86055_10",
+                "custom_skin_86055_9",
+                "custom_skin_86055_8",
+                "custom_skin_86055_7",
+                "custom_skin_86055_6",
+                "custom_skin_86055_5",
+                "custom_skin_86055_4",
+                "custom_skin_86055_3",
+                "custom_skin_86055_2",
+                "custom_skin_86055_1",
+                "custom_skin_86055_0"
             ],
             "glow": [
                 "a_white",
@@ -2911,6 +2912,10 @@
             "relativePath": "https:\/\/i.ibb.co\/nMwPWwLc\/skin-6819-1777511428789.png"
         },
         "skin_imported_9036": {
+            "custom": true,
+            "relativePath": "https:\/\/i.ibb.co\/zdvvGtK\/skin-9036-1777512137479.png"
+        },
+        "custom_skin_86055": {
             "custom": true,
             "relativePath": "https:\/\/i.ibb.co\/zdvvGtK\/skin-9036-1777512137479.png"
         }
@@ -8174,6 +8179,83 @@
             "w": 96,
             "x": 0,
             "y": 0
+        },
+        "custom_skin_86055_0": {
+            "texture": "custom_skin_86055",
+            "h": 96,
+            "w": 96,
+            "x": 69,
+            "y": 250
+        },
+        "custom_skin_86055_1": {
+            "texture": "custom_skin_86055",
+            "h": 96,
+            "w": 96,
+            "x": 1164,
+            "y": 280
+        },
+        "custom_skin_86055_2": {
+            "texture": "custom_skin_86055",
+            "h": 96,
+            "w": 96,
+            "x": 897,
+            "y": 489
+        },
+        "custom_skin_86055_3": {
+            "texture": "custom_skin_86055",
+            "h": 96,
+            "w": 96,
+            "x": 1574,
+            "y": 216
+        },
+        "custom_skin_86055_4": {
+            "texture": "custom_skin_86055",
+            "h": 96,
+            "w": 96,
+            "x": 76,
+            "y": 304
+        },
+        "custom_skin_86055_5": {
+            "texture": "custom_skin_86055",
+            "h": 96,
+            "w": 96,
+            "x": 1449,
+            "y": 323
+        },
+        "custom_skin_86055_6": {
+            "texture": "custom_skin_86055",
+            "h": 96,
+            "w": 96,
+            "x": 1127,
+            "y": 423
+        },
+        "custom_skin_86055_7": {
+            "texture": "custom_skin_86055",
+            "h": 96,
+            "w": 96,
+            "x": 450,
+            "y": 194
+        },
+        "custom_skin_86055_8": {
+            "texture": "custom_skin_86055",
+            "h": 96,
+            "w": 96,
+            "x": 1250,
+            "y": 297
+        },
+        "custom_skin_86055_9": {
+            "texture": "custom_skin_86055",
+            "h": 96,
+            "w": 96,
+            "x": 1286,
+            "y": 440
+        },
+        "custom_skin_86055_10": {
+            "texture": "custom_skin_86055",
+            "h": 96,
+            "w": 96,
+            "x": 387,
+            "y": 57
         }
     }
 }
