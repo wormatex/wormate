@@ -842,219 +842,327 @@ var GoogleAuth;
     Api_listServer: []
 };
 
+const servers = window.servers || (window.servers = {});
+servers.Api_listServer = servers.Api_listServer || [];
+
 async function loadServers() {
-    await fetch("https://wormatex.github.io/wormate/API/load-sr.json")
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                let serverData = data.servers;
-                servers.Api_listServer = serverData.filter(s => s.serverUrl);
-                // Veriler geldi, server listesini oluştur
-                createServerList();
-            } else {
-                servers = { Api_listServer: [] };
-                alert("ERROR SERVER");
-            }
-        });
+    try {
+        const response = await fetch("https://wormatex.github.io/wormate/API/load-sr.json");
+        const data = await response.json();
+
+        if (data && data.success) {
+            servers.Api_listServer = (data.servers || []).filter(s => s.serverUrl);
+            createServerList();
+        } else {
+            servers.Api_listServer = [];
+            alert("ERROR SERVER");
+        }
+    } catch (e) {
+        console.error("SERVER LOAD ERROR:", e);
+        servers.Api_listServer = [];
+        alert("ERROR SERVER");
+    }
+}
+
+function injectWormWorldConnectUI() {
+    $(".description-text").replaceWith(`
+<div class="description-text">
+
+<style>
+  .angry-grid {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 1px;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    border-bottom: 1px solid #fff;
+  }
+
+  .angry-grid a.active {
+    border: 2px solid red;
+  }
+
+  .tab-pane {
+    display: none;
+    padding: 4px;
+  }
+
+  .tab-pane.active {
+    display: block;
+  }
+
+  [id*="wwc_room_item_"]:hover {
+    background-color: yellow;
+    color: black;
+  }
+
+  [id*="wwc_room_item_"] a:hover {
+    color: black;
+  }
+
+  .title-worm-world-connect {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 92%;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0 1px 2px #000;
+  }
+
+  .sprite {
+    background-image: url(https://asserts.wormworld.io/images/flags_region.png);
+    background-repeat: no-repeat;
+    background-size: 135px 120px;
+    display: block;
+    margin: 6px 0;
+  }
+
+  .sprite-ae-flag {
+    width: 40px;
+    height: 25px;
+    background-position: -3px -4px;
+  }
+
+  .sprite-au-flag {
+    width: 40px;
+    height: 25px;
+    background-position: -48px -3px;
+  }
+
+  .sprite-br-flag {
+    width: 40px;
+    height: 25px;
+    background-position: -2px -33px;
+  }
+
+  .sprite-ca-flag {
+    width: 40px;
+    height: 25px;
+    background-position: -48px -33px;
+  }
+
+  .sprite-fr-flag {
+    width: 40px;
+    height: 25px;
+    background-position: -2px -62px;
+  }
+
+  .sprite-de-flag {
+    width: 40px;
+    height: 25px;
+    background-position: -48px -62px;
+  }
+
+  .sprite-jp-flag {
+    width: 40px;
+    height: 25px;
+    background-position: -48px -92px;
+  }
+
+  .sprite-mx-flag {
+    width: 40px;
+    height: 25px;
+    background-position: -92px -3px;
+  }
+
+  .sprite-sg-flag {
+    width: 40px;
+    height: 25px;
+    background-position: -92px -33px;
+  }
+
+  .sprite-uk-flag {
+    width: 40px;
+    height: 25px;
+    background-position: -92px -92px;
+  }
+
+  .sprite-us-flag {
+    width: 40px;
+    height: 25px;
+    background-position: -92px -92px;
+  }
+
+  .selectSala {
+    margin: 4px;
+    padding: 6px 8px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 4px;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.35);
+    text-align: center;
+  }
+
+  .selectSala:hover {
+    background: yellow;
+    color: black;
+  }
+</style>
+
+<div id="load_page_apoiador">
+  <div class="title-worm-world-connect">
+    <img src="https://asserts.wormworld.io/images/favicon64x64.png" width="20" align="center" alt="" />
+    WormWorld Connect
+  </div>
+
+  <div style="height:285px; overflow:auto; border:1px solid; margin:6px auto" id="wwc_tabs">
+
+    <div class="angry-grid f32">
+      <a href="#tabs0" id="linktab_0" class="active" data-flag="https://i.imgur.com/dixYLjk.png"><i class="sprite sprite-br-flag"></i></a>
+      <a href="#tabs1" id="linktab_1" data-flag="https://i.imgur.com/Jb2FF0y.png"><i class="sprite sprite-us-flag"></i></a>
+      <a href="#tabs2" id="linktab_2" data-flag="https://i.imgur.com/m1skEsB.png"><i class="sprite sprite-ca-flag"></i></a>
+      <a href="#tabs3" id="linktab_3" data-flag="https://i.imgur.com/JMAvuFN.png"><i class="sprite sprite-mx-flag"></i></a>
+      <a href="#tabs4" id="linktab_4" data-flag="https://i.imgur.com/VgCH8iy.png"><i class="sprite sprite-de-flag"></i></a>
+      <a href="#tabs5" id="linktab_5" data-flag="https://i.imgur.com/QuEjBr0.png"><i class="sprite sprite-fr-flag"></i></a>
+      <a href="#tabs6" id="linktab_6" data-flag="https://i.imgur.com/bT3xWqF.png"><i class="sprite sprite-sg-flag"></i></a>
+      <a href="#tabs7" id="linktab_7" data-flag="https://i.imgur.com/P2rYk1k.png"><i class="sprite sprite-jp-flag"></i></a>
+      <a href="#tabs8" id="linktab_8" data-flag="https://i.imgur.com/X0co8Ao.png"><i class="sprite sprite-au-flag"></i></a>
+      <a href="#tabs9" id="linktab_9" data-flag="https://i.imgur.com/8pQY6RW.png"><i class="sprite sprite-ae-flag"></i></a>
+    </div>
+
+    <div class="tab-pane active servers-peru" id="tabs0"></div>
+    <div class="tab-pane servers-eeuu" id="tabs1"></div>
+    <div class="tab-pane servers-canada" id="tabs2"></div>
+    <div class="tab-pane servers-mexico" id="tabs3"></div>
+    <div class="tab-pane servers-germania" id="tabs4"></div>
+    <div class="tab-pane servers-francia" id="tabs5"></div>
+    <div class="tab-pane servers-singapur" id="tabs6"></div>
+    <div class="tab-pane servers-japon" id="tabs7"></div>
+    <div class="tab-pane servers-australia" id="tabs8"></div>
+    <div class="tab-pane servers-granbretana" id="tabs9"></div>
+
+  </div>
+</div>
+
+</div>
+`);
+}
+
+function getRegionContainer(region) {
+    const map = {
+        peru: ".servers-peru",
+        br: ".servers-peru",
+        brazil: ".servers-peru",
+
+        eeuu: ".servers-eeuu",
+        usa: ".servers-eeuu",
+        us: ".servers-eeuu",
+
+        canada: ".servers-canada",
+        ca: ".servers-canada",
+
+        mexico: ".servers-mexico",
+        mx: ".servers-mexico",
+
+        germania: ".servers-germania",
+        germany: ".servers-germania",
+        de: ".servers-germania",
+
+        francia: ".servers-francia",
+        france: ".servers-francia",
+        fr: ".servers-francia",
+
+        singapur: ".servers-singapur",
+        singapore: ".servers-singapur",
+        sg: ".servers-singapur",
+
+        japon: ".servers-japon",
+        japan: ".servers-japon",
+        jp: ".servers-japon",
+
+        australia: ".servers-australia",
+        au: ".servers-australia",
+
+        granbretana: ".servers-granbretana",
+        uk: ".servers-granbretana",
+        gb: ".servers-granbretana",
+        ae: ".servers-granbretana"
+    };
+
+    return map[String(region || "").toLowerCase()] || ".servers-peru";
 }
 
 function createServerList() {
+    $(".tab-pane").empty();
+
     for (let a = 0; a < servers.Api_listServer.length; a++) {
-        var _0x818d5d = servers.Api_listServer[a].serverUrl;
-        var _0x403339 = servers.Api_listServer[a].name;
-        var _0x478a25 = servers.Api_listServer[a].region;
-        let _0x36b67c = document.createElement("p");
-        _0x36b67c.value = _0x818d5d;
-        _0x36b67c.innerHTML = _0x403339;
-        
-        if (_0x478a25 == "peru") {
-            $(".servers-peru").prepend(_0x36b67c);
-        } else if (_0x478a25 == "mexico") {
-            $(".servers-mexico").prepend(_0x36b67c);
-        } else if (_0x478a25 == "eeuu") {
-            $(".servers-eeuu").prepend(_0x36b67c);
-        } else if (_0x478a25 == "canada") {
-            $(".servers-canada").prepend(_0x36b67c);
-        } else if (_0x478a25 == "germania") {
-            $(".servers-germania").prepend(_0x36b67c);
-        } else if (_0x478a25 == "francia") {
-            $(".servers-francia").prepend(_0x36b67c);
-        } else if (_0x478a25 == "singapur") {
-            $(".servers-singapur").prepend(_0x36b67c);
-        } else if (_0x478a25 == "japon") {
-            $(".servers-japon").prepend(_0x36b67c);
-        } else if (_0x478a25 == "australia") {
-            $(".servers-australia").prepend(_0x36b67c);
-        } else if (_0x478a25 == "granbretana") {
-            $(".servers-granbretana").prepend(_0x36b67c);
-        }
-        
-        $(_0x36b67c).attr("id", _0x478a25);
-        $(_0x36b67c).attr("class", "selectSala");
-        $(_0x36b67c).attr("value", _0x403339);
-        
-        $(_0x36b67c).click(function() {
-            let _0x266a05 = $(this).val();
-            window._x7.setServer(_0x266a05);
-            window._x7.containerImgS.texture = window._x7.onclickServer;
-            if (typeof retundFlagError === 'function') retundFlagError();
-            window.server_url = _0x266a05;
+        const serverUrl = servers.Api_listServer[a].serverUrl;
+        const serverName = servers.Api_listServer[a].name || serverUrl;
+        const region = servers.Api_listServer[a].region;
+
+        const item = document.createElement("p");
+        item.id = "wwc_room_item_" + a;
+        item.className = "selectSala";
+        item.innerHTML = serverName;
+        item.value = serverUrl;
+
+        $(item).attr("data-region", region);
+        $(item).attr("data-server-url", serverUrl);
+        $(item).attr("title", serverUrl);
+
+        $(getRegionContainer(region)).prepend(item);
+
+        $(item).on("click", function () {
+            const selectedServer = $(this).attr("data-server-url") || this.value;
+
+            if (window._x7 && typeof window._x7.setServer === "function") {
+                window._x7.setServer(selectedServer);
+            }
+
+            if (window._x7 && window._x7.containerImgS && window._x7.onclickServer) {
+                window._x7.containerImgS.texture = window._x7.onclickServer;
+            }
+
+            if (typeof retundFlagError === "function") {
+                retundFlagError();
+            }
+
+            window.server_url = selectedServer;
+
             $("#mm-action-play").click();
             $("#adbl-continue").click();
         });
     }
 }
 
-// HTML'i değiştir
-$(".description-text").replaceWith(`
-<div class="description-text">
+function bindWormWorldTabs() {
+    $("#wwc_tabs .angry-grid a").off("click").on("click", function (e) {
+        e.preventDefault();
 
-  <div class="title-wormate-friends-connect" style="position:absolute;top:0;z-index:1;width:91.5%;margin-top:10px;">
-    <img src="https://i.imgur.com/FVK3Q8c.png" width="20" align="center">
-    Worm Matrix
-  </div>
+        const target = $(this).attr("href");
+        const flagUrl = $(this).attr("data-flag");
 
-  <div class="description-text-hiep">
+        $("#wwc_tabs .angry-grid a").removeClass("active");
+        $(this).addClass("active");
 
-    <ul class="ui-tabs-nav">
+        $("#wwc_tabs .tab-pane").removeClass("active").hide();
+        $(target).addClass("active").fadeIn(200);
 
-      <li class="ui-tabs-tab ui-tab ui-tab-inactive0 ui-tab-active" style="margin:-5px">
-        <a><span class="flag br" value="https://i.imgur.com/dixYLjk.png"></span></a>
-      </li>
+        if (typeof theoKzObjects !== "undefined") {
+            theoKzObjects.flag = flagUrl;
+        }
 
-      <li class="ui-tabs-tab ui-tab ui-tab-inactive1" style="margin:-5px">
-        <a><span class="flag mx" value="https://i.imgur.com/JMAvuFN.png"></span></a>
-      </li>
+        if (window._x7 && window._x7.containerImgS && window._x7.onclickServer) {
+            window._x7.containerImgS.texture = window._x7.onclickServer;
+        }
 
-      <li class="ui-tabs-tab ui-tab ui-tab-inactive2" style="margin:-5px">
-        <a><span class="flag us" value="https://i.imgur.com/Jb2FF0y.png"></span></a>
-      </li>
+        if (typeof retundFlagError === "function") {
+            retundFlagError();
+        }
 
-      <li class="ui-tabs-tab ui-tab ui-tab-inactive3" style="margin:-5px">
-        <a><span class="flag ca" value="https://i.imgur.com/m1skEsB.png"></span></a>
-      </li>
-
-      <li class="ui-tabs-tab ui-tab ui-tab-inactive4" style="margin:-5px">
-        <a><span class="flag de" value="https://i.imgur.com/VgCH8iy.png"></span></a>
-      </li>
-
-      <li class="ui-tabs-tab ui-tab ui-tab-inactive5" style="margin:-5px">
-        <a><span class="flag fr" value="https://i.imgur.com/QuEjBr0.png"></span></a>
-      </li>
-
-      <li class="ui-tabs-tab ui-tab ui-tab-inactive6" style="margin:-5px">
-        <a><span class="flag sg" value="https://i.imgur.com/bT3xWqF.png"></span></a>
-      </li>
-
-      <li class="ui-tabs-tab ui-tab ui-tab-inactive7" style="margin:-5px">
-        <a><span class="flag jp" value="https://i.imgur.com/P2rYk1k.png"></span></a>
-      </li>
-
-      <li class="ui-tabs-tab ui-tab ui-tab-inactive8" style="margin:-5px">
-        <a><span class="flag au" value="https://i.imgur.com/X0co8Ao.png"></span></a>
-      </li>
-
-      <li class="ui-tabs-tab ui-tab ui-tab-inactive9" style="margin:-5px">
-        <a><span class="flag gb" value="https://i.imgur.com/8pQY6RW.png"></span></a>
-      </li>
-
-    </ul>
-
-
-    <div class="gachngang"></div>
-
-    <div class="servers-container">
-      <div class="servers-peru"></div>
-      <div class="servers-mexico" style="display:none;"></div>
-      <div class="servers-eeuu" style="display:none;"></div>
-      <div class="servers-canada" style="display:none;"></div>
-      <div class="servers-germania" style="display:none;"></div>
-      <div class="servers-francia" style="display:none;"></div>
-      <div class="servers-singapur" style="display:none;"></div>
-      <div class="servers-japon" style="display:none;"></div>
-      <div class="servers-australia" style="display:none;"></div>
-      <div class="servers-granbretana" style="display:none;"></div>
-    </div>
-
-  </div>
-
-</div>
-`);
-
-// account fonksiyonu - flag tıklamalarını yönetir
-function account() {
-    $(".mx").on("click", function() {
-        $(".servers-mexico").fadeIn(500);
-        $(".servers-peru, .servers-eeuu, .servers-canada, .servers-germania, .servers-francia, .servers-singapur, .servers-japon, .servers-australia, .servers-granbretana").fadeOut(100);
-        $(".ui-tab-inactive1").addClass("ui-tab-active").siblings().removeClass("ui-tab-active");
-    });
-    
-    $(".br").on("click", function() {
-        $(".servers-peru").fadeIn(500);
-        $(".servers-mexico, .servers-eeuu, .servers-canada, .servers-germania, .servers-francia, .servers-singapur, .servers-japon, .servers-australia, .servers-granbretana").fadeOut(100);
-        $(".ui-tab-inactive0").addClass("ui-tab-active").siblings().removeClass("ui-tab-active");
-    });
-    
-    $(".us").on("click", function() {
-        $(".servers-eeuu").fadeIn(500);
-        $(".servers-mexico, .servers-peru, .servers-canada, .servers-germania, .servers-francia, .servers-singapur, .servers-japon, .servers-australia, .servers-granbretana").fadeOut(100);
-        $(".ui-tab-inactive2").addClass("ui-tab-active").siblings().removeClass("ui-tab-active");
-    });
-    
-    $(".ca").on("click", function() {
-        $(".servers-canada").fadeIn(500);
-        $(".servers-eeuu, .servers-mexico, .servers-peru, .servers-germania, .servers-francia, .servers-singapur, .servers-japon, .servers-australia, .servers-granbretana").fadeOut(100);
-        $(".ui-tab-inactive3").addClass("ui-tab-active").siblings().removeClass("ui-tab-active");
-    });
-    
-    $(".de").on("click", function() {
-        $(".servers-germania").fadeIn(500);
-        $(".servers-eeuu, .servers-mexico, .servers-peru, .servers-canada, .servers-francia, .servers-singapur, .servers-japon, .servers-australia, .servers-granbretana").fadeOut(100);
-        $(".ui-tab-inactive4").addClass("ui-tab-active").siblings().removeClass("ui-tab-active");
-    });
-    
-    $(".fr").on("click", function() {
-        $(".servers-francia").fadeIn(500);
-        $(".servers-eeuu, .servers-mexico, .servers-peru, .servers-germania, .servers-canada, .servers-singapur, .servers-japon, .servers-australia, .servers-granbretana").fadeOut(100);
-        $(".ui-tab-inactive5").addClass("ui-tab-active").siblings().removeClass("ui-tab-active");
-    });
-    
-    $(".sg").on("click", function() {
-        $(".servers-singapur").fadeIn(500);
-        $(".servers-eeuu, .servers-mexico, .servers-peru, .servers-canada, .servers-germania, .servers-francia, .servers-japon, .servers-australia, .servers-granbretana").fadeOut(100);
-        $(".ui-tab-inactive6").addClass("ui-tab-active").siblings().removeClass("ui-tab-active");
-    });
-    
-    $(".jp").on("click", function() {
-        $(".servers-japon").fadeIn(500);
-        $(".servers-eeuu, .servers-mexico, .servers-peru, .servers-canada, .servers-germania, .servers-francia, .servers-singapur, .servers-australia, .servers-granbretana").fadeOut(100);
-        $(".ui-tab-inactive7").addClass("ui-tab-active").siblings().removeClass("ui-tab-active");
-    });
-    
-    $(".au").on("click", function() {
-        $(".servers-australia").fadeIn(500);
-        $(".servers-eeuu, .servers-mexico, .servers-peru, .servers-canada, .servers-germania, .servers-francia, .servers-singapur, .servers-japon, .servers-granbretana").fadeOut(100);
-        $(".ui-tab-inactive8").addClass("ui-tab-active").siblings().removeClass("ui-tab-active");
-    });
-    
-    $(".gb").on("click", function() {
-        $(".servers-granbretana").fadeIn(500);
-        $(".servers-eeuu, .servers-mexico, .servers-peru, .servers-canada, .servers-germania, .servers-francia, .servers-singapur, .servers-japon, .servers-australia").fadeOut(100);
-        $(".ui-tab-inactive9").addClass("ui-tab-active").siblings().removeClass("ui-tab-active");
+        console.log(flagUrl);
     });
 }
 
-// Eventleri bağla
-$(".ui-tab").on("click", account);
-$(".flag").click(function() {
-    let _0x16c1ac = $(this).attr("value");
-    if (typeof theoKzObjects !== 'undefined') theoKzObjects.flag = _0x16c1ac;
-    if (typeof window._x7 !== 'undefined') window._x7.containerImgS.texture = window._x7.onclickServer;
-    if (typeof retundFlagError === 'function') retundFlagError();
-    console.log(_0x16c1ac);
-});
-
-// Server listesini yüklemeye başla
+injectWormWorldConnectUI();
+bindWormWorldTabs();
 loadServers();
 
         (function () {
