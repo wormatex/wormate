@@ -128,6 +128,30 @@ saveLocal: function () {
 Z.loadLocals();
 Z.localsLoded = false;
 
+(function restoreWormatrixAppearance() {
+  try {
+    Z.locals.propertyIds = Z.locals.propertyIds || {};
+
+    ["skinId", "hatId", "eyesId", "mouthId", "glassesId"].forEach(function (key) {
+      var saved = parseInt(localStorage.getItem("wormatrix_" + key), 10);
+
+      if (Number.isFinite(saved) && saved >= 0) {
+        Z.locals.propertyIds[key] = saved;
+      }
+    });
+
+    var oldSkin = parseInt(localStorage.getItem("wormatrix_selected_skin"), 10);
+    if (Number.isFinite(oldSkin) && oldSkin > 0) {
+      Z.locals.propertyIds.skinId = oldSkin;
+      localStorage.setItem("wormatrix_skinId", String(oldSkin));
+    }
+
+    Z.saveLocal();
+  } catch (e) {
+    console.error("restore appearance error:", e);
+  }
+})();
+
 Object.defineProperty(Object.prototype, "dig", {
   value: function (..._0x9f75x6) {
     let vThis = this;
@@ -153,13 +177,13 @@ Z.setPId = function (p9, p10, p11) {
     HAT: "hatId",
     EYES: "eyesId",
     MOUTH: "mouthId",
+    MOUNTH: "mouthId",
     GLASSES: "glassesId"
   };
 
   var key = keyMap[p10] || (p10.toLowerCase() + "Id");
 
   this.locals.propertyIds[key] = p9;
-
   localStorage.setItem("wormatrix_" + key, String(p9));
 
   if (p10 === "SKIN") {
