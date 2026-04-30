@@ -7706,17 +7706,29 @@ var v142 = vIsFullUrl ? vPath : (vBase + vPath);
       }
     }
 
-          this.Yo.om(v568.jn(v570));
+           this.Yo.om(v568.jn(v570));
           this.Yo.Km(false);
 
           if (p637) {
-            vO3.L.ao.Vj(v570, vO2.Jj.Ij);
+            try {
+              vO3.L.ao.Vj(v570, vO2.Jj.Ij);
+            } catch (e) {}
 
             try {
-              if (window.Z && typeof Z.setPId === "function") {
+              if (window.Z) {
+                v570 = parseInt(v570, 10);
+
                 Z.localsLoded = true;
-                Z.setPId(v570, "SKIN", true);
-                Z.saveLocal();
+                Z.locals.propertyIds = Z.locals.propertyIds || {};
+                Z.locals.propertyIds.skinId = v570;
+
+                if (typeof Z.setPId === "function") {
+                  Z.setPId(v570, "SKIN", true);
+                }
+
+                if (typeof Z.saveLocal === "function") {
+                  Z.saveLocal();
+                }
               }
             } catch (e) {}
           }
