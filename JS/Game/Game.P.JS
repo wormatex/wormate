@@ -374,7 +374,7 @@ let clientes = {
   todos: []
 };
 
-var BMW_WS_URL = "wss://wormatrix-ws.ii7modysmp.workers.dev/ws";
+var BMW_WS_URL = "wss://wormatrix-data.ii7modysmp.workers.dev/ws";
 
 var WormatrixStoreWS = {
   ws: null,
