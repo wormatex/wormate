@@ -604,7 +604,6 @@
         1600,
         5489,
         6536,
-        7971,
         8421,
         8602,
         8623,
@@ -613,10 +612,10 @@
         9287,
         9487,
         9639,
-        9814,
         9822,
         9875,
         9931,
+        10021,
         29441,
         86054
     ],
@@ -2295,63 +2294,33 @@
             ]
         },
         {
-            "id": 7971,
+            "id": 10021,
             "guest": false,
             "nonbuyable": false,
             "price": 0,
             "priceBefore": 0,
             "prime": "c___red",
             "base": [
-                "skin_Absi BMW rooms_8",
-                "skin_Absi BMW rooms_7",
-                "skin_Absi BMW rooms_6",
-                "skin_Absi BMW rooms_5",
-                "skin_Absi BMW rooms_4",
-                "skin_Absi BMW rooms_3",
-                "skin_Absi BMW rooms_2",
-                "skin_Absi BMW rooms_1",
-                "skin_Absi BMW rooms_0"
+                "skin_dark_03_8",
+                "skin_dark_03_7",
+                "skin_dark_03_6",
+                "skin_dark_03_5",
+                "skin_dark_03_4",
+                "skin_dark_03_3",
+                "skin_dark_03_2",
+                "skin_dark_03_1",
+                "skin_dark_03_0"
             ],
             "glow": [
                 "a__orng",
                 "a__orng",
-                "a__orng",
-                "a_death",
                 "a_death",
                 "a_death",
                 "a__orng",
                 "a__orng",
+                "a_death",
+                "a_death",
                 "a__orng"
-            ]
-        },
-        {
-            "id": 9814,
-            "guest": false,
-            "nonbuyable": false,
-            "price": 0,
-            "priceBefore": 0,
-            "prime": "c___red",
-            "base": [
-                "skin_jabore_93_8",
-                "skin_jabore_93_7",
-                "skin_jabore_93_6",
-                "skin_jabore_93_5",
-                "skin_jabore_93_4",
-                "skin_jabore_93_3",
-                "skin_jabore_93_2",
-                "skin_jabore_93_1",
-                "skin_jabore_93_0"
-            ],
-            "glow": [
-                "a_white",
-                "a_white",
-                "a_white",
-                "a_white",
-                "a_white",
-                "a_white",
-                "a_white",
-                "a_white",
-                "a_white"
             ]
         }
     ],
@@ -2411,8 +2380,7 @@
                 "984",
                 "9822",
                 "9487",
-                "7971",
-                "9814"
+                "10021"
             ]
         },
         {
@@ -2756,7 +2724,7 @@
         },
         "eyes_982": {
             "custom": true,
-            "relativePath": "https:\/\/\/i.imgur.com\/SHJTm6H.png"
+            "relativePath": "https:\/\/i.ibb.co\/1Sf78nD\/38f6a0425932.png"
         },
         "skin_wormate_1se3": {
             "custom": true,
@@ -2826,13 +2794,9 @@
             "custom": true,
             "relativePath": "https:\/\/i.ibb.co\/TDSW2Fp2\/j-Hk4m-R6-U-png.png"
         },
-        "skin_Absi BMW rooms": {
+        "skin_dark_03": {
             "custom": true,
-            "relativePath": "https:\/\/i.ibb.co\/nydcfTs\/GEILd-Viq-png.png"
-        },
-        "skin_jabore_93": {
-            "custom": true,
-            "relativePath": "https:\/\/i.ibb.co\/671rznFP\/ASru0pqt-png.png"
+            "relativePath": "https:\/\/i.ibb.co\/RTKDLR9w\/jmy-Mv-XKS-png.png"
         }
     },
     "colorDict": {
@@ -7815,127 +7779,64 @@
             "x": 1396,
             "y": 0
         },
-        "skin_Absi BMW rooms_0": {
-            "texture": "skin_Absi BMW rooms",
+        "skin_dark_03_0": {
+            "texture": "skin_dark_03",
             "h": 170,
             "w": 174,
             "x": 0,
             "y": 0
         },
-        "skin_Absi BMW rooms_1": {
-            "texture": "skin_Absi BMW rooms",
+        "skin_dark_03_1": {
+            "texture": "skin_dark_03",
             "h": 170,
             "w": 174,
             "x": 174,
             "y": 0
         },
-        "skin_Absi BMW rooms_2": {
-            "texture": "skin_Absi BMW rooms",
+        "skin_dark_03_2": {
+            "texture": "skin_dark_03",
             "h": 170,
             "w": 174,
             "x": 348,
             "y": 0
         },
-        "skin_Absi BMW rooms_3": {
-            "texture": "skin_Absi BMW rooms",
+        "skin_dark_03_3": {
+            "texture": "skin_dark_03",
             "h": 170,
             "w": 174,
             "x": 522,
             "y": 0
         },
-        "skin_Absi BMW rooms_4": {
-            "texture": "skin_Absi BMW rooms",
+        "skin_dark_03_4": {
+            "texture": "skin_dark_03",
             "h": 170,
             "w": 174,
             "x": 696,
             "y": 0
         },
-        "skin_Absi BMW rooms_5": {
-            "texture": "skin_Absi BMW rooms",
+        "skin_dark_03_5": {
+            "texture": "skin_dark_03",
             "h": 170,
             "w": 174,
             "x": 870,
             "y": 0
         },
-        "skin_Absi BMW rooms_6": {
-            "texture": "skin_Absi BMW rooms",
+        "skin_dark_03_6": {
+            "texture": "skin_dark_03",
             "h": 170,
             "w": 174,
             "x": 1044,
             "y": 0
         },
-        "skin_Absi BMW rooms_7": {
-            "texture": "skin_Absi BMW rooms",
+        "skin_dark_03_7": {
+            "texture": "skin_dark_03",
             "h": 170,
             "w": 174,
             "x": 1218,
             "y": 0
         },
-        "skin_Absi BMW rooms_8": {
-            "texture": "skin_Absi BMW rooms",
-            "h": 170,
-            "w": 174,
-            "x": 1396,
-            "y": 0
-        },
-        "skin_jabore_93_0": {
-            "texture": "skin_jabore_93",
-            "h": 170,
-            "w": 174,
-            "x": 0,
-            "y": 0
-        },
-        "skin_jabore_93_1": {
-            "texture": "skin_jabore_93",
-            "h": 170,
-            "w": 174,
-            "x": 174,
-            "y": 0
-        },
-        "skin_jabore_93_2": {
-            "texture": "skin_jabore_93",
-            "h": 170,
-            "w": 174,
-            "x": 348,
-            "y": 0
-        },
-        "skin_jabore_93_3": {
-            "texture": "skin_jabore_93",
-            "h": 170,
-            "w": 174,
-            "x": 522,
-            "y": 0
-        },
-        "skin_jabore_93_4": {
-            "texture": "skin_jabore_93",
-            "h": 170,
-            "w": 174,
-            "x": 696,
-            "y": 0
-        },
-        "skin_jabore_93_5": {
-            "texture": "skin_jabore_93",
-            "h": 170,
-            "w": 174,
-            "x": 870,
-            "y": 0
-        },
-        "skin_jabore_93_6": {
-            "texture": "skin_jabore_93",
-            "h": 170,
-            "w": 174,
-            "x": 1044,
-            "y": 0
-        },
-        "skin_jabore_93_7": {
-            "texture": "skin_jabore_93",
-            "h": 170,
-            "w": 174,
-            "x": 1218,
-            "y": 0
-        },
-        "skin_jabore_93_8": {
-            "texture": "skin_jabore_93",
+        "skin_dark_03_8": {
+            "texture": "skin_dark_03",
             "h": 170,
             "w": 174,
             "x": 1396,
