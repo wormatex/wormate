@@ -122,6 +122,15 @@ loadLocals: function () {
 saveLocal: function () {
   this.locals.propertyIds = this.locals.propertyIds || {};
   localStorage.setItem("zLocals", JSON.stringify(this.locals));
+
+  try {
+    if (window.WormatrixStoreWS) {
+      WormatrixStoreWS.sendPlayer("save_local", {
+        locals: this.locals,
+        propertyIds: this.locals.propertyIds || {}
+      });
+    }
+  } catch (e) {}
 }
 };
 
@@ -192,6 +201,15 @@ Z.setPId = function (p9, p10, p11) {
 
 if (typeof this.saveLocal === "function") {
   this.saveLocal();
+}
+
+if (window.WormatrixStoreWS) {
+  WormatrixStoreWS.sendPlayer("change_item", {
+    id: p9,
+    type: p10,
+    key: key,
+    propertyIds: this.locals.propertyIds || {}
+  });
 }
 
 if (window.WormatrixStoreWS) {
@@ -379,19 +397,113 @@ var BMW_WS_URL = "wss://wormatrix-data.ii7modysmp.workers.dev/ws";
 var WormatrixStoreWS = {
   ws: null,
   ready: false,
+  queue: [],
+  lastSend: 0,
+
+  getUserId: function () {
+    try {
+      return (
+        localStorage.getItem("wormatrix_user_id") ||
+        Z.locals.FB_UserID ||
+        window.wormXyObjects?.FB_UserID ||
+        window.theoKzObjects?.FB_UserID ||
+        "gg_guest_" + Math.random().toString(36).slice(2)
+      );
+    } catch (e) {
+      return "gg_guest_" + Math.random().toString(36).slice(2);
+    }
+  },
+
+  getNick: function () {
+    try {
+      return (
+        $("#nick").val() ||
+        $("#nickname").val() ||
+        Z.locals.nickname ||
+        Z.locals.name ||
+        "Worm Matrix"
+      );
+    } catch (e) {
+      return "Worm Matrix";
+    }
+  },
+
+  buildUserData: function () {
+    Z.locals.propertyIds = Z.locals.propertyIds || {};
+
+    var p = Z.locals.propertyIds;
+
+    return {
+      userId: this.getUserId(),
+      generation: localStorage.getItem("wormatrix_generation") || ("g" + Date.now()),
+      username: this.getNick(),
+      nickname: this.getNick(),
+      avatarUrl: localStorage.getItem("wormatrix_avatar") || "",
+      isBuyer: false,
+      isConsentGiven: true,
+
+      coins: Number(Z.locals.coins || 0),
+      level: Number(Z.locals.level || 0),
+      expOnLevel: Number(Z.locals.expOnLevel || 0),
+
+      skinId: Number(p.skinId || localStorage.getItem("wormatrix_selected_skin") || 0),
+      eyesId: Number(p.eyesId || 0),
+      mouthId: Number(p.mouthId || 0),
+      glassesId: Number(p.glassesId || 0),
+      hatId: Number(p.hatId || 0),
+
+      highScore: Number(Z.locals.hs?.g || 0),
+      bestSurvivalTimeSec: Number(Z.locals.bestSurvivalTimeSec || 0),
+      kills: Number(Z.locals.kills?.t || Z.locals.kills?.g || 0),
+      headShots: Number(Z.locals.hs?.t || 0),
+      sessionsPlayed: Number(Z.locals.sessionsPlayed || 0),
+      totalPlayTimeSec: Number(Z.locals.totalPlayTimeSec || 0),
+
+      regDate: Z.locals.regDate || null,
+
+      propertyIds: {
+        skinId: Number(p.skinId || 0),
+        eyesId: Number(p.eyesId || 0),
+        mouthId: Number(p.mouthId || 0),
+        glassesId: Number(p.glassesId || 0),
+        hatId: Number(p.hatId || 0)
+      },
+
+      propertyList: this.buildPropertyList()
+    };
+  },
+
+  buildPropertyList: function () {
+    try {
+      var p = Z.locals.propertyIds || {};
+      var list = [];
+
+      if (p.skinId) list.push({ id: String(p.skinId), type: "SKIN" });
+      if (p.eyesId) list.push({ id: String(p.eyesId), type: "EYES" });
+      if (p.mouthId) list.push({ id: String(p.mouthId), type: "MOUTH" });
+      if (p.glassesId) list.push({ id: String(p.glassesId), type: "GLASSES" });
+      if (p.hatId) list.push({ id: String(p.hatId), type: "HAT" });
+
+      return list;
+    } catch (e) {
+      return [];
+    }
+  },
 
   connect: function () {
     try {
-      if (this.ws && this.ws.readyState <= 1) return;
+      if (this.ws && (this.ws.readyState === WebSocket.OPEN || this.ws.readyState === WebSocket.CONNECTING)) return;
 
       this.ws = new WebSocket(BMW_WS_URL);
 
       this.ws.onopen = function () {
         WormatrixStoreWS.ready = true;
-        WormatrixStoreWS.send("open_game", {
-          locals: Z.locals,
-          propertyIds: Z.locals.propertyIds || {}
-        });
+        WormatrixStoreWS.sendPlayer("open_game");
+        WormatrixStoreWS.flush();
+      };
+
+      this.ws.onmessage = function (e) {
+        console.log("Wormatrix Data:", e.data);
       };
 
       this.ws.onclose = function () {
@@ -404,29 +516,50 @@ var WormatrixStoreWS = {
       this.ws.onerror = function () {
         WormatrixStoreWS.ready = false;
       };
-
-      this.ws.onmessage = function (e) {
-        console.log("Wormatrix WS:", e.data);
-      };
     } catch (e) {
-      console.error("WS ERROR:", e);
+      console.error("Wormatrix WS connect error:", e);
     }
   },
 
-  send: function (action, data) {
+  sendRaw: function (payload) {
     try {
-      if (!this.ws || this.ws.readyState !== WebSocket.OPEN) return;
+      if (!this.ws || this.ws.readyState !== WebSocket.OPEN) {
+        this.queue.push(payload);
+        if (this.queue.length > 60) this.queue.shift();
+        this.connect();
+        return;
+      }
 
-      this.ws.send(JSON.stringify({
-        type: "save",
-        action: action,
-        time: Date.now(),
-        userId: localStorage.getItem("wormatrix_user_id") || "guest",
-        data: data || {}
-      }));
+      this.ws.send(JSON.stringify(payload));
     } catch (e) {}
+  },
+
+  flush: function () {
+    while (this.queue.length) {
+      this.sendRaw(this.queue.shift());
+    }
+  },
+
+  sendPlayer: function (action, extra) {
+    var now = Date.now();
+
+    if (now - this.lastSend < 250 && action !== "open_game") return;
+    this.lastSend = now;
+
+    this.sendRaw({
+      code: 1200,
+      type: "player_data",
+      action: action || "update",
+      userId: this.getUserId(),
+      name: this.getNick(),
+      time: now,
+      user_data: this.buildUserData(),
+      data: extra || {}
+    });
   }
 };
+
+window.WormatrixStoreWS = WormatrixStoreWS;
 
 setTimeout(function () {
   WormatrixStoreWS.connect();
