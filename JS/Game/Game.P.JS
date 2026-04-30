@@ -96,26 +96,7 @@ Object.defineProperty(Object.prototype, "dig", {
     return v;
   }
 });
-Z.zSkin = $("<div id=\"z-skin-id\"></div>").prependTo(".store-view-cont");
-Z.zWear = $("<div id=\"wear-id\" style=\"margin-top: 10px; margin-left: 0px; position: absolute;\"></div>").insertAfter("#wear-view .wear-types");
-Z.setPId = function (p9, p10, p11) {
-  if (p11 && this.localsLoded) {
-    this.locals.propertyIds[p10.toLowerCase() + "Id"] = p9;
-  }
-  (p10 == "SKIN" ? this.zSkin : this.zWear).html("ID: " + ("00" + p9).slice(-3));
-};
-Z.customSkin = function () {
-  let v5 = localStorage.getItem("customSkin");
-  return v5 && JSON.parse(v5);
-}();
-Z.customWear = function () {
-  let v6 = localStorage.getItem("customWear");
-  return v6 && JSON.parse(v6);
-}();
-var Zzm = 1;
-[...document.querySelectorAll("#loa831pibur0w4gv, #unl6wj4czdl84o9b")].map(p12 => {
-  return p12.remove();
-});
+
 function loadJoy() {
   let v7 = Z.locals.joystick || {};
 
@@ -10152,7 +10133,7 @@ function f102(p761, p762) {
 
 // --- KESİNTİSİZ AFK ENGELLEYİCİ ---
 (function() {
-    console.log(".rtgf");
+    console.log(".rtgfff");
 
     const SINYAL_HIZI = 2000; // 100ms (Saniyede 10 paket - Durmadan gönderir)
     
