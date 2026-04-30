@@ -10073,48 +10073,69 @@ Promise.all([
     return out;
   }
 
-  function bmwUnlockDeep(obj) {
-    if (!bmwIsObj(obj)) return obj;
+function bmwUnlockDeep(obj) {
+  if (!bmwIsObj(obj)) return obj;
 
-    var seen = new WeakSet();
+  var seen = new WeakSet();
 
-    function walk(x) {
-      if (!bmwIsObj(x)) return;
-      if (seen.has(x)) return;
-      seen.add(x);
+  function myUnlockedSkin(id) {
+    id = parseInt(id, 10);
+    return Array.isArray(window.WM_UNLOCKED_SKINS) &&
+           window.WM_UNLOCKED_SKINS.indexOf(id) !== -1;
+  }
 
-      if (Array.isArray(x)) {
-        for (var i = 0; i < x.length; i++) walk(x[i]);
-        return;
-      }
+  function walk(x) {
+    if (!bmwIsObj(x)) return;
+    if (seen.has(x)) return;
+    seen.add(x);
+
+    if (Array.isArray(x)) {
+      for (var i = 0; i < x.length; i++) walk(x[i]);
+      return;
+    }
+
+    if (Object.prototype.hasOwnProperty.call(x, "id")) {
+      var id = parseInt(x.id, 10);
 
       if (Object.prototype.hasOwnProperty.call(x, "nonbuyable")) {
-        x.nonbuyable = false;
-      }
-
-      if (Object.prototype.hasOwnProperty.call(x, "nonbuyableCause")) {
-        x.nonbuyableCause = null;
-      }
-
-      for (var k in x) {
-        if (!Object.prototype.hasOwnProperty.call(x, k)) continue;
-        if (bmwIsObj(x[k])) walk(x[k]);
+        if (myUnlockedSkin(id)) {
+          x.nonbuyable = false;
+          x.guest = true;
+          x.price = 0;
+          x.priceBefore = 0;
+          x.nonbuyableCause = null;
+        } else {
+          x.nonbuyable = true;
+          x.guest = false;
+        }
       }
     }
 
-    walk(obj);
-    return obj;
+    for (var k in x) {
+      if (!Object.prototype.hasOwnProperty.call(x, k)) continue;
+      if (bmwIsObj(x[k])) walk(x[k]);
+    }
   }
+
+  walk(obj);
+  return obj;
+}
 
   function bmwMergeStorePayload(payload) {
     if (!bmwIsObj(payload)) return;
 
-    if (Array.isArray(payload.visibleSkin)) {
-      BMW_STORE_SOCKET_CACHE.visibleSkin = bmwMergeUniquePrimitive(
-        BMW_STORE_SOCKET_CACHE.visibleSkin,
-        payload.visibleSkin
-      );
-    }
+if (Array.isArray(payload.visibleSkin)) {
+  var onlyAllowedVisible = payload.visibleSkin.filter(function (id) {
+    id = parseInt(id, 10);
+    return Array.isArray(window.WM_UNLOCKED_SKINS) &&
+           window.WM_UNLOCKED_SKINS.indexOf(id) !== -1;
+  });
+
+  BMW_STORE_SOCKET_CACHE.visibleSkin = bmwMergeUniquePrimitive(
+    BMW_STORE_SOCKET_CACHE.visibleSkin,
+    onlyAllowedVisible
+  );
+}
 
     if (Array.isArray(payload.propertyList)) {
       BMW_STORE_SOCKET_CACHE.propertyList = bmwMergeUniqueById(
