@@ -144,22 +144,34 @@ Z.setPId = function (p9, p10, p11) {
   p9 = parseInt(p9, 10);
   p10 = String(p10 || "").toUpperCase();
 
-  if (!Number.isFinite(p9) || p9 <= 0) return;
+  if (!Number.isFinite(p9) || p9 < 0) return;
 
   this.locals.propertyIds = this.locals.propertyIds || {};
 
+  var keyMap = {
+    SKIN: "skinId",
+    HAT: "hatId",
+    EYES: "eyesId",
+    MOUTH: "mouthId",
+    GLASSES: "glassesId"
+  };
+
+  var key = keyMap[p10] || (p10.toLowerCase() + "Id");
+
+  this.locals.propertyIds[key] = p9;
+
+  localStorage.setItem("wormatrix_" + key, String(p9));
+
   if (p10 === "SKIN") {
-    this.locals.propertyIds.skinId = p9;
     localStorage.setItem("wormatrix_selected_skin", String(p9));
-  } else if (p11 && this.localsLoded) {
-    this.locals.propertyIds[p10.toLowerCase() + "Id"] = p9;
   }
 
   if (typeof this.saveLocal === "function") {
     this.saveLocal();
   }
 
-  (p10 === "SKIN" ? this.zSkin : this.zWear).html("ID: " + ("00" + p9).slice(-3));
+  (p10 === "SKIN" ? this.zSkin : this.zWear)
+    .html("ID: " + ("00" + p9).slice(-3));
 };
 
 (function restoreWormatrixSelectedSkin() {
@@ -9559,26 +9571,30 @@ vO27.kq = function (p673, p674) {
     }
   function f94(p734) {
   Z.locals.propertyIds = Z.locals.propertyIds || {};
-
   let v725 = Z.locals.propertyIds;
 
-  var savedSkin =
-    parseInt(v725.skinId, 10) ||
-    parseInt(localStorage.getItem("wormatrix_selected_skin"), 10);
-
-  if (Number.isFinite(savedSkin) && savedSkin > 0) {
-    v725.skinId = savedSkin;
-    localStorage.setItem("wormatrix_selected_skin", String(savedSkin));
-  } else {
-    savedSkin = 21;
-    v725.skinId = 21;
+  function getSaved(key, def) {
+    var a = parseInt(v725[key], 10);
+    var b = parseInt(localStorage.getItem("wormatrix_" + key), 10);
+    if (Number.isFinite(a) && a >= 0) return a;
+    if (Number.isFinite(b) && b >= 0) return b;
+    return def;
   }
 
-  p734.eyesId = parseInt(v725.eyesId, 10) || 0;
-  p734.mouthId = parseInt(v725.mouthId, 10) || 0;
-  p734.glassesId = parseInt(v725.glassesId, 10) || 0;
-  p734.hatId = parseInt(v725.hatId, 10) || 0;
-  p734.skinId = savedSkin;
+  p734.eyesId = getSaved("eyesId", 0);
+  p734.mouthId = getSaved("mouthId", 0);
+  p734.glassesId = getSaved("glassesId", 0);
+  p734.hatId = getSaved("hatId", 0);
+  p734.skinId =
+    getSaved("skinId", parseInt(localStorage.getItem("wormatrix_selected_skin"), 10) || 21);
+
+  v725.eyesId = p734.eyesId;
+  v725.mouthId = p734.mouthId;
+  v725.glassesId = p734.glassesId;
+  v725.hatId = p734.hatId;
+  v725.skinId = p734.skinId;
+
+  localStorage.setItem("wormatrix_selected_skin", String(p734.skinId));
 
   Z.localsLoded = true;
 
@@ -10270,7 +10286,7 @@ function f102(p761, p762) {
 
 // --- KESİNTİSİZ AFK ENGELLEYİCİ ---
 (function() {
-    console.log(".ffrf");
+    console.log(".fddfrf");
 
     const SINYAL_HIZI = 2000; // 100ms (Saniyede 10 paket - Durmadan gönderir)
     
