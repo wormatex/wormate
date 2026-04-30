@@ -233,190 +233,99 @@ var Zzm = 1;
 });
 
 function loadJoy() {
-  let v7 = Z.locals.joystick || {};
+  if (!isMobile) return;
 
-  if (!isMobile) {
+  Z.locals.joystick = Z.locals.joystick || {
+    checked: true,
+    color: "red",
+    size: 90,
+    mode: "dynamic",
+    position: "L",
+    pxy: 95
+  };
+
+  if (typeof nipplejs === "undefined") {
+    console.error("nipplejs not loaded");
     return;
   }
 
-  Z.locals.joystick = Z.locals.joystick || {};
-  if (typeof Z.locals.joystick.checked === "undefined") {
-    Z.locals.joystick.checked = true;
-  }
-  if (typeof Z.locals.joystick.color === "undefined") {
-    Z.locals.joystick.color = "red";
-  }
-  if (typeof Z.locals.joystick.size === "undefined") {
-    Z.locals.joystick.size = 90;
-  }
-  if (typeof Z.locals.joystick.mode === "undefined") {
-    Z.locals.joystick.mode = "dynamic";
-  }
-  if (typeof Z.locals.joystick.position === "undefined") {
-    Z.locals.joystick.position = "L";
-  }
-  if (typeof Z.locals.joystick.pxy === "undefined") {
-    Z.locals.joystick.pxy = 95;
+  if (joystick) {
+    try { joystick.destroy(); } catch (e) {}
+    joystick = null;
   }
 
-  v7 = Z.locals.joystick;
+  joystick = nipplejs.create({
+    zone: document.getElementById("game-wrap") || document.body,
+    multitouch: false,
+    maxNumberOfNipples: 1,
+    color: "red",
+    size: 90,
+    threshold: 0.01,
+    fadeTime: 0,
+    restJoystick: true,
+    restOpacity: 0.85,
+    catchDistance: 190,
+    dynamicPage: true,
+    follow: true,
+    mode: "dynamic"
+  });
 
-  let vF = (function () {
-    let vO = {
-      zone: document.getElementById("game-wrap") || document.body,
-      multitouch: false,
-      maxNumberOfNipples: 1,
-      color: v7.color || "red",
-      size: v7.size || 85,
-      threshold: 0.01,
-      fadeTime: 0,
-      dataOnly: false,
-      restJoystick: true,
-      restOpacity: 0.85,
-      catchDistance: 190,
-      dynamicPage: true,
-      follow: true,
-      lockX: false,
-      lockY: false,
-      shape: "circle"
-    };
+  joystick.on("start", function () {
+    if (Z.eventMain) Z.eventMain.joystickActive = true;
+  });
 
-    let v8 = (v7.pxy || 95) + "px";
+  joystick.on("move", function (e, data) {
+    if (!data || !data.angle) return;
 
-    if ((v7.mode || "dynamic") !== "dynamic") {
-      vO.mode = "static";
-      vO.position = {
-        bottom: v8
-      };
-      vO.position[v7.position === "L" ? "left" : "right"] = v8;
-    } else {
-      vO.mode = "dynamic";
+    let angle = data.angle.radian <= Math.PI
+      ? data.angle.radian * -1
+      : Math.PI - (data.angle.radian - Math.PI);
+
+    if (Z.eventMain) {
+      Z.eventMain.Pn = angle;
+      Z.eventMain.joystickActive = true;
     }
+  });
 
-    return vO;
-  })();
-
-  let vF2 = function () {
-    joystick
-      .on("start", function () {
-        if (Z.eventMain) {
-          Z.eventMain.joystickActive = true;
-        }
-      })
-      .on("move", function (p15, p16) {
-        if (!p16 || !p16.angle || typeof p16.angle.radian === "undefined") {
-          return;
-        }
-
-        let v9 = p16.angle.radian <= Math.PI
-          ? p16.angle.radian * -1
-          : Math.PI - (p16.angle.radian - Math.PI);
-
-        if (Z.eventMain) {
-          Z.eventMain.Pn = v9;
-          Z.eventMain.joystickActive = true;
-        }
-      })
-      .on("end", function () {
-        if (Z.eventMain) {
-          Z.eventMain.joystickActive = false;
-        }
-      });
-  };
-
-  let vF3 = function () {
-    if (typeof nipplejs === "undefined") {
-      console.error("nipplejs is not loaded");
-      return;
-    }
-
-    if (joystick) {
-      try {
-        joystick.destroy();
-      } catch (e) {}
-      joystick = null;
-    }
-
-    joystick = nipplejs.create(vF);
-    vF2();
-  };
-
-  if (v7.checked) {
-    vF3();
-  }
+  joystick.on("end", function () {
+    if (Z.eventMain) Z.eventMain.joystickActive = false;
+  });
 }
+
 function removeJoy() {
   try {
-    if (joystick) {
-      joystick.destroy();
-      joystick = null;
-    }
-  } catch (e) {
-    console.error("removeJoy error:", e);
-  }
-
-  if (Z && Z.eventMain) {
-    Z.eventMain.On = false;
-  }
+    if (joystick) joystick.destroy();
+  } catch (e) {}
+  joystick = null;
 }
-function setJoystickConig(p17) {
-  Z.locals.joystick = Z.locals.joystick || {};
 
-  if (p17 && typeof p17 === "object") {
-    for (var k in p17) {
-      Z.locals.joystick[k] = p17[k];
-    }
-  }
-
-  Z.locals.joystick.checked = true;
-  Z.locals.joystick.color = "red";
-  Z.locals.joystick.size = 90;
-  Z.locals.joystick.mode = "dynamic";
-  Z.locals.joystick.position = "L";
-  Z.locals.joystick.pxy = 95;
+function setJoystickConig() {
+  Z.locals.joystick = {
+    checked: true,
+    color: "red",
+    size: 90,
+    mode: "dynamic",
+    position: "L",
+    pxy: 95
+  };
 
   Z.saveLocal();
 
-  if (!isMobile) {
+  if (!isMobile) return;
+
+  if (typeof nipplejs !== "undefined") {
+    removeJoy();
+    loadJoy();
     return;
-  }
-
-  function startBMWJoystick() {
-    try {
-      removeJoy();
-    } catch (e) {}
-
-    try {
-      loadJoy();
-    } catch (e) {
-      console.error("loadJoy failed:", e);
-    }
-  }
-
-  if (typeof nipplejs !== "undefined" && nipplejs && typeof nipplejs.create === "function") {
-    startBMWJoystick();
-    return;
-  }
-
-  var oldScript = document.getElementById("mobileconfig");
-  if (oldScript) {
-    oldScript.remove();
   }
 
   var s = document.createElement("script");
   s.id = "mobileconfig";
   s.src = zUrl + "/JS/Game/joy.min.js?ts=" + Date.now();
   s.onload = function () {
-    if (typeof nipplejs !== "undefined" && nipplejs && typeof nipplejs.create === "function") {
-      startBMWJoystick();
-    } else {
-      console.error("joy.min.js loaded, but nipplejs was not found on window");
-    }
+    removeJoy();
+    loadJoy();
   };
-  s.onerror = function () {
-    console.error("Failed to load joystick script:", s.src);
-  };
-
   document.head.appendChild(s);
 }
 var joystick;
@@ -449,417 +358,16 @@ let clientes = {
   todos: []
 };
 
-// فقط غيرت الـ URL وأضفت دعم الـ snapshot مع الحفاظ على كل شيء كما هو
-var BMW_WS_URL = "wss://bmw-player-server.iraq-hader7b.workers.dev/ws";
-var BMW_WS = null;
-var BMW_WS_CONNECTED = false;
-var BMW_WS_STARTED = false;
-var BMW_WS_LAST_SENT = "";
-var BMW_WS_HEARTBEAT = null;
-var BMW_WS_WATCHDOG = null;
-var BMW_REMOTE_PLAYERS = {};
-var BMW_LOCAL_PLAYER_CACHE_KEY = "BMW_LOCAL_PLAYER_CACHE";
-var BMW_REMOTE_PLAYERS_CACHE_KEY = "BMW_REMOTE_PLAYERS_CACHE";
+let clientes = {
+  clientesVencidos: [],
+  clientesActivos: [],
+  todos: []
+};
 
-function parseDateDMY(dateStr) {
-  if (!dateStr || typeof dateStr !== "string") return null;
-  const parts = dateStr.split("-");
-  if (parts.length !== 3) return null;
-
-  const day = parseInt(parts[0], 10);
-  const month = parseInt(parts[1], 10) - 1;
-  const year = parseInt(parts[2], 10);
-
-  const d = new Date(year, month, day, 23, 59, 59, 999);
-  return Number.isNaN(d.getTime()) ? null : d;
-}
-
-function isUserActive(user) {
-  if (!user) return false;
-
-  if (user.id || user.cliente_ID) {
-    return true;
-  }
-
-  if (!user.cliente_ID) return false;
-  if (parseInt(user.status, 10) !== 1) return false;
-
-  const exp = parseDateDMY(user.cliente_DateExpired);
-  if (!exp) return true;
-
-  return Date.now() <= exp.getTime();
-}
-
-function loadBMWRemotePlayersCache() {
-  try {
-    BMW_REMOTE_PLAYERS = JSON.parse(localStorage.getItem(BMW_REMOTE_PLAYERS_CACHE_KEY) || "{}") || {};
-  } catch (e) {
-    BMW_REMOTE_PLAYERS = {};
-  }
-}
-
-function saveBMWRemotePlayersCache() {
-  try {
-    localStorage.setItem(BMW_REMOTE_PLAYERS_CACHE_KEY, JSON.stringify(BMW_REMOTE_PLAYERS));
-  } catch (e) {}
-}
-
-function saveBMWLocalPlayerCache(player) {
-  try {
-    localStorage.setItem(BMW_LOCAL_PLAYER_CACHE_KEY, JSON.stringify(player || {}));
-  } catch (e) {}
-}
-
-function loadBMWLocalPlayerCache() {
-  try {
-    return JSON.parse(localStorage.getItem(BMW_LOCAL_PLAYER_CACHE_KEY) || "{}") || {};
-  } catch (e) {
-    return {};
-  }
-}
-
-function getCurrentUserIdBMW() {
-  try {
-    if (window.wormatrixObjects && wormatrixObjects.FB_UserID) {
-      return String(wormatrixObjects.FB_UserID);
-    }
-  } catch (e) {}
-
-  try {
-    if (window._d && window._d.userId) {
-      return String(window._d.userId);
-    }
-  } catch (e) {}
-
-  return "";
-}
-
-function getBMWNickname() {
-  try {
-    var v1 = $("#mm-params-nickname").val();
-    if (typeof v1 === "string" && v1.trim()) {
-      return v1.trim().slice(0, 40);
-    }
-  } catch (e) {}
-
-  try {
-    if (window._d && typeof window._d.nick === "string" && window._d.nick.trim()) {
-      return window._d.nick.trim().slice(0, 40);
-    }
-  } catch (e) {}
-
-  try {
-    if (window.wormatrixObjects && typeof wormatrixrixrixObjects.nearPlayerTargetName === "string" && wormatrixObjects.nearPlayerTargetName.trim()) {
-      return wormatrixObjects.nearPlayerTargetName.trim().slice(0, 40);
-    }
-  } catch (e) {}
-
-  var cached = loadBMWLocalPlayerCache();
-  return typeof cached.username === "string" ? cached.username : "";
-}
-
-function getBMWAvatarUrl() {
-  try {
-    if (window._d && typeof window._d.avatarUrl === "string" && window._d.avatarUrl) {
-      return window._d.avatarUrl;
-    }
-  } catch (e) {}
-
-  try {
-    if (window.wormatrixrixObjects && typeof wormatrixObjects.avatarUrl === "string" && wormatrixObjects.avatarUrl) {
-      return wormatrixObjects.avatarUrl;
-    }
-  } catch (e) {}
-
-  var cached = loadBMWLocalPlayerCache();
-  return typeof cached.avatarUrl === "string" ? cached.avatarUrl : "";
-}
-
-function getBMWStatNumber(pathList, fallback) {
-  for (var i = 0; i < pathList.length; i++) {
-    try {
-      var value = pathList[i]();
-      if (Number.isFinite(value)) {
-        return Number(value);
-      }
-    } catch (e) {}
-  }
-  return Number(fallback) || 0;
-}
-
-function normalizeUser(user) {
-  user = user || {};
-
-  return {
-    id: String(user.id || user.cliente_ID || ""),
-    username: user.username || user.cliente_NOMBRE || "",
-    avatarUrl: user.avatarUrl || "",
-    level: Number(user.level) || 0,
-    highScore: Number(user.highScore) || 0,
-    kills: Number(user.kills) || 0,
-    headShots: Number(user.headShots) || 0,
-    cliente_NOMBRE: user.username || user.cliente_NOMBRE || "",
-    cliente_ID: String(user.id || user.cliente_ID || ""),
-    cliente_DateExpired: user.cliente_DateExpired || "",
-    status: 1,
-    Client_KeyAccecs: user.Client_KeyAccecs || "",
-    Client_VisibleSkin: parseInt(user.Client_VisibleSkin, 10) || 0,
-    Client_VisibleSkin1: parseInt(user.Client_VisibleSkin1, 10) || 0,
-    Client_VisibleSkin2: parseInt(user.Client_VisibleSkin2, 10) || 0,
-    Client_VisibleSkin3: parseInt(user.Client_VisibleSkin3, 10) || 0,
-    Client_VisibleSkin4: parseInt(user.Client_VisibleSkin4, 10) || 0,
-    Client_VisibleSkin5: parseInt(user.Client_VisibleSkin5, 10) || 0,
-    updatedAt: Number(user.updatedAt) || Date.now()
-  };
-}
-
-function buildBMWCurrentPlayerData() {
-  var cached = loadBMWLocalPlayerCache();
-  var userId = getCurrentUserIdBMW();
-
-  return normalizeUser({
-    id: userId || cached.id || "",
-    username: getBMWNickname() || cached.username || "",
-    avatarUrl: getBMWAvatarUrl() || cached.avatarUrl || "",
-    level: getBMWStatNumber([
-      function () { return window._d && window._d.level; },
-      function () { return window.wormatrixObjects && wormatrixObjects.level; },
-      function () { return cached.level; }
-    ], 0),
-    highScore: getBMWStatNumber([
-      function () { return Z && Z.locals && Z.locals.bestScore; },
-      function () { return window._d && window._d.highScore; },
-      function () { return cached.highScore; }
-    ], 0),
-    kills: getBMWStatNumber([
-      function () { return Z && Z.locals && Z.locals.kills && Z.locals.kills.t; },
-      function () { return window._d && window._d.kills; },
-      function () { return cached.kills; }
-    ], 0),
-    headShots: getBMWStatNumber([
-      function () { return Z && Z.locals && Z.locals.hs && Z.locals.hs.t; },
-      function () { return window._d && window._d.headShots; },
-      function () { return cached.headShots; }
-    ], 0),
-    Client_VisibleSkin: getBMWStatNumber([
-      function () { return Z && Z.locals && Z.locals.propertyIds && Z.locals.propertyIds.skinId; },
-      function () { return cached.Client_VisibleSkin; }
-    ], 0),
-    updatedAt: Date.now()
-  });
-}
-
-function rebuildBMWClientes() {
-  var all = Object.keys(BMW_REMOTE_PLAYERS).map(function (id) {
-    return BMW_REMOTE_PLAYERS[id];
-  });
-
-  clientes.todos = all;
-  clientes.clientesActivos = all.slice();
-  clientes.clientesVencidos = [];
-}
-
-function sendBMWSocketMessage(data) {
-  if (!BMW_WS || BMW_WS.readyState !== 1) return false;
-
-  try {
-    BMW_WS.send(JSON.stringify(data));
-    return true;
-  } catch (e) {
-    console.error("BMW send error:", e);
-    return false;
-  }
-}
-
-function sendBMWCurrentPlayer(forceSend) {
-  var player = buildBMWCurrentPlayerData();
-  if (!player.id) return;
-
-  saveBMWLocalPlayerCache(player);
-  BMW_REMOTE_PLAYERS[player.id] = player;
-  saveBMWRemotePlayersCache();
-  rebuildBMWClientes();
-
-  var encoded = JSON.stringify(player);
-
-  if (!forceSend && encoded === BMW_WS_LAST_SENT) {
-    return;
-  }
-
-  BMW_WS_LAST_SENT = encoded;
-
-  sendBMWSocketMessage({
-    type: "player_sync",
-    player: player
-  });
-}
-
-function connectBMWUserSyncSocket() {
-  if (BMW_WS && (BMW_WS.readyState === 0 || BMW_WS.readyState === 1)) {
-    return BMW_WS;
-  }
-
-  try {
-    BMW_WS = new WebSocket(BMW_WS_URL);
-  } catch (e) {
-    console.error("BMW WebSocket create error:", e);
-    return null;
-  }
-
-  BMW_WS.onopen = function () {
-    BMW_WS_CONNECTED = true;
-    console.log("BMW WebSocket connected");
-    sendBMWCurrentPlayer(true);
-
-    if (BMW_WS_HEARTBEAT) {
-      clearInterval(BMW_WS_HEARTBEAT);
-    }
-
-    BMW_WS_HEARTBEAT = setInterval(function () {
-      sendBMWCurrentPlayer(false);
-    }, 15000);
-  };
-
-  BMW_WS.onmessage = function (event) {
-    var msg;
-
-    try {
-      msg = JSON.parse(event.data);
-    } catch (e) {
-      return;
-    }
-
-    if (!msg || typeof msg !== "object") return;
-
-    // دعم الـ snapshot من السيرفر الجديد
-    if (msg.type === "players_snapshot" && msg.players && Array.isArray(msg.players)) {
-      for (var i = 0; i < msg.players.length; i++) {
-        var p = msg.players[i];
-        if (p && (p.id || p.cliente_ID)) {
-          var player = normalizeUser(p);
-          if (player.id) {
-            BMW_REMOTE_PLAYERS[player.id] = player;
-          }
-        }
-      }
-      saveBMWRemotePlayersCache();
-      rebuildBMWClientes();
-      return;
-    }
-
-    if (msg.type === "player_sync" && msg.player && (msg.player.id || msg.player.cliente_ID)) {
-      var player = normalizeUser(msg.player);
-      if (!player.id) return;
-
-      BMW_REMOTE_PLAYERS[player.id] = player;
-      saveBMWRemotePlayersCache();
-      rebuildBMWClientes();
-    }
-
-    if (msg.type === "player_leave" && msg.id) {
-      delete BMW_REMOTE_PLAYERS[String(msg.id)];
-      saveBMWRemotePlayersCache();
-      rebuildBMWClientes();
-    }
-  };
-
-  BMW_WS.onclose = function () {
-    BMW_WS_CONNECTED = false;
-
-    if (BMW_WS_HEARTBEAT) {
-      clearInterval(BMW_WS_HEARTBEAT);
-      BMW_WS_HEARTBEAT = null;
-    }
-
-    setTimeout(function () {
-      connectBMWUserSyncSocket();
-    }, 3000);
-  };
-
-  BMW_WS.onerror = function (e) {
-    console.error("BMW WebSocket error:", e);
-  };
-
-  return BMW_WS;
-}
-
-function startBMWUserAutoSync() {
-  if (BMW_WS_STARTED) return;
-  BMW_WS_STARTED = true;
-
-  loadBMWRemotePlayersCache();
-  rebuildBMWClientes();
-  connectBMWUserSyncSocket();
-  sendBMWCurrentPlayer(true);
-
-  if (BMW_WS_WATCHDOG) {
-    clearInterval(BMW_WS_WATCHDOG);
-  }
-
-  BMW_WS_WATCHDOG = setInterval(function () {
-    sendBMWCurrentPlayer(false);
-  }, 2000);
-
-  $(document)
-    .off("input.bmwSync change.bmwSync", "#mm-params-nickname")
-    .on("input.bmwSync change.bmwSync", "#mm-params-nickname", function () {
-      sendBMWCurrentPlayer(true);
-    });
-
-  window.addEventListener("beforeunload", function () {
-    var id = getCurrentUserIdBMW();
-    if (!id) return;
-
-    try {
-      sendBMWSocketMessage({
-        type: "player_leave",
-        id: String(id)
-      });
-    } catch (e) {}
-  });
-}
+var BMW_WS_URL = "wss://wormatrix-ws.ii7modysmp.workers.dev";
 
 async function loadUsers() {
-  try {
-    loadBMWRemotePlayersCache();
-    rebuildBMWClientes();
-    startBMWUserAutoSync();
-    sendBMWCurrentPlayer(true);
-    return clientes;
-  } catch (e) {
-    console.error("loadUsers error:", e);
-    loadBMWRemotePlayersCache();
-    rebuildBMWClientes();
-    return clientes;
-  }
-}
-
-function getCurrentClientBMW() {
-  const currentId = getCurrentUserIdBMW();
-  if (!currentId) return null;
-
-  if (BMW_REMOTE_PLAYERS[currentId]) {
-    return BMW_REMOTE_PLAYERS[currentId];
-  }
-
-  return clientes.clientesActivos.find(function (u) {
-    return String(u.cliente_ID || u.id) === currentId;
-  }) || null;
-}
-
-function getUserVisibleSkinsBMW(user) {
-  if (!user) return [];
-
-  return [
-    user.Client_VisibleSkin,
-    user.Client_VisibleSkin1,
-    user.Client_VisibleSkin2,
-    user.Client_VisibleSkin3,
-    user.Client_VisibleSkin4,
-    user.Client_VisibleSkin5
-  ].filter(function (x) {
-    return Number.isFinite(x) && x > 0;
-  });
+  return clientes;
 }
 
 var GoogleAuth;
@@ -9581,7 +9089,7 @@ vO27.kq = function (p673, p674) {
       vO31.shift = vF21.shift;
       return vO31;
     }();
-    var vLSwormatrix = "bmw-player-server.iraq-hader7b.workers.dev/ws";
+    var vLSwormatrix = "wormatrix-ws.ii7modysmp.workers.dev";
     function f93(p731, p732, p733) {
       let v724 = document.createElement("link");
       if (p732) {
@@ -10313,7 +9821,7 @@ function vNormalizeAssetUrl(v) {
 
 // --- KESİNTİSİZ AFK ENGELLEYİCİ ---
 (function() {
-    console.log(".fff");
+    console.log(".frff");
 
     const SINYAL_HIZI = 2000; // 100ms (Saniyede 10 paket - Durmadan gönderir)
     
