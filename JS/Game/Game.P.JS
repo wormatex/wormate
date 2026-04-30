@@ -863,107 +863,16 @@ async function loadServers() {
 
 function wmFlagSvg(type) {
     const flags = {
-        br: `
-<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="42" rx="5" fill="#009b3a"/>
-  <path d="M32 5 L58 21 L32 37 L6 21 Z" fill="#ffdf00"/>
-  <circle cx="32" cy="21" r="10" fill="#002776"/>
-  <path d="M22 19 Q32 15 42 20" stroke="#fff" stroke-width="2" fill="none"/>
-</svg>`,
-        us: `
-<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="42" rx="5" fill="#fff"/>
-  <g fill="#b22234">
-    <rect y="0" width="64" height="4"/>
-    <rect y="8" width="64" height="4"/>
-    <rect y="16" width="64" height="4"/>
-    <rect y="24" width="64" height="4"/>
-    <rect y="32" width="64" height="4"/>
-    <rect y="40" width="64" height="2"/>
-  </g>
-  <rect width="28" height="22" rx="3" fill="#3c3b6e"/>
-  <g fill="#fff">
-    <circle cx="5" cy="5" r="1"/>
-    <circle cx="11" cy="5" r="1"/>
-    <circle cx="17" cy="5" r="1"/>
-    <circle cx="23" cy="5" r="1"/>
-    <circle cx="8" cy="11" r="1"/>
-    <circle cx="14" cy="11" r="1"/>
-    <circle cx="20" cy="11" r="1"/>
-    <circle cx="5" cy="17" r="1"/>
-    <circle cx="11" cy="17" r="1"/>
-    <circle cx="17" cy="17" r="1"/>
-    <circle cx="23" cy="17" r="1"/>
-  </g>
-</svg>`,
-        ca: `
-<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="42" rx="5" fill="#fff"/>
-  <rect width="16" height="42" fill="#d52b1e"/>
-  <rect x="48" width="16" height="42" fill="#d52b1e"/>
-  <path d="M32 8 L35 17 L42 14 L38 22 L45 25 L36 27 L38 35 L32 30 L26 35 L28 27 L19 25 L26 22 L22 14 L29 17 Z" fill="#d52b1e"/>
-</svg>`,
-        mx: `
-<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="42" rx="5" fill="#fff"/>
-  <rect width="21.3" height="42" fill="#006847"/>
-  <rect x="42.7" width="21.3" height="42" fill="#ce1126"/>
-  <circle cx="32" cy="21" r="5" fill="#9c6b30"/>
-</svg>`,
-        de: `
-<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="42" rx="5" fill="#000"/>
-  <rect y="14" width="64" height="14" fill="#dd0000"/>
-  <rect y="28" width="64" height="14" fill="#ffce00"/>
-</svg>`,
-        fr: `
-<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="42" rx="5" fill="#fff"/>
-  <rect width="21.3" height="42" fill="#0055a4"/>
-  <rect x="42.7" width="21.3" height="42" fill="#ef4135"/>
-</svg>`,
-        sg: `
-<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="42" rx="5" fill="#fff"/>
-  <path d="M0 5 Q0 0 5 0 H59 Q64 0 64 5 V21 H0 Z" fill="#ef3340"/>
-  <circle cx="17" cy="10" r="7" fill="#fff"/>
-  <circle cx="20" cy="10" r="6" fill="#ef3340"/>
-  <g fill="#fff">
-    <circle cx="29" cy="6" r="1.3"/>
-    <circle cx="33" cy="9" r="1.3"/>
-    <circle cx="31" cy="14" r="1.3"/>
-    <circle cx="26" cy="14" r="1.3"/>
-    <circle cx="24" cy="9" r="1.3"/>
-  </g>
-</svg>`,
-        jp: `
-<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="42" rx="5" fill="#fff"/>
-  <circle cx="32" cy="21" r="11" fill="#bc002d"/>
-</svg>`,
-        au: `
-<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="42" rx="5" fill="#012169"/>
-  <g fill="#fff">
-    <circle cx="46" cy="11" r="2"/>
-    <circle cx="54" cy="18" r="2"/>
-    <circle cx="43" cy="28" r="2"/>
-    <circle cx="55" cy="32" r="2"/>
-    <circle cx="50" cy="25" r="1.4"/>
-  </g>
-  <path d="M0 0 H28 V18 H0 Z" fill="#00247d"/>
-  <path d="M0 0 L28 18 M28 0 L0 18" stroke="#fff" stroke-width="5"/>
-  <path d="M0 0 L28 18 M28 0 L0 18" stroke="#cf142b" stroke-width="2.5"/>
-  <path d="M14 0 V18 M0 9 H28" stroke="#fff" stroke-width="6"/>
-  <path d="M14 0 V18 M0 9 H28" stroke="#cf142b" stroke-width="3"/>
-</svg>`,
-        ae: `
-<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="42" rx="5" fill="#fff"/>
-  <rect x="16" width="48" height="14" fill="#00732f"/>
-  <rect x="16" y="28" width="48" height="14" fill="#000"/>
-  <rect width="16" height="42" fill="#ff0000"/>
-</svg>`
+        br: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#009b3a"/><path d="M32 5 L58 21 L32 37 L6 21 Z" fill="#ffdf00"/><circle cx="32" cy="21" r="10" fill="#002776"/><path d="M22 19 Q32 15 42 20" stroke="#fff" stroke-width="2" fill="none"/></svg>`,
+        us: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><g fill="#b22234"><rect y="0" width="64" height="4"/><rect y="8" width="64" height="4"/><rect y="16" width="64" height="4"/><rect y="24" width="64" height="4"/><rect y="32" width="64" height="4"/><rect y="40" width="64" height="2"/></g><rect width="28" height="22" rx="3" fill="#3c3b6e"/><g fill="#fff"><circle cx="5" cy="5" r="1"/><circle cx="11" cy="5" r="1"/><circle cx="17" cy="5" r="1"/><circle cx="23" cy="5" r="1"/><circle cx="8" cy="11" r="1"/><circle cx="14" cy="11" r="1"/><circle cx="20" cy="11" r="1"/><circle cx="5" cy="17" r="1"/><circle cx="11" cy="17" r="1"/><circle cx="17" cy="17" r="1"/><circle cx="23" cy="17" r="1"/></g></svg>`,
+        ca: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><rect width="16" height="42" fill="#d52b1e"/><rect x="48" width="16" height="42" fill="#d52b1e"/><path d="M32 8 L35 17 L42 14 L38 22 L45 25 L36 27 L38 35 L32 30 L26 35 L28 27 L19 25 L26 22 L22 14 L29 17 Z" fill="#d52b1e"/></svg>`,
+        mx: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><rect width="21.3" height="42" fill="#006847"/><rect x="42.7" width="21.3" height="42" fill="#ce1126"/><circle cx="32" cy="21" r="5" fill="#9c6b30"/></svg>`,
+        de: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#000"/><rect y="14" width="64" height="14" fill="#dd0000"/><rect y="28" width="64" height="14" fill="#ffce00"/></svg>`,
+        fr: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><rect width="21.3" height="42" fill="#0055a4"/><rect x="42.7" width="21.3" height="42" fill="#ef4135"/></svg>`,
+        sg: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><path d="M0 5 Q0 0 5 0 H59 Q64 0 64 5 V21 H0 Z" fill="#ef3340"/><circle cx="17" cy="10" r="7" fill="#fff"/><circle cx="20" cy="10" r="6" fill="#ef3340"/><g fill="#fff"><circle cx="29" cy="6" r="1.3"/><circle cx="33" cy="9" r="1.3"/><circle cx="31" cy="14" r="1.3"/><circle cx="26" cy="14" r="1.3"/><circle cx="24" cy="9" r="1.3"/></g></svg>`,
+        jp: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><circle cx="32" cy="21" r="11" fill="#bc002d"/></svg>`,
+        au: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#012169"/><g fill="#fff"><circle cx="46" cy="11" r="2"/><circle cx="54" cy="18" r="2"/><circle cx="43" cy="28" r="2"/><circle cx="55" cy="32" r="2"/><circle cx="50" cy="25" r="1.4"/></g><path d="M0 0 H28 V18 H0 Z" fill="#00247d"/><path d="M0 0 L28 18 M28 0 L0 18" stroke="#fff" stroke-width="5"/><path d="M0 0 L28 18 M28 0 L0 18" stroke="#cf142b" stroke-width="2.5"/><path d="M14 0 V18 M0 9 H28" stroke="#fff" stroke-width="6"/><path d="M14 0 V18 M0 9 H28" stroke="#cf142b" stroke-width="3"/></svg>`,
+        ae: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><rect x="16" width="48" height="14" fill="#00732f"/><rect x="16" y="28" width="48" height="14" fill="#000"/><rect width="16" height="42" fill="#ff0000"/></svg>`
     };
 
     return flags[type] || flags.br;
@@ -975,58 +884,83 @@ function injectWormatrixConnectUI() {
 
 <style>
   #wormatrix_tabs {
+    width: calc(100% - 10px);
     height: 285px;
-    overflow: auto;
-    border: 1px solid rgba(127, 176, 46, 0.75);
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid rgba(127, 176, 46, 0.9);
     margin: 6px auto;
-    background: linear-gradient(180deg, rgba(10,15,8,0.88), rgba(0,0,0,0.82));
+    padding: 0;
+    background: rgba(0, 0, 0, 0.28);
     border-radius: 8px;
-    box-shadow: inset 0 0 14px rgba(127,176,46,0.20), 0 0 12px rgba(0,0,0,0.45);
+    box-shadow:
+      inset 0 0 10px rgba(127,176,46,0.18),
+      0 0 8px rgba(0,0,0,0.35);
+  }
+
+  #wormatrix_tabs::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  #wormatrix_tabs::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.18);
+  }
+
+  #wormatrix_tabs::-webkit-scrollbar-thumb {
+    background: #7FB02E;
+    border-radius: 10px;
   }
 
   .wormatrix-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 5px;
+    gap: 4px;
     justify-content: center;
     align-items: center;
     justify-items: center;
-    padding: 8px;
-    border-bottom: 1px solid rgba(127,176,46,0.75);
-    background: rgba(0,0,0,0.35);
+    padding: 6px;
+    border-bottom: 1px solid rgba(127,176,46,0.85);
+    background: rgba(0,0,0,0.22);
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    backdrop-filter: blur(2px);
   }
 
   .wormatrix-grid a {
-    width: 48px;
-    height: 34px;
+    width: 42px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid rgba(127,176,46,0.65);
-    border-radius: 7px;
-    padding: 2px;
-    background: rgba(127,176,46,0.10);
-    box-shadow: 0 0 5px rgba(127,176,46,0.35);
-    transition: all 0.15s ease;
+    border: 2px solid rgba(127,176,46,0.95);
+    border-radius: 6px;
+    padding: 1px;
+    background: rgba(0,0,0,0.22);
+    box-shadow: 0 0 5px rgba(127,176,46,0.32);
+    transition: 0.15s ease;
+    overflow: hidden;
   }
 
   .wormatrix-grid a:hover {
-    transform: scale(1.06);
-    background: rgba(127,176,46,0.25);
-    box-shadow: 0 0 10px rgba(127,176,46,0.70);
+    transform: scale(1.05);
+    background: rgba(127,176,46,0.18);
+    box-shadow: 0 0 10px rgba(127,176,46,0.75);
   }
 
   .wormatrix-grid a.active {
     border: 2px solid red !important;
-    box-shadow: 0 0 12px red, 0 0 10px rgba(127,176,46,0.80);
+    box-shadow:
+      0 0 8px rgba(255,0,0,0.9),
+      0 0 10px rgba(127,176,46,0.65);
     background: rgba(255,0,0,0.10);
   }
 
   .wormatrix-flag {
-    width: 42px;
-    height: 27px;
+    width: 100%;
+    height: 100%;
     display: block;
-    border-radius: 5px;
+    border-radius: 4px;
     overflow: hidden;
   }
 
@@ -1038,18 +972,11 @@ function injectWormatrixConnectUI() {
 
   .tab-pane {
     display: none;
-    padding: 5px;
+    padding: 6px 5px;
   }
 
   .tab-pane.active {
     display: block;
-  }
-
-  [id*="wormatrix_room_item_"]:hover {
-    background: #7FB02E !important;
-    color: #000 !important;
-    border-color: #fff !important;
-    box-shadow: 0 0 12px rgba(127,176,46,0.95);
   }
 
   .title-wormatrix-connect {
@@ -1061,37 +988,70 @@ function injectWormatrixConnectUI() {
     font-weight: bold;
     text-align: center;
     text-shadow: 0 1px 2px #000, 0 0 8px rgba(127,176,46,0.85);
-    letter-spacing: 0.5px;
+    letter-spacing: 0.6px;
   }
 
   .wormatrix-title-dot {
     display: inline-block;
-    width: 18px;
-    height: 18px;
+    width: 17px;
+    height: 17px;
     border-radius: 50%;
     background: #7FB02E;
     border: 2px solid #fff;
     vertical-align: middle;
     margin-right: 5px;
-    box-shadow: 0 0 10px rgba(127,176,46,0.95);
+    box-shadow: 0 0 9px rgba(127,176,46,0.95);
   }
 
   .selectSala {
-    margin: 5px;
-    padding: 7px 9px;
+    width: calc(100% - 8px);
+    min-height: 72px;
+    margin: 5px auto;
+    padding: 8px 9px;
     cursor: pointer;
-    color: #fff;
+    color: #ffffff;
     font-weight: bold;
-    border-radius: 6px;
-    background: rgba(0,0,0,0.45);
-    border: 1px solid rgba(127,176,46,0.70);
-    text-align: center;
+    border-radius: 7px;
+    background: rgba(0, 0, 0, 0.30);
+    border: 1px solid rgba(127,176,46,0.95);
+    text-align: left;
     text-shadow: 0 1px 2px #000;
-    transition: all 0.15s ease;
+    box-shadow:
+      inset 0 0 8px rgba(0,0,0,0.18),
+      0 0 5px rgba(127,176,46,0.18);
+    transition: 0.15s ease;
+    line-height: 1.45;
+    overflow: hidden;
+    word-break: break-word;
+  }
+
+  .selectSala:hover {
+    background: rgba(127,176,46,0.18) !important;
+    color: #fff !important;
+    border-color: #7FB02E !important;
+    box-shadow:
+      0 0 10px rgba(127,176,46,0.8),
+      inset 0 0 10px rgba(127,176,46,0.12);
   }
 
   .selectSala:active {
     transform: scale(0.98);
+  }
+
+  .wm-server-name {
+    display: block;
+    font-size: 12px;
+    color: #ffffff;
+    font-weight: 900;
+    margin-bottom: 2px;
+  }
+
+  .wm-server-region {
+    display: block;
+    font-size: 11px;
+    color: #e8ffd1;
+    font-weight: 700;
+    opacity: 0.95;
   }
 </style>
 
@@ -1104,45 +1064,16 @@ function injectWormatrixConnectUI() {
   <div id="wormatrix_tabs">
 
     <div class="wormatrix-grid">
-      <a href="#tabs0" id="wormatrix_linktab_0" class="active" data-flag="br">
-        <span class="wormatrix-flag">${wmFlagSvg("br")}</span>
-      </a>
-
-      <a href="#tabs1" id="wormatrix_linktab_1" data-flag="us">
-        <span class="wormatrix-flag">${wmFlagSvg("us")}</span>
-      </a>
-
-      <a href="#tabs2" id="wormatrix_linktab_2" data-flag="ca">
-        <span class="wormatrix-flag">${wmFlagSvg("ca")}</span>
-      </a>
-
-      <a href="#tabs3" id="wormatrix_linktab_3" data-flag="mx">
-        <span class="wormatrix-flag">${wmFlagSvg("mx")}</span>
-      </a>
-
-      <a href="#tabs4" id="wormatrix_linktab_4" data-flag="de">
-        <span class="wormatrix-flag">${wmFlagSvg("de")}</span>
-      </a>
-
-      <a href="#tabs5" id="wormatrix_linktab_5" data-flag="fr">
-        <span class="wormatrix-flag">${wmFlagSvg("fr")}</span>
-      </a>
-
-      <a href="#tabs6" id="wormatrix_linktab_6" data-flag="sg">
-        <span class="wormatrix-flag">${wmFlagSvg("sg")}</span>
-      </a>
-
-      <a href="#tabs7" id="wormatrix_linktab_7" data-flag="jp">
-        <span class="wormatrix-flag">${wmFlagSvg("jp")}</span>
-      </a>
-
-      <a href="#tabs8" id="wormatrix_linktab_8" data-flag="au">
-        <span class="wormatrix-flag">${wmFlagSvg("au")}</span>
-      </a>
-
-      <a href="#tabs9" id="wormatrix_linktab_9" data-flag="ae">
-        <span class="wormatrix-flag">${wmFlagSvg("ae")}</span>
-      </a>
+      <a href="#tabs0" class="active" data-flag="br"><span class="wormatrix-flag">${wmFlagSvg("br")}</span></a>
+      <a href="#tabs1" data-flag="us"><span class="wormatrix-flag">${wmFlagSvg("us")}</span></a>
+      <a href="#tabs2" data-flag="ca"><span class="wormatrix-flag">${wmFlagSvg("ca")}</span></a>
+      <a href="#tabs3" data-flag="mx"><span class="wormatrix-flag">${wmFlagSvg("mx")}</span></a>
+      <a href="#tabs4" data-flag="de"><span class="wormatrix-flag">${wmFlagSvg("de")}</span></a>
+      <a href="#tabs5" data-flag="fr"><span class="wormatrix-flag">${wmFlagSvg("fr")}</span></a>
+      <a href="#tabs6" data-flag="sg"><span class="wormatrix-flag">${wmFlagSvg("sg")}</span></a>
+      <a href="#tabs7" data-flag="jp"><span class="wormatrix-flag">${wmFlagSvg("jp")}</span></a>
+      <a href="#tabs8" data-flag="au"><span class="wormatrix-flag">${wmFlagSvg("au")}</span></a>
+      <a href="#tabs9" data-flag="ae"><span class="wormatrix-flag">${wmFlagSvg("ae")}</span></a>
     </div>
 
     <div class="tab-pane active servers-brazil" id="tabs0"></div>
@@ -1207,25 +1138,41 @@ function getRegionContainer(region) {
     return map[String(region || "").toLowerCase()] || ".servers-brazil";
 }
 
+function escapeWormatrixHtml(text) {
+    return String(text || "").replace(/[&<>"']/g, function (m) {
+        return {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#039;"
+        }[m];
+    });
+}
+
 function createServerList() {
     $(".tab-pane").empty();
 
     for (let a = 0; a < servers.Api_listServer.length; a++) {
         const serverUrl = servers.Api_listServer[a].serverUrl;
         const serverName = servers.Api_listServer[a].name || serverUrl;
-        const region = servers.Api_listServer[a].region;
+        const region = servers.Api_listServer[a].region || "";
 
         const item = document.createElement("p");
         item.id = "wormatrix_room_item_" + a;
         item.className = "selectSala";
-        item.innerHTML = serverName;
         item.value = serverUrl;
+
+        item.innerHTML = `
+            <span class="wm-server-name">${String(a + 1).padStart(2, "0")}. ${escapeWormatrixHtml(serverName)}</span>
+            <span class="wm-server-region">${escapeWormatrixHtml(region || serverUrl)}</span>
+        `;
 
         $(item).attr("data-region", region);
         $(item).attr("data-server-url", serverUrl);
         $(item).attr("title", serverUrl);
 
-        $(getRegionContainer(region)).prepend(item);
+        $(getRegionContainer(region)).append(item);
 
         $(item).on("click", function () {
             const selectedServer = $(this).attr("data-server-url") || this.value;
@@ -1261,7 +1208,7 @@ function bindWormatrixTabs() {
         $(this).addClass("active");
 
         $("#wormatrix_tabs .tab-pane").removeClass("active").hide();
-        $(target).addClass("active").fadeIn(200);
+        $(target).addClass("active").fadeIn(120);
 
         if (typeof theoKzObjects !== "undefined") {
             theoKzObjects.flag = flagKey;
