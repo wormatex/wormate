@@ -190,9 +190,17 @@ Z.setPId = function (p9, p10, p11) {
     localStorage.setItem("wormatrix_selected_skin", String(p9));
   }
 
-  if (typeof this.saveLocal === "function") {
-    this.saveLocal();
-  }
+if (typeof this.saveLocal === "function") {
+  this.saveLocal();
+}
+
+if (window.WormatrixStoreWS) {
+  WormatrixStoreWS.send("change_item", {
+    id: p9,
+    type: p10,
+    propertyIds: this.locals.propertyIds || {}
+  });
+}
 
   (p10 === "SKIN" ? this.zSkin : this.zWear)
     .html("ID: " + ("00" + p9).slice(-3));
@@ -366,7 +374,63 @@ let clientes = {
   todos: []
 };
 
-var BMW_WS_URL = "wss://wormatrix-ws.ii7modysmp.workers.dev";
+var BMW_WS_URL = "wss://wormatrix-ws.ii7modysmp.workers.dev/ws";
+
+var WormatrixStoreWS = {
+  ws: null,
+  ready: false,
+
+  connect: function () {
+    try {
+      if (this.ws && this.ws.readyState <= 1) return;
+
+      this.ws = new WebSocket(BMW_WS_URL);
+
+      this.ws.onopen = function () {
+        WormatrixStoreWS.ready = true;
+        WormatrixStoreWS.send("open_game", {
+          locals: Z.locals,
+          propertyIds: Z.locals.propertyIds || {}
+        });
+      };
+
+      this.ws.onclose = function () {
+        WormatrixStoreWS.ready = false;
+        setTimeout(function () {
+          WormatrixStoreWS.connect();
+        }, 3000);
+      };
+
+      this.ws.onerror = function () {
+        WormatrixStoreWS.ready = false;
+      };
+
+      this.ws.onmessage = function (e) {
+        console.log("Wormatrix WS:", e.data);
+      };
+    } catch (e) {
+      console.error("WS ERROR:", e);
+    }
+  },
+
+  send: function (action, data) {
+    try {
+      if (!this.ws || this.ws.readyState !== WebSocket.OPEN) return;
+
+      this.ws.send(JSON.stringify({
+        type: "save",
+        action: action,
+        time: Date.now(),
+        userId: localStorage.getItem("wormatrix_user_id") || "guest",
+        data: data || {}
+      }));
+    } catch (e) {}
+  }
+};
+
+setTimeout(function () {
+  WormatrixStoreWS.connect();
+}, 1500);
 
 async function loadUsers() {
   return clientes;
