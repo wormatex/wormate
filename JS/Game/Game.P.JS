@@ -233,7 +233,8 @@ var Zzm = 1;
 });
 
 function loadJoy() {
-  if (!isMobile()) return;
+  function loadJoy() {
+  if (!isMobile) return;
 
   Z.locals.joystick = Z.locals.joystick || {
     checked: true,
