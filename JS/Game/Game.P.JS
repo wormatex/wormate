@@ -2,6 +2,7 @@
 
 const zUrl = "https://wormatex.github.io/wormate";
 const xUrl = "https://wormatex.github.io/wormate";
+const WM_ACTIVE_SKINS_URL = zUrl + "/API/activ-skins.json";
 
 var Z = {
   positions: {
@@ -170,6 +171,14 @@ Z.setPId = function (p9, p10, p11) {
 
   if (!Number.isFinite(p9) || p9 < 0) return;
 
+  if (p10 === "SKIN") {
+    if (window.WM_LOCKED_SKINS && window.WM_LOCKED_SKINS[p9] && !wmIsSkinUnlockedForMe(p9)) {
+      console.warn("[Wormatrix] skin locked for this user:", p9);
+      if (this.zSkin) this.zSkin.html("LOCKED ID: " + p9);
+      return;
+    }
+  }
+
   this.locals.propertyIds = this.locals.propertyIds || {};
 
   var keyMap = {
@@ -195,7 +204,7 @@ Z.setPId = function (p9, p10, p11) {
   }
 
   (p10 === "SKIN" ? this.zSkin : this.zWear)
-    .html("ID: " + ("00" + p9).slice(-3));
+    .html("ID: " + ("0000" + p9).slice(-4));
 };
 
 (function restoreWormatrixSelectedSkin() {
@@ -368,8 +377,100 @@ let clientes = {
 
 var BMW_WS_URL = "wss://wormatrix-ws.ii7modysmp.workers.dev";
 
+function wmParseDateDMY(s) {
+  if (!s || typeof s !== "string") return 0;
+  var p = s.split("-");
+  if (p.length !== 3) return 0;
+
+  var d = parseInt(p[0], 10);
+  var m = parseInt(p[1], 10) - 1;
+  var y = parseInt(p[2], 10);
+
+  if (!Number.isFinite(d) || !Number.isFinite(m) || !Number.isFinite(y)) return 0;
+
+  return new Date(y, m, d, 23, 59, 59).getTime();
+}
+
+function wmGetUserIdSafe() {
+  try {
+    if (typeof wmGetUserId === "function") return String(wmGetUserId() || "").trim();
+  } catch (e) {}
+
+  try {
+    if (typeof theoKzObjects !== "undefined" && theoKzObjects.FB_UserID) {
+      return String(theoKzObjects.FB_UserID).trim();
+    }
+  } catch (e) {}
+
+  try {
+    if (typeof wormatrixObjects !== "undefined" && wormatrixObjects.FB_UserID) {
+      return String(wormatrixObjects.FB_UserID).trim();
+    }
+  } catch (e) {}
+
+  try {
+    if (typeof Z !== "undefined" && Z.locals && Z.locals.FB_UserID) {
+      return String(Z.locals.FB_UserID).trim();
+    }
+  } catch (e) {}
+
+  return "";
+}
+
 async function loadUsers() {
-  return clientes;
+  try {
+    var res = await fetch(WM_ACTIVE_SKINS_URL + "?ts=" + Date.now(), {
+      method: "GET",
+      cache: "no-cache"
+    });
+
+    if (!res || !res.ok) throw new Error("activ-skins HTTP " + (res ? res.status : "NO_RESPONSE"));
+
+    var data = await res.json();
+    var myId = wmGetUserIdSafe();
+    var now = Date.now();
+
+    var unlock = [];
+
+    if (data && Array.isArray(data.UsersSkins)) {
+      data.UsersSkins.forEach(function (u) {
+        if (!u) return;
+
+        var uid = String(u.IdUsers || "").trim();
+        var exp = wmParseDateDMY(u.Expire_Date);
+
+        if (uid === myId && exp >= now && Array.isArray(u.IdSkins_Unlock)) {
+          u.IdSkins_Unlock.forEach(function (id) {
+            id = parseInt(id, 10);
+            if (Number.isFinite(id) && id > 0 && unlock.indexOf(id) === -1) {
+              unlock.push(id);
+            }
+          });
+        }
+      });
+    }
+
+    window.WM_UNLOCKED_SKINS = unlock;
+
+    clientes.todos = data && Array.isArray(data.UsersSkins) ? data.UsersSkins : [];
+    clientes.clientesActivos = unlock;
+    clientes.clientesVencidos = [];
+
+    console.log("[Wormatrix] unlocked skins for", myId, unlock);
+
+    return clientes;
+  } catch (e) {
+    console.error("[Wormatrix] activ-skins load error:", e);
+    window.WM_UNLOCKED_SKINS = [];
+    clientes.clientesActivos = [];
+    return clientes;
+  }
+}
+
+function wmIsSkinUnlockedForMe(id) {
+  id = parseInt(id, 10);
+  if (!Number.isFinite(id) || id <= 0) return false;
+  return Array.isArray(window.WM_UNLOCKED_SKINS) && window.WM_UNLOCKED_SKINS.indexOf(id) !== -1;
 }
 
 var GoogleAuth;
@@ -9589,8 +9690,44 @@ var wmRegistryLoading = false;
 var wmRegistryCallbacks = [];
 
 function f102(p761, p762) {
-  var vRegistryUrl = zUrl + "/API/skins.json?ts=" + Date.now();
+var vRegistryUrl = zUrl + "/API/skins.json?ts=" + Date.now();
 
+function wmApplyActiveSkinsDeep(reg) {
+  window.WM_LOCKED_SKINS = window.WM_LOCKED_SKINS || {};
+
+  if (!reg || !Array.isArray(reg.skinArrayDict)) return reg;
+
+  var unlocked = Array.isArray(window.WM_UNLOCKED_SKINS) ? window.WM_UNLOCKED_SKINS : [];
+
+  reg.skinArrayDict.forEach(function (skin) {
+    if (!skin) return;
+
+    var id = parseInt(skin.id, 10);
+    if (!Number.isFinite(id) || id <= 0) return;
+
+    if (skin.nonbuyable === true) {
+      window.WM_LOCKED_SKINS[id] = true;
+    }
+
+    if (unlocked.indexOf(id) !== -1) {
+      skin.guest = true;
+      skin.nonbuyable = false;
+      skin.price = 0;
+      skin.priceBefore = 0;
+      delete skin.nonbuyableCause;
+    }
+  });
+
+  reg.visibleSkin = Array.isArray(reg.visibleSkin) ? reg.visibleSkin : [];
+
+  unlocked.forEach(function (id) {
+    if (reg.visibleSkin.indexOf(id) === -1) {
+      reg.visibleSkin.push(id);
+    }
+  });
+
+  return reg;
+}
   function vSafeKe() {
     try {
       if (p762 && typeof p762.ke === "function") {
@@ -9771,16 +9908,23 @@ function vNormalizeAssetUrl(v) {
     vApplyRegistry(vData || {});
   });
 
+Promise.all([
   fetch(vRegistryUrl, {
     method: "GET",
     cache: "no-cache"
   }).then(function (p763) {
     if (!p763 || !p763.ok) {
-      throw new Error("HTTP error: " + (p763 ? p763.status : "unknown"));
+      throw new Error("skins HTTP error: " + (p763 ? p763.status : "unknown"));
     }
     return p763.json();
-  }).then(function (p763) {
-    wmRegistryCache = p763 && typeof p763 === "object" ? p763 : {};
+  }),
+
+  loadUsers()
+]).then(function (arr) {
+  var p763 = arr[0];
+
+  wmRegistryCache = p763 && typeof p763 === "object" ? p763 : {};
+  wmApplyActiveSkinsDeep(wmRegistryCache);
     wmRegistryLoading = false;
 
     var vCallbacks = wmRegistryCallbacks.slice();

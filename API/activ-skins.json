@@ -1,0 +1,14 @@
+{
+  "UsersSkins": [
+    {
+      "IdUsers": "gg_123456",
+      "IdSkins_Unlock": [131, 250, 7971],
+      "Expire_Date": "30-12-2026"
+    },
+    {
+      "IdUsers": "gg_789101",
+      "IdSkins_Unlock": [500, 777],
+      "Expire_Date": "15-05-2026"
+    }
+  ]
+}
