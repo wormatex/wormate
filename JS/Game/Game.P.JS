@@ -2,6 +2,7 @@
 
 const zUrl = "https://wormatex.github.io/wormate";
 const xUrl = "https://wormatex.github.io/wormate";
+const vWormatrix = "https://skin-matrix.ii7modysmp.workers.dev"
 
 var Z = {
   positions: {
@@ -9589,7 +9590,7 @@ var wmRegistryLoading = false;
 var wmRegistryCallbacks = [];
 
 function f102(p761, p762) {
-  var vRegistryUrl = zUrl + "/API/skins.json?ts=" + Date.now();
+  var vRegistryUrl = vWormatrix + "/registry" + Date.now();
 
   function vSafeKe() {
     try {
@@ -10262,7 +10263,7 @@ function vNormalizeAssetUrl(v) {
         } catch (e) {}
 
         var low = String(url).toLowerCase();
-        var hit = low.indexOf("/api/skins.json") !== -1 || low.indexOf("/dynamic/assets/registry.json") !== -1;
+        var hit = low.indexOf("/registry") !== -1 || low.indexOf("/dynamic/assets/registry.json") !== -1;
 
         if (!hit || !response || typeof response.clone !== "function") {
           return response;
