@@ -7711,16 +7711,11 @@ var v142 = vIsFullUrl ? vPath : (vBase + vPath);
 this.Yo.om(v568.jn(v570));
 this.Yo.Km(false);
 
+this.Yo.om(v568.jn(v570));
+this.Yo.Km(false);
+
 if (p637) {
   vO3.L.ao.Vj(v570, vO2.Jj.Ij);
-
-  try {
-    if (window.Z && typeof Z.setPId === "function") {
-      Z.localsLoded = true;
-      Z.setPId(v570, "SKIN", true);
-      Z.saveLocal();
-    }
-  } catch (e) {}
 }
 };
 var vF14 = function () {
