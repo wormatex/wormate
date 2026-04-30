@@ -9590,7 +9590,7 @@ var wmRegistryLoading = false;
 var wmRegistryCallbacks = [];
 
 function f102(p761, p762) {
-  var vRegistryUrl = vWormatrix + "/registry" + Date.now();
+  var vRegistryUrl = "https://skin-matrix.ii7modysmp.workers.dev/registry?t=" + Date.now();
 
   function vSafeKe() {
     try {
@@ -9610,7 +9610,12 @@ function f102(p761, p762) {
 
   function vGetAssetProxy() {
     try {
-      if (typeof wormatrixObjects !== "undefined" && wormatrixObjects && typeof wormatrixObjects.assetProxyUrl === "string" && wormatrixObjects.assetProxyUrl.trim()) {
+      if (
+        typeof wormatrixObjects !== "undefined" &&
+        wormatrixObjects &&
+        typeof wormatrixObjects.assetProxyUrl === "string" &&
+        wormatrixObjects.assetProxyUrl.trim()
+      ) {
         return wormatrixObjects.assetProxyUrl.trim();
       }
     } catch (e) {}
@@ -9629,37 +9634,37 @@ function f102(p761, p762) {
     return /^(data:|blob:)/i.test(v);
   }
 
-function vNormalizeAssetUrl(v) {
-  if (typeof v !== "string") {
-    return v;
-  }
-
-  v = v.trim();
-
-  if (!v) {
-    return v;
-  }
-
-  if (vIsDataOrBlob(v)) {
-    return v;
-  }
-
-  if (vIsProtocolRelative(v)) {
-    return location.protocol + v;
-  }
-
-  if (vIsAbsoluteUrl(v)) {
-    var vProxy = vGetAssetProxy();
-
-    if (vProxy) {
-      return vProxy + encodeURIComponent(v);
+  function vNormalizeAssetUrl(v) {
+    if (typeof v !== "string") {
+      return v;
     }
 
-    return "";
-  }
+    v = v.trim();
 
-  return v;
-}
+    if (!v) {
+      return v;
+    }
+
+    if (vIsDataOrBlob(v)) {
+      return v;
+    }
+
+    if (vIsProtocolRelative(v)) {
+      return location.protocol + v;
+    }
+
+    if (vIsAbsoluteUrl(v)) {
+      var vProxy = vGetAssetProxy();
+
+      if (vProxy) {
+        return vProxy + encodeURIComponent(v);
+      }
+
+      return v;
+    }
+
+    return v;
+  }
 
   function vNormalizeObjectAssets(vObj) {
     if (!vObj || typeof vObj !== "object") {
@@ -9676,7 +9681,8 @@ function vNormalizeAssetUrl(v) {
       avatar: 1,
       thumb: 1,
       thumbnail: 1,
-      background: 1
+      background: 1,
+      relativePath: 1
     };
 
     if (Array.isArray(vObj)) {
@@ -9741,11 +9747,19 @@ function vNormalizeAssetUrl(v) {
         }
       }
 
-      if (Array.isArray(p763.propertyList) && typeof wormatrixObjects !== "undefined" && wormatrixObjects) {
+      if (
+        Array.isArray(p763.propertyList) &&
+        typeof wormatrixObjects !== "undefined" &&
+        wormatrixObjects
+      ) {
         wormatrixObjects.pL = p763.propertyList;
       }
 
-      if (Array.isArray(p763.skinArrayDict) && typeof wormatrixObjects !== "undefined" && wormatrixObjects) {
+      if (
+        Array.isArray(p763.skinArrayDict) &&
+        typeof wormatrixObjects !== "undefined" &&
+        wormatrixObjects
+      ) {
         wormatrixObjects.idSkin = p763.skinArrayDict;
       }
     } catch (e) {
@@ -9768,6 +9782,7 @@ function vNormalizeAssetUrl(v) {
   }
 
   wmRegistryLoading = true;
+
   wmRegistryCallbacks.push(function (vData) {
     vApplyRegistry(vData || {});
   });
@@ -9775,39 +9790,42 @@ function vNormalizeAssetUrl(v) {
   fetch(vRegistryUrl, {
     method: "GET",
     cache: "no-cache"
-  }).then(function (p763) {
-    if (!p763 || !p763.ok) {
-      throw new Error("HTTP error: " + (p763 ? p763.status : "unknown"));
-    }
-    return p763.json();
-  }).then(function (p763) {
-    wmRegistryCache = p763 && typeof p763 === "object" ? p763 : {};
-    wmRegistryLoading = false;
-
-    var vCallbacks = wmRegistryCallbacks.slice();
-    wmRegistryCallbacks = [];
-
-    for (var i = 0; i < vCallbacks.length; i++) {
-      try {
-        vCallbacks[i](wmRegistryCache);
-      } catch (e) {
-        console.error("registry callback error:", e);
+  })
+    .then(function (p763) {
+      if (!p763 || !p763.ok) {
+        throw new Error("HTTP error: " + (p763 ? p763.status : "unknown"));
       }
-    }
-  }).catch(function (e) {
-    console.error("registry merge error:", e);
+      return p763.json();
+    })
+    .then(function (p763) {
+      wmRegistryCache = p763 && typeof p763 === "object" ? p763 : {};
+      wmRegistryLoading = false;
 
-    wmRegistryCache = {};
-    wmRegistryLoading = false;
+      var vCallbacks = wmRegistryCallbacks.slice();
+      wmRegistryCallbacks = [];
 
-    var vCallbacks = wmRegistryCallbacks.slice();
-    wmRegistryCallbacks = [];
+      for (var i = 0; i < vCallbacks.length; i++) {
+        try {
+          vCallbacks[i](wmRegistryCache);
+        } catch (e) {
+          console.error("registry callback error:", e);
+        }
+      }
+    })
+    .catch(function (e) {
+      console.error("registry merge error:", e);
 
-    for (var i = 0; i < vCallbacks.length; i++) {
-      try {
-        vCallbacks[i](wmRegistryCache);
-      } catch (e2) {
-        console.error("registry fallback callback error:", e2);
+      wmRegistryCache = {};
+      wmRegistryLoading = false;
+
+      var vCallbacks = wmRegistryCallbacks.slice();
+      wmRegistryCallbacks = [];
+
+      for (var i = 0; i < vCallbacks.length; i++) {
+        try {
+          vCallbacks[i](wmRegistryCache);
+        } catch (e2) {
+          console.error("registry fallback callback error:", e2);
       }
     }
   });
