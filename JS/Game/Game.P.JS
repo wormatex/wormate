@@ -897,6 +897,45 @@ function injectWormatrixConnectUI() {
     box-shadow: inset 0 0 10px rgba(127,176,46,.22);
   }
 
+  .wormatrix-header-box {
+    width: 92%;
+    margin: 6px auto 10px auto;
+    padding: 8px 0;
+
+    background: rgba(255,255,255,0.92); 
+    border-radius: 10px;
+
+    border: 2px solid rgba(255,255,255,0.85);
+    box-shadow:
+        0 0 8px rgba(255,255,255,0.6),
+        inset 0 0 6px rgba(255,255,255,0.5);
+
+    text-align: center;
+    position: relative;
+}
+
+.title-wormatrix-connect {
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 1px 1px rgba(255,255,255,0.8);
+
+    position: relative;
+    z-index: 2;
+}
+
+.wormatrix-header-box::after {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.08);
+    pointer-events: none;
+}
+
   .wormatrix-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -1007,7 +1046,12 @@ function injectWormatrixConnectUI() {
 </style>
 
 <div id="load_page_apoiador">
-  <div class="title-wormatrix-connect">wormatrix</div>
+
+  <div class="wormatrix-header-box">
+    <div class="title-wormatrix-connect">Worm Matrix</div>
+  </div>
+
+</div>
 
   <div id="wormatrix_tabs">
     <div class="wormatrix-grid">
