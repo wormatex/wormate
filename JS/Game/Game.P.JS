@@ -843,13 +843,25 @@ var GoogleAuth;
 };
 
 
+
 async function loadServers() {
     try {
         const response = await fetch("https://wormatex.github.io/wormate/API/load-sr.json");
         const data = await response.json();
 
         if (data && data.success) {
-            servers.Api_listServer = (data.servers || []).filter(s => s.serverUrl);
+            servers.Api_listServer = (data.servers || [])
+                .map(s => ({
+                    id: s.id,
+                    name: s.name || "UNKNOWN SERVER",
+                    connection: s.connection || s.serverUrl || "",
+                    room: s.room || "",
+                    category: s.category || s.region || "br",
+                    image: s.image || "https://asserts.wormworld.io/rooms/favicon128x128.png",
+                    socialLink: s.socialLink || ""
+                }))
+                .filter(s => s.connection);
+
             createServerList();
         } else {
             servers.Api_listServer = [];
@@ -865,14 +877,14 @@ async function loadServers() {
 function wmFlagSvg(type) {
     const flags = {
         br: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#009b3a"/><path d="M32 5 L58 21 L32 37 L6 21 Z" fill="#ffdf00"/><circle cx="32" cy="21" r="10" fill="#002776"/><path d="M22 19 Q32 15 42 20" stroke="#fff" stroke-width="2" fill="none"/></svg>`,
-        us: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><g fill="#b22234"><rect y="0" width="64" height="4"/><rect y="8" width="64" height="4"/><rect y="16" width="64" height="4"/><rect y="24" width="64" height="4"/><rect y="32" width="64" height="4"/><rect y="40" width="64" height="2"/></g><rect width="28" height="22" rx="3" fill="#3c3b6e"/><g fill="#fff"><circle cx="5" cy="5" r="1"/><circle cx="11" cy="5" r="1"/><circle cx="17" cy="5" r="1"/><circle cx="23" cy="5" r="1"/><circle cx="8" cy="11" r="1"/><circle cx="14" cy="11" r="1"/><circle cx="20" cy="11" r="1"/><circle cx="5" cy="17" r="1"/><circle cx="11" cy="17" r="1"/><circle cx="17" cy="17" r="1"/><circle cx="23" cy="17" r="1"/></g></svg>`,
+        us: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><g fill="#b22234"><rect y="0" width="64" height="4"/><rect y="8" width="64" height="4"/><rect y="16" width="64" height="4"/><rect y="24" width="64" height="4"/><rect y="32" width="64" height="4"/><rect y="40" width="64" height="2"/></g><rect width="28" height="22" rx="3" fill="#3c3b6e"/></svg>`,
         ca: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><rect width="16" height="42" fill="#d52b1e"/><rect x="48" width="16" height="42" fill="#d52b1e"/><path d="M32 8 L35 17 L42 14 L38 22 L45 25 L36 27 L38 35 L32 30 L26 35 L28 27 L19 25 L26 22 L22 14 L29 17 Z" fill="#d52b1e"/></svg>`,
         mx: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><rect width="21.3" height="42" fill="#006847"/><rect x="42.7" width="21.3" height="42" fill="#ce1126"/><circle cx="32" cy="21" r="5" fill="#9c6b30"/></svg>`,
         de: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#000"/><rect y="14" width="64" height="14" fill="#dd0000"/><rect y="28" width="64" height="14" fill="#ffce00"/></svg>`,
         fr: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><rect width="21.3" height="42" fill="#0055a4"/><rect x="42.7" width="21.3" height="42" fill="#ef4135"/></svg>`,
-        sg: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><path d="M0 5 Q0 0 5 0 H59 Q64 0 64 5 V21 H0 Z" fill="#ef3340"/><circle cx="17" cy="10" r="7" fill="#fff"/><circle cx="20" cy="10" r="6" fill="#ef3340"/></svg>`,
+        sg: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><path d="M0 5 Q0 0 5 0 H59 Q64 0 64 5 V21 H0 Z" fill="#ef3340"/></svg>`,
         jp: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><circle cx="32" cy="21" r="11" fill="#bc002d"/></svg>`,
-        au: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#012169"/><g fill="#fff"><circle cx="46" cy="11" r="2"/><circle cx="54" cy="18" r="2"/><circle cx="43" cy="28" r="2"/><circle cx="55" cy="32" r="2"/></g><path d="M0 0 H28 V18 H0 Z" fill="#00247d"/><path d="M0 0 L28 18 M28 0 L0 18" stroke="#fff" stroke-width="5"/><path d="M0 0 L28 18 M28 0 L0 18" stroke="#cf142b" stroke-width="2.5"/><path d="M14 0 V18 M0 9 H28" stroke="#fff" stroke-width="6"/><path d="M14 0 V18 M0 9 H28" stroke="#cf142b" stroke-width="3"/></svg>`,
+        au: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#012169"/><g fill="#fff"><circle cx="46" cy="11" r="2"/><circle cx="54" cy="18" r="2"/><circle cx="43" cy="28" r="2"/><circle cx="55" cy="32" r="2"/></g></svg>`,
         ae: `<svg viewBox="0 0 64 42" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="42" rx="5" fill="#fff"/><rect x="16" width="48" height="14" fill="#00732f"/><rect x="16" y="28" width="48" height="14" fill="#000"/><rect width="16" height="42" fill="#ff0000"/></svg>`
     };
     return flags[type] || flags.br;
@@ -890,10 +902,9 @@ function injectWormatrixConnectUI() {
     border: 1px solid rgba(127,176,46,.85);
     margin: 6px auto;
     padding: 4px;
-    background: rgba(0,0,0,.28);
+    background: rgba(0,0,0,.24);
     border-radius: 8px;
     box-sizing: border-box;
-    box-shadow: inset 0 0 10px rgba(127,176,46,.22);
   }
 
   .wormatrix-grid {
@@ -902,14 +913,12 @@ function injectWormatrixConnectUI() {
     gap: 5px;
     padding: 5px;
     margin-bottom: 6px;
+    background: rgba(0,0,0,.18);
     border-bottom: 1px solid rgba(127,176,46,.65);
-    background: rgba(0,0,0,.22);
     border-radius: 7px;
-    box-sizing: border-box;
   }
 
   .wormatrix-grid a {
-    width: 100%;
     height: 32px;
     display: flex;
     align-items: center;
@@ -919,7 +928,6 @@ function injectWormatrixConnectUI() {
     padding: 2px;
     background: rgba(127,176,46,.12);
     box-sizing: border-box;
-    overflow: hidden;
   }
 
   .wormatrix-grid a.active {
@@ -929,8 +937,7 @@ function injectWormatrixConnectUI() {
   }
 
   .wormatrix-flag {
-    width: 100%;
-    max-width: 42px;
+    width: 42px;
     height: 25px;
     display: block;
     border-radius: 5px;
@@ -954,34 +961,47 @@ function injectWormatrixConnectUI() {
 
   .selectSala {
     width: calc(100% - 4px);
-    min-height: 76px;
+    min-height: 82px;
     margin: 4px 2px 7px;
     padding: 8px 9px;
     cursor: pointer;
     color: #fff;
     font-weight: bold;
     border-radius: 7px;
-    background: rgba(0,0,0,.24);
+    background: rgba(0,0,0,.20);
     border: 1px solid rgba(127,176,46,.85);
     text-align: left;
     text-shadow: 0 1px 2px #000;
     box-sizing: border-box;
     overflow: hidden;
-    line-height: 1.45;
+    line-height: 1.35;
   }
 
   .selectSala:hover {
-    background: rgba(127,176,46,.35) !important;
-    color: #fff !important;
+    background: rgba(127,176,46,.32) !important;
     border-color: red !important;
   }
 
-  .selectSala img {
-    max-width: 34px !important;
-    max-height: 34px !important;
+  .wm-server-name {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 900;
+  }
+
+  .wm-server-room {
+    color: #fff;
+    font-size: 11px;
+    margin-top: 3px;
+    font-weight: 700;
+  }
+
+  .wm-server-img {
+    width: 34px;
+    height: 34px;
     border-radius: 7px;
     display: block;
-    margin-top: 4px;
+    margin-top: 5px;
+    object-fit: cover;
   }
 
   .title-wormatrix-connect {
@@ -993,15 +1013,6 @@ function injectWormatrixConnectUI() {
     font-weight: bold;
     text-align: center;
     text-shadow: 0 1px 2px #000, 0 0 8px rgba(127,176,46,.85);
-    letter-spacing: .5px;
-  }
-
-  @media (max-width: 380px) {
-    #wormatrix_tabs { height: 285px; padding: 3px; }
-    .wormatrix-grid { gap: 4px; padding: 4px; }
-    .wormatrix-grid a { height: 30px; }
-    .wormatrix-flag { max-width: 38px; height: 23px; }
-    .selectSala { min-height: 72px; font-size: 11px; }
   }
 </style>
 
@@ -1022,15 +1033,15 @@ function injectWormatrixConnectUI() {
       <a href="#tabs9" data-flag="ae"><span class="wormatrix-flag">${wmFlagSvg("ae")}</span></a>
     </div>
 
-    <div class="tab-pane active servers-brazil" id="tabs0"></div>
-    <div class="tab-pane servers-eeuu" id="tabs1"></div>
-    <div class="tab-pane servers-canada" id="tabs2"></div>
-    <div class="tab-pane servers-mexico" id="tabs3"></div>
-    <div class="tab-pane servers-germany" id="tabs4"></div>
-    <div class="tab-pane servers-france" id="tabs5"></div>
-    <div class="tab-pane servers-singapore" id="tabs6"></div>
-    <div class="tab-pane servers-japan" id="tabs7"></div>
-    <div class="tab-pane servers-australia" id="tabs8"></div>
+    <div class="tab-pane active servers-br" id="tabs0"></div>
+    <div class="tab-pane servers-us" id="tabs1"></div>
+    <div class="tab-pane servers-ca" id="tabs2"></div>
+    <div class="tab-pane servers-mx" id="tabs3"></div>
+    <div class="tab-pane servers-de" id="tabs4"></div>
+    <div class="tab-pane servers-fr" id="tabs5"></div>
+    <div class="tab-pane servers-sg" id="tabs6"></div>
+    <div class="tab-pane servers-jp" id="tabs7"></div>
+    <div class="tab-pane servers-au" id="tabs8"></div>
     <div class="tab-pane servers-ae" id="tabs9"></div>
   </div>
 </div>
@@ -1038,44 +1049,48 @@ function injectWormatrixConnectUI() {
 `);
 }
 
-function getRegionContainer(region) {
+function getRegionContainer(category) {
     const map = {
-        peru: ".servers-brazil", br: ".servers-brazil", brazil: ".servers-brazil",
-        eeuu: ".servers-eeuu", usa: ".servers-eeuu", us: ".servers-eeuu",
-        canada: ".servers-canada", ca: ".servers-canada",
-        mexico: ".servers-mexico", mx: ".servers-mexico",
-        germania: ".servers-germany", germany: ".servers-germany", de: ".servers-germany",
-        francia: ".servers-france", france: ".servers-france", fr: ".servers-france",
-        singapur: ".servers-singapore", singapore: ".servers-singapore", sg: ".servers-singapore",
-        japon: ".servers-japan", japan: ".servers-japan", jp: ".servers-japan",
-        australia: ".servers-australia", au: ".servers-australia",
-        granbretana: ".servers-ae", uk: ".servers-ae", gb: ".servers-ae", ae: ".servers-ae"
+        br: ".servers-br", brazil: ".servers-br", peru: ".servers-br",
+        us: ".servers-us", usa: ".servers-us", eeuu: ".servers-us",
+        ca: ".servers-ca", canada: ".servers-ca",
+        mx: ".servers-mx", mexico: ".servers-mx",
+        de: ".servers-de", germania: ".servers-de", germany: ".servers-de",
+        fr: ".servers-fr", francia: ".servers-fr", france: ".servers-fr",
+        sg: ".servers-sg", singapur: ".servers-sg", singapore: ".servers-sg",
+        jp: ".servers-jp", japon: ".servers-jp", japan: ".servers-jp",
+        au: ".servers-au", australia: ".servers-au",
+        ae: ".servers-ae", uk: ".servers-ae", gb: ".servers-ae", granbretana: ".servers-ae"
     };
-    return map[String(region || "").toLowerCase()] || ".servers-brazil";
+
+    return map[String(category || "").toLowerCase()] || ".servers-br";
 }
 
 function createServerList() {
     $(".tab-pane").empty();
 
     for (let a = 0; a < servers.Api_listServer.length; a++) {
-        const serverUrl = servers.Api_listServer[a].serverUrl;
-        const serverName = servers.Api_listServer[a].name || serverUrl;
-        const region = servers.Api_listServer[a].region;
+        const s = servers.Api_listServer[a];
 
-        const item = document.createElement("p");
-        item.id = "wormatrix_room_item_" + a;
+        const item = document.createElement("div");
+        item.id = "wormatrix_room_item_" + (s.id || a);
         item.className = "selectSala";
-        item.innerHTML = serverName;
-        item.value = serverUrl;
+        item.value = s.connection;
 
-        $(item).attr("data-region", region);
-        $(item).attr("data-server-url", serverUrl);
-        $(item).attr("title", serverUrl);
+        item.innerHTML = `
+          <div class="wm-server-name">${String(a + 1).padStart(2, "0")}. ${s.name}</div>
+          <div class="wm-server-room">${s.room || s.category || ""}</div>
+          <img class="wm-server-img" src="${s.image}" onerror="this.style.display='none'">
+        `;
 
-        $(getRegionContainer(region)).prepend(item);
+        $(item).attr("data-category", s.category);
+        $(item).attr("data-server-url", s.connection);
+        $(item).attr("title", s.connection);
+
+        $(getRegionContainer(s.category)).prepend(item);
 
         $(item).on("click", function () {
-            const selectedServer = $(this).attr("data-server-url") || this.value;
+            const selectedServer = $(this).attr("data-server-url");
 
             if (window._x7 && typeof window._x7.setServer === "function") {
                 window._x7.setServer(selectedServer);
@@ -1108,11 +1123,6 @@ function bindWormatrixTabs() {
         $(target).addClass("active").fadeIn(160);
 
         if (typeof theoKzObjects !== "undefined") theoKzObjects.flag = flagKey;
-
-        if (window._x7 && window._x7.containerImgS && window._x7.onclickServer) {
-            window._x7.containerImgS.texture = window._x7.onclickServer;
-        }
-
         if (typeof retundFlagError === "function") retundFlagError();
     });
 }
