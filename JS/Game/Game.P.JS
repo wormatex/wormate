@@ -7760,12 +7760,14 @@ var v142 = vIsFullUrl ? vPath : (vBase + vPath);
           }
         }
       };
-  v549.prototype.bp = function (p637) {
+v549.prototype.bp = function (p637) {
   var v568 = vO3.L.ao.Oj();
   var v569 = this.hp();
 
   if (v569.kj()) {
-    var v570 = v569.tc();
+    var v570 = parseInt(v569.tc(), 10);
+    if (!Number.isFinite(v570) || v570 <= 0) return;
+
     var v571 = vO3.L.ao.Wj(v570, vO2.Jj.Ij);
 
     if (v571 != null) {
@@ -7775,8 +7777,6 @@ var v142 = vIsFullUrl ? vPath : (vBase + vPath);
         v571.Pm = 0;
       } catch (e) {}
     }
-
-    var v572 = false;
 
     if (vO3.L.ao.Sj(v570, vO2.Jj.Ij)) {
       v$84.hide();
@@ -7796,34 +7796,32 @@ var v142 = vIsFullUrl ? vPath : (vBase + vPath);
       }
     }
 
-           this.Yo.om(v568.jn(v570));
-          this.Yo.Km(false);
+    this.Yo.om(v568.jn(v570));
+    this.Yo.Km(false);
 
-          if (p637) {
-            try {
-              vO3.L.ao.Vj(v570, vO2.Jj.Ij);
-            } catch (e) {}
+    try {
+      vO3.L.ao.Vj(v570, vO2.Jj.Ij);
+    } catch (e) {}
 
-            try {
-              if (window.Z) {
-                v570 = parseInt(v570, 10);
+    try {
+      if (window.Z) {
+        Z.localsLoded = true;
+        Z.locals.propertyIds = Z.locals.propertyIds || {};
+        Z.locals.propertyIds.skinId = v570;
 
-                Z.localsLoded = true;
-                Z.locals.propertyIds = Z.locals.propertyIds || {};
-                Z.locals.propertyIds.skinId = v570;
+        localStorage.setItem("wormatrix_selected_skin", String(v570));
 
-                if (typeof Z.setPId === "function") {
-                  Z.setPId(v570, "SKIN", true);
-                }
-
-                if (typeof Z.saveLocal === "function") {
-                  Z.saveLocal();
-                }
-              }
-            } catch (e) {}
-          }
+        if (typeof Z.setPId === "function") {
+          Z.setPId(v570, "SKIN", true);
         }
-      };
+
+        if (typeof Z.saveLocal === "function") {
+          Z.saveLocal();
+        }
+      }
+    } catch (e) {}
+  }
+};
 var vF14 = function () {
   function _0x9f75x6(p638, f85) {
     this.kp = p638;
