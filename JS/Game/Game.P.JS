@@ -235,6 +235,14 @@ var Zzm = 1;
 function loadJoy() {
   if (!isMobile) return;
 
+  var gameView = document.getElementById("game-view");
+  var gameWrap = document.getElementById("game-wrap");
+
+  if (!gameView || !gameWrap || gameView.style.display === "none") {
+    removeJoy();
+    return;
+  }
+
   Z.locals.joystick = Z.locals.joystick || {
     checked: true,
     color: "red",
@@ -255,7 +263,7 @@ function loadJoy() {
   }
 
   joystick = nipplejs.create({
-    zone: document.getElementById("game-wrap") || document.body,
+    zone: gameWrap,
     multitouch: false,
     maxNumberOfNipples: 1,
     color: "red",
@@ -10348,3 +10356,13 @@ function vNormalizeAssetUrl(v) {
 setTimeout(function () {
   setJoystickConig();
 }, 2000);
+
+setInterval(function () {
+  var gameView = document.getElementById("game-view");
+
+  if (gameView && gameView.style.display !== "none") {
+    if (!joystick) loadJoy();
+  } else {
+    removeJoy();
+  }
+}, 500);
