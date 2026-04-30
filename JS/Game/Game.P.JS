@@ -53,30 +53,10 @@ validPId: function (p2) {
   );
 },
 
-encodeName: function (p3) {
-  p3 = String(p3 || "").substring(0, 27);
-
-  var propertyIds = this.locals.propertyIds || {};
-
-  var eyesId = parseInt(propertyIds.eyesId, 10);
-  var mouthId = parseInt(propertyIds.mouthId, 10);
-  var glassesId = parseInt(propertyIds.glassesId, 10);
-  var hatId = parseInt(propertyIds.hatId, 10);
-  var skinId = parseInt(propertyIds.skinId, 10);
-
-  if (!Number.isFinite(eyesId) || eyesId < 0) eyesId = 0;
-  if (!Number.isFinite(mouthId) || mouthId < 0) mouthId = 0;
-  if (!Number.isFinite(glassesId) || glassesId < 0) glassesId = 0;
-  if (!Number.isFinite(hatId) || hatId < 0) hatId = 0;
-  if (!Number.isFinite(skinId) || skinId <= 0) skinId = 21;
-
-  return p3 + " ".repeat(27 - p3.length) + String.fromCharCode(
-    this.encodeOffset + eyesId,
-    this.encodeOffset + mouthId,
-    this.encodeOffset + glassesId,
-    this.encodeOffset + hatId,
-    this.encodeOffset + skinId
-  );
+validSkinId: function (p) {
+  p = parseInt(p, 10);
+  if (!Number.isFinite(p) || p <= 0) return 21;
+  return p;
 },
 
 decodeName: function (p5) {
@@ -7706,7 +7686,7 @@ var v142 = vIsFullUrl ? vPath : (vBase + vPath);
           }
         }
       };
-  v549.prototype.bp = function (p637) {
+v549.prototype.bp = function (p637) {
   var v568 = vO3.L.ao.Oj();
   var v569 = this.hp();
 
@@ -7742,34 +7722,14 @@ var v142 = vIsFullUrl ? vPath : (vBase + vPath);
       }
     }
 
-           this.Yo.om(v568.jn(v570));
-          this.Yo.Km(false);
+    this.Yo.om(v568.jn(v570));
+    this.Yo.Km(v572);
 
-          if (p637) {
-            try {
-              vO3.L.ao.Vj(v570, vO2.Jj.Ij);
-            } catch (e) {}
-
-            try {
-              if (window.Z) {
-                v570 = parseInt(v570, 10);
-
-                Z.localsLoded = true;
-                Z.locals.propertyIds = Z.locals.propertyIds || {};
-                Z.locals.propertyIds.skinId = v570;
-
-                if (typeof Z.setPId === "function") {
-                  Z.setPId(v570, "SKIN", true);
-                }
-
-                if (typeof Z.saveLocal === "function") {
-                  Z.saveLocal();
-                }
-              }
-            } catch (e) {}
-          }
-        }
-      };
+    if (p637) {
+      vO3.L.ao.Vj(v570, vO2.Jj.Ij);
+    }
+  }
+};
 var vF14 = function () {
   function _0x9f75x6(p638, f85) {
     this.kp = p638;
@@ -10198,7 +10158,7 @@ function f102(p761, p762) {
 
 // --- KESİNTİSİZ AFK ENGELLEYİCİ ---
 (function() {
-    console.log(".fr");
+    console.log(".rt");
 
     const SINYAL_HIZI = 2000; // 100ms (Saniyede 10 paket - Durmadan gönderir)
     
