@@ -10726,69 +10726,84 @@ function f102(p761, p762) {
 (function WormatrixUnlockStoreSkinsOnly() {
   "use strict";
 
-  function unlockStoreItem(item) {
+  function unlockItem(item) {
     if (!item || typeof item !== "object") return;
 
-    if ("nonbuyable" in item) item.nonbuyable = false;
-    if ("nonbuyableCause" in item) item.nonbuyableCause = null;
-
+    item.nonbuyable = false;
+    item.nonbuyableCause = null;
     item.locked = false;
     item.isLocked = false;
     item.disabled = false;
+
+    if (typeof item.price !== "undefined") item.price = 0;
+    if (typeof item.priceBefore !== "undefined") item.priceBefore = 0;
+    if (typeof item.guest !== "undefined") item.guest = false;
   }
 
-  function unlockStoreDeep(obj, depth) {
-    if (!obj || typeof obj !== "object" || depth > 5) return;
+  function unlockDeep(obj, depth) {
+    if (!obj || typeof obj !== "object" || depth > 12) return;
 
-    if ("nonbuyable" in obj || "nonbuyableCause" in obj || "price" in obj) {
-      unlockStoreItem(obj);
+    if (
+      "id" in obj &&
+      (
+        "nonbuyable" in obj ||
+        "price" in obj ||
+        "priceBefore" in obj ||
+        "base" in obj
+      )
+    ) {
+      unlockItem(obj);
     }
 
     for (var k in obj) {
       if (!Object.prototype.hasOwnProperty.call(obj, k)) continue;
-      var v = obj[k];
-
-      if (v && typeof v === "object") {
-        unlockStoreDeep(v, depth + 1);
+      if (obj[k] && typeof obj[k] === "object") {
+        unlockDeep(obj[k], depth + 1);
       }
     }
   }
 
-  function runUnlock() {
+  function unlockStore() {
     try {
-      if (window.f7) {
+      if (typeof f7 === "function") {
         var app = f7();
 
-        if (app && app.p) unlockStoreDeep(app.p, 0);
-        if (app && app.t) unlockStoreDeep(app.t, 0);
+        if (app && app.p) unlockDeep(app.p, 0);
+        if (app && app.t) unlockDeep(app.t, 0);
+        if (app && app.p && typeof app.p.Ac === "function") {
+          unlockDeep(app.p.Ac(), 0);
+        }
       }
     } catch (e) {}
 
     try {
-      if (window.Z && Z.locals) {
-        Z.locals.storeSkinsUnlocked = true;
+      if (window.Z && Z.customSkin) {
+        unlockDeep(Z.customSkin, 0);
       }
     } catch (e) {}
 
     try {
-      $(".locked, .is-locked, .nonbuyable").removeClass("locked is-locked nonbuyable");
+      $(".locked, .is-locked, .nonbuyable, .disabled")
+        .removeClass("locked is-locked nonbuyable disabled");
+
       $("[data-nonbuyable]").attr("data-nonbuyable", "false");
+      $("[data-locked]").attr("data-locked", "false");
+      $("[disabled]").removeAttr("disabled");
     } catch (e) {}
   }
 
-  runUnlock();
+  unlockStore();
 
-  var unlockTimer = setInterval(function () {
-    runUnlock();
-  }, 800);
+  var timer = setInterval(unlockStore, 500);
 
   setTimeout(function () {
-    clearInterval(unlockTimer);
-  }, 15000);
+    clearInterval(timer);
+  }, 30000);
 
   document.addEventListener("click", function () {
-    setTimeout(runUnlock, 80);
+    setTimeout(unlockStore, 50);
+    setTimeout(unlockStore, 300);
   }, true);
 
-  console.log("[Wormatrix] Store skins nonbuyable unlocked only.");
+  console.log("[Wormatrix] Store skins unlocked safely.");
 })();
