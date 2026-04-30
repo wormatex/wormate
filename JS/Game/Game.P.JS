@@ -37,17 +37,15 @@ var Z = {
   },
   bName: "✡️ {{ID}} ✡️🕎✅✅",
   encodeOffset: 61697,
-  validSkinId: function (p) {
-    if (p >= 399 && p <= 999) {
-      return 32;
-    } else {
-      return p;
-    }
-  },
-  validPId: function (p2) {
-    let vParseInt = parseInt(this.locals.propertyIds[p2]);
-    return this.encodeOffset + (vParseInt && vParseInt >= 399 && vParseInt <= 999 && vParseInt || 0);
-  },
+validSkinId: function (p) {
+  p = parseInt(p, 10);
+  if (!Number.isFinite(p) || p < 0) return 21;
+  return p;
+},
+validPId: function (p2) {
+  let vParseInt = parseInt(this.locals.propertyIds[p2], 10);
+  return this.encodeOffset + (Number.isFinite(vParseInt) && vParseInt > 0 ? vParseInt : 0);
+},
   encodeName: function (p3) {
     p3 = p3.substring(0, 27);
     return p3 + " ".repeat(27 - p3.length) + String.fromCharCode(..."eyesId,mouthId,glassesId,hatId,skinId".split(",").map(p4 => {
@@ -7708,22 +7706,21 @@ var v142 = vIsFullUrl ? vPath : (vBase + vPath);
       }
     }
 
-          this.Yo.om(v568.jn(v570));
-          this.Yo.Km(false);
+this.Yo.om(v568.jn(v570));
+this.Yo.Km(false);
 
-          if (p637) {
-            vO3.L.ao.Vj(v570, vO2.Jj.Ij);
+if (p637) {
+  try {
+    vO3.L.ao.Vj(v570, vO2.Jj.Ij);
+  } catch (e) {}
 
-            try {
-              if (window.Z && typeof Z.setPId === "function") {
-                Z.localsLoded = true;
-                Z.setPId(v570, "SKIN", true);
-                Z.saveLocal();
-              }
-            } catch (e) {}
-          }
-        }
-      };
+  try {
+    Z.localsLoded = true;
+    Z.locals.propertyIds.skinId = parseInt(v570, 10);
+    Z.saveLocal();
+    Z.setPId(parseInt(v570, 10), "SKIN", true);
+  } catch (e) {}
+}
 var vF14 = function () {
   function _0x9f75x6(p638, f85) {
     this.kp = p638;
