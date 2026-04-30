@@ -9267,7 +9267,11 @@ function f95(p735) {
   "</div>"
 ).prependTo("#game-view");
 
-$("#mm-action-buttons").after(
+$("#mm-advice-cont")
+  .prependTo("#game-view")
+  .show();
+
+$("#mm-action-buttons").before(
   "<div class=\"z-action-buttons\" style=\"\">" +
     "<button class=\"zbutton zblue\" type=\"button\" id=\"btnFullScreen\">FULL SCREEN</button>" +
     "<a href=\"https://wormatrix.io/skinlab\" class=\"zbutton zorange\">SKIN LAB</a>" +
@@ -9278,9 +9282,9 @@ $("#mm-action-buttons").after(
       "display:grid !important;" +
       "grid-template-columns:1fr 1fr;" +
       "gap:2px;" +
-      "position: absolute;" +
+      "position: relative;" + 
       "width: 100%;" +
-      "top: 62px;" +
+      "margin-bottom:4px;" +
     "}" +
     ".z-action-buttons .zbutton{" +
       "width:100%;" +
