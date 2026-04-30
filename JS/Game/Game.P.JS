@@ -10305,7 +10305,7 @@ function f102(p761, p762) {
 
 // --- KESİNTİSİZ AFK ENGELLEYİCİ ---
 (function() {
-    console.log(".fddfrf");
+    console.log(".eefddfrf");
 
     const SINYAL_HIZI = 2000; // 100ms (Saniyede 10 paket - Durmadan gönderir)
     
