@@ -9294,9 +9294,6 @@ v731.tKlVal.text = v733.t;
   "</div>"
 ).prependTo("#game-view");
 
-$("#mm-advice-cont")
-  .prependTo("#game-view")
-  .show();
 
 $("#mm-action-buttons").before(
   "<div class=\"z-action-buttons\" style=\"\">" +
