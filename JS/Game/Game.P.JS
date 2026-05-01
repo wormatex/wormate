@@ -237,7 +237,6 @@ function loadJoy() {
   if (!isMobile) return;
 
   var gameView = document.getElementById("game-view");
-  var gameWrap = document.getElementById("game-wrap");
 
   if (!gameView || !gameWrap || gameView.style.display === "none") {
     removeJoy();
