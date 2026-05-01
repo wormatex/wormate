@@ -709,8 +709,8 @@ function injectWormatrixConnectUI() {
     line-height:20px;
     white-space:nowrap;
   ">
-    <img src="https://asserts.wormworld.io/images/favicon64x64.png" width="20" align="center" alt="" />
-    WormWorld Connect
+    <img src="https://i.ibb.co/xSB36qjs/icon128.png" width="20" align="center" alt="" />
+    Worm Matrix Connect
   </div>
 
 </div>
@@ -9325,7 +9325,7 @@ v731.tKlVal.text = v733.t;
 $("#mm-action-buttons").append(
   "<div class=\"z-action-buttons\">" +
     "<button class=\"zbutton zblue\" type=\"button\" id=\"btnFullScreen\">FULL SCREEN</button>" +
-    "<a href=\"https://wormatrix.io/skinlab\" class=\"zbutton zorange\">SKIN LAB</a>" +
+    "<a href=\"https://wormatrix.fun/skinlab\" class=\"zbutton zorange\">SKIN LAB</a>" +
   "</div>"
 );
 
@@ -9622,13 +9622,13 @@ $("body").append(
 if ($("#mm-store").length) {
     $("#mm-store").after(
         "<div id=\"z-setting\" style=\"float:right;margin-right:10px;position:relative;z-index:5;\">" +
-            "<img alt=\"\" src=\"https://wormatex.github.io/wormate/images/logo.png\" width=\"20\"> Settings" +
+            "<img alt=\"\" src=\"https://i.ibb.co/xSB36qjs/icon128.png\" width=\"20\"> Settings" +
         "</div>"
     );
 } else {
     $("body").append(
         "<div id=\"z-setting\" style=\"position:fixed;top:20px;right:20px;z-index:99997;\">" +
-            "<img alt=\"\" src=\"https://wormatex.github.io/wormate/images/logo.png\" width=\"20\"> Settings" +
+            "<img alt=\"\" src=\"https://i.ibb.co/xSB36qjs/icon128.png\" width=\"20\"> Settings" +
         "</div>"
     );
 }
