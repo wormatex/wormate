@@ -520,46 +520,8 @@ function injectWormatrixConnectUI() {
   #load_page_apoiador {
     position: relative;
     width: 100%;
-    min-height: 34px;
-    margin: 0 auto 5px auto;
-  }
-
-  .wormatrix-header-box {
-    width: 94%;
-    height: 27px;
-    margin: 2px auto 5px auto;
-    background: #ffffff;
-    border: 1px solid rgba(255,255,255,.95);
-    border-radius: 3px;
-    box-shadow: 0 2px 5px rgba(0,0,0,.22);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-  }
-
-  .title-worm-world-connect {
-    width: 100%;
-    color: #111;
-    font-weight: bold;
-    font-size: 9px;
-    line-height: 1;
-    text-align: center;
-    letter-spacing: .1px;
-    text-shadow: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    white-space: nowrap;
-  }
-
-  .title-worm-world-connect img {
-    width: 12px;
     height: 12px;
-    object-fit: contain;
-    display: inline-block;
-    vertical-align: middle;
+    margin: 0 auto;
   }
 
   #wormatrix_tabs {
@@ -568,12 +530,20 @@ function injectWormatrixConnectUI() {
     overflow-y: auto;
     overflow-x: hidden;
     border: 1px solid rgba(127,176,46,.85);
-    margin: 3px auto 6px auto;
+    margin: 6px auto;
     padding: 4px;
     background: rgba(0,0,0,.28);
     border-radius: 8px;
     box-sizing: border-box;
     box-shadow: inset 0 0 10px rgba(127,176,46,.22);
+  }
+
+  .title-worm-world-connect img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 4px;
   }
 
   .wormatrix-grid {
@@ -584,51 +554,55 @@ function injectWormatrixConnectUI() {
     margin-bottom: 6px;
     border-bottom: 1px solid rgba(127,176,46,.65);
     background: rgba(0,0,0,.22);
-    border-radius: 7px;
+    border-radius: 8px;
     box-sizing: border-box;
   }
 
   .wormatrix-grid a {
     width: 100%;
-    height: 32px;
+    height: 33px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 2px solid rgba(127,176,46,.85);
-    border-radius: 8px;
-    padding: 2px;
-    background: rgba(127,176,46,.12);
+    border-radius: 9px;
+    padding: 3px;
+    background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,.18));
     box-sizing: border-box;
     overflow: hidden;
     transition: .15s ease;
   }
 
   .wormatrix-grid a:hover {
-    border-color: rgba(255,255,255,.85);
-    background: rgba(127,176,46,.22);
+    border-color: rgba(255,255,255,.9);
+    background: rgba(127,176,46,.24);
+    transform: translateY(-1px);
   }
 
   .wormatrix-grid a.active {
     border: 2px solid #ff2424 !important;
     box-shadow: none !important;
-    background: rgba(255,0,0,.07);
+    background: rgba(255,0,0,.08);
   }
 
   .wormatrix-flag {
     width: 100%;
-    max-width: 43px;
+    max-width: 44px;
     height: 25px;
     display: block;
-    border-radius: 6px;
+    border-radius: 7px;
     overflow: hidden;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.45);
+    background: rgba(255,255,255,.12);
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,.45),
+      0 1px 3px rgba(0,0,0,.35);
   }
 
   .wormatrix-flag svg {
     width: 100%;
     height: 100%;
     display: block;
-    border-radius: 6px;
+    border-radius: 7px;
   }
 
   .tab-pane {
@@ -684,41 +658,33 @@ function injectWormatrixConnectUI() {
     }
 
     .wormatrix-grid a {
-      height: 30px;
-      border-radius: 7px;
+      height: 31px;
+      border-radius: 8px;
+      padding: 2px;
     }
 
     .wormatrix-flag {
       max-width: 39px;
       height: 23px;
-      border-radius: 5px;
+      border-radius: 6px;
     }
 
     .wormatrix-flag svg {
-      border-radius: 5px;
+      border-radius: 6px;
     }
 
     .selectSala {
       min-height: 72px;
       font-size: 11px;
     }
-
-    .wormatrix-header-box {
-      height: 26px;
-    }
-
-    .title-worm-world-connect {
-      font-size: 8.5px;
-    }
   }
 </style>
 
 <div id="load_page_apoiador" style="position:relative;">
 
-  <!-- الاطار الابيض -->
   <div style="
     position:absolute;
-    top: -35px;
+    top:-35px;
     left:50%;
     transform:translateX(-50%);
     width:106%;
@@ -729,15 +695,19 @@ function injectWormatrixConnectUI() {
     z-index:0;
   "></div>
 
-  <!-- النص الاصلي -->
   <div class="title-worm-world-connect" style="
     position:absolute;
-    top: -19;
+    top:-19px;
+    left:50%;
+    transform:translateX(-50%);
     z-index:1;
     width:92%;
     text-align:center;
     font-weight:bold;
     color:#222;
+    font-size:12px;
+    line-height:20px;
+    white-space:nowrap;
   ">
     <img src="https://asserts.wormworld.io/images/favicon64x64.png" width="20" align="center" alt="" />
     WormWorld Connect
