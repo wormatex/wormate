@@ -3468,6 +3468,7 @@ var v142 = vIsFullUrl ? vPath : (vBase + vPath);
           this.addChild(this.headshots_container);
           this.headshots_container.addChild(this.topHS);
           this.topHSPlayers = [];
+          window.WormatrixHSTopUI = this;
           this.killMessages = [];
           for (let vLN13 = 1; vLN13 < 6; vLN13++) {
             let vO22 = {
@@ -9212,9 +9213,27 @@ function f95(p735) {
       }
       ;
       v731.gHsVal.text = v732.g;
-      v731.tHsVal.text = v732.t;
-      v731.gKlVal.text = v733.g;
-      v731.tKlVal.text = v733.t;
+v731.tHsVal.text = v732.t;
+
+try {
+  if (window.WormatrixHSTopUI && window.WormatrixHSTopUI.topHSPlayers) {
+    var wmRows = window.WormatrixHSTopUI.topHSPlayers;
+    var wmName = $("#mm-params-nickname").val() || "Wormatrix Player";
+
+    wmRows[0].ig.text = "1";
+    wmRows[0].jg.text = wmName.substring(0, 15);
+    wmRows[0].kg.text = v732.g;
+
+    for (var wmI = 1; wmI < wmRows.length; wmI++) {
+      wmRows[wmI].ig.text = String(wmI + 1);
+      wmRows[wmI].jg.text = "--";
+      wmRows[wmI].kg.text = "";
+    }
+  }
+} catch (e) {}
+
+v731.gKlVal.text = v733.g;
+v731.tKlVal.text = v733.t;
     }
     async function f99(p747, p748) {
   f93(zUrl + "/CSS/wormatrix.css");
