@@ -680,9 +680,9 @@ function injectWormatrixConnectUI() {
 </style>
 
 <div id="load_page_apoiador">
-
-  <div class="wormatrix-header-box">
-    <div class="title-wormatrix-connect">Worm Matrix</div>
+  <div class="title-worm-world-connect" style="position: absolute; top: 0; z-index: 1; width: 92%">
+    <img src="https://asserts.wormworld.io/images/favicon64x64.png" width="20" align="center" alt="" />
+    Worm Matrix Connect
   </div>
 
 </div>
