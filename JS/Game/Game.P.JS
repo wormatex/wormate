@@ -9295,55 +9295,75 @@ v731.tKlVal.text = v733.t;
 ).prependTo("#game-view");
 
 
-$("#mm-action-buttons").before(
-  "<div class=\"z-action-buttons\" style=\"\">" +
+$("#mm-action-buttons").append(
+  "<div class=\"z-action-buttons\">" +
     "<button class=\"zbutton zblue\" type=\"button\" id=\"btnFullScreen\">FULL SCREEN</button>" +
     "<a href=\"https://wormatrix.io/skinlab\" class=\"zbutton zorange\">SKIN LAB</a>" +
-  "</div>" +
-  "<style type=\"text/css\">" +
+  "</div>"
+);
+
+
+if (!document.getElementById("z-action-style")) {
+  $("head").append(
+    "<style id='z-action-style'>" +
+
+    "#mm-action-buttons{" +
+      "display:flex !important;" +
+      "flex-direction:column;" +
+      "gap:4px;" +
+    "}" +
+
     ".z-action-buttons{" +
-      "padding:0px;" +
       "display:grid !important;" +
       "grid-template-columns:1fr 1fr;" +
-      "gap:2px;" +
-      "position: relative;" + 
-      "width: 100%;" +
-      "margin-bottom:4px;" +
+      "gap:4px;" +
+      "width:100%;" +
     "}" +
+
     ".z-action-buttons .zbutton{" +
       "width:100%;" +
-      "height:35px;" +
-      "line-height:35px;" +
+      "height:36px;" +
+      "line-height:36px;" +
       "font-weight:bold;" +
       "font-size:14px;" +
       "text-align:center;" +
       "color:#fff;" +
       "border:none;" +
-      "text-decoration: none;" +
-      "border-radius:5px;" +
+      "text-decoration:none;" +
+      "border-radius:6px;" +
       "cursor:pointer;" +
+      "transition:0.2s;" +
     "}" +
-    ".z-action-buttons .zblue {" +
-      "background: #26c6da;" +
+
+    ".z-action-buttons .zblue{" +
+      "background:#26c6da;" +
     "}" +
-    ".z-action-buttons .zblue:hover {" +
-      "background: #52d1e1;" +
+
+    ".z-action-buttons .zblue:hover{" +
+      "background:#52d1e1;" +
     "}" +
-    ".z-action-buttons .zorange {" +
-      "background: #f7941d;" +
+
+    ".z-action-buttons .zorange{" +
+      "background:#f7941d;" +
     "}" +
-    ".z-action-buttons .zorange:hover {" +
-      "background: #f9ab4e;" +
+
+    ".z-action-buttons .zorange:hover{" +
+      "background:#f9ab4e;" +
     "}" +
-  "</style>"
-);
+
+    "</style>"
+  );
+}
+
 
 $("#mm-advice-cont").hide();
+
+
 
 $(
   "<div id=\"player-names\" style=\"top: " +
     (Z.locals.streamer ? 0 : Z.positions.p) +
-    "px; right: 0px;width:200px; height: 160px;font-size: 12px;z-index: 99999;position: absolute;overflow: hidden;\">" +
+    "px; right: 0px;width:200px; height:160px;font-size:12px;z-index:99999;position:absolute;overflow:hidden;\">" +
     "<style>#player-names span::selection{background-color: transparent;}</style>" +
   "</div>"
 ).prependTo("body").toggle(Z.locals.show_players_around);
@@ -9486,57 +9506,157 @@ function wmGetUserId() {
             return String(wormatrixObjects.FB_UserID);
         }
     } catch (e) {}
+
+    try {
+        if (typeof theoKzObjects !== "undefined" && theoKzObjects && theoKzObjects.FB_UserID) {
+            return String(theoKzObjects.FB_UserID);
+        }
+    } catch (e) {}
+
+    try {
+        if (typeof wormXyObjects !== "undefined" && wormXyObjects && wormXyObjects.FB_UserID) {
+            return String(wormXyObjects.FB_UserID);
+        }
+    } catch (e) {}
+
     try {
         if (typeof p747 !== "undefined" && p747 && p747.userId) {
             return String(p747.userId);
         }
     } catch (e) {}
+
     return "";
 }
 
-$("#z-setting, #zDialog, #zDialogOverlay").remove();
+$("#z-setting, #zDialog, #zDialogOverlay, #z-setting-style").remove();
 
-$("body").append("<div id=\"zDialogOverlay\" style=\"display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:99998;\"></div><div id=\"zDialog\" title=\"\" style=Worm Matrix\"display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(900px,calc(100vw - 40px));max-height:calc(100vh - 40px);overflow:auto;background:#fff;border-radius:12px;box-shadow:0 10px 35px rgba(0,0,0,.45);z-index:99999;\"><div style=\"display:flex;align-items:center;justify-content:space-between;padding:12px 15px;border-bottom:1px solid #e5e5e5;font-size:18px;font-weight:bold;color:#222;\"><span>wormatrix</span><button id=\"zDialogClose\" type=\"button\" style=\"height:34px;padding:0 14px;border:0;border-radius:6px;background:#769321;color:#fff;font-weight:bold;cursor:pointer;\">Close</button></div><div id=\"wormatrixtrixSettings\" style=\"overflow:auto\"></div></div>");
+$("head").append(
+    "<style id=\"z-setting-style\">" +
+        "#z-setting{" +
+            "height:50px;" +
+            "line-height:50px;" +
+            "width:120px;" +
+            "background:#f7941d;" +
+            "border-radius:5px;" +
+            "font-size:18px;" +
+            "cursor:pointer;" +
+            "color:#fff;" +
+            "font-weight:bold;" +
+            "text-align:center;" +
+            "box-shadow:0 4px 12px rgba(0,0,0,.25);" +
+            "user-select:none;" +
+        "}" +
+        "#z-setting:hover{" +
+            "background:#f9ab4e;" +
+        "}" +
+        "#z-setting img{" +
+            "margin:0 4px 10px 10px;" +
+            "vertical-align:middle;" +
+        "}" +
+        "#zDialogOverlay{" +
+            "display:none;" +
+            "position:fixed;" +
+            "top:0;" +
+            "left:0;" +
+            "right:0;" +
+            "bottom:0;" +
+            "background:rgba(0,0,0,.55);" +
+            "z-index:99998;" +
+        "}" +
+        "#zDialog{" +
+            "display:none;" +
+            "position:fixed;" +
+            "top:50%;" +
+            "left:50%;" +
+            "transform:translate(-50%,-50%);" +
+            "width:min(900px,calc(100vw - 40px));" +
+            "max-height:calc(100vh - 40px);" +
+            "overflow:auto;" +
+            "background:#fff;" +
+            "border-radius:12px;" +
+            "box-shadow:0 10px 35px rgba(0,0,0,.45);" +
+            "z-index:99999;" +
+            "font-family:Arial,sans-serif;" +
+        "}" +
+    "</style>"
+);
+
+$("body").append(
+    "<div id=\"zDialogOverlay\"></div>" +
+    "<div id=\"zDialog\" title=\"Worm Matrix\">" +
+        "<div style=\"display:flex;align-items:center;justify-content:space-between;padding:12px 15px;border-bottom:1px solid #e5e5e5;font-size:18px;font-weight:bold;color:#222;\">" +
+            "<span>Worm Matrix Settings</span>" +
+            "<button id=\"zDialogClose\" type=\"button\" style=\"height:34px;padding:0 14px;border:0;border-radius:6px;background:#f7941d;color:#fff;font-weight:bold;cursor:pointer;\">Close</button>" +
+        "</div>" +
+        "<div id=\"wormatrixSettings\" style=\"overflow:auto\"></div>" +
+    "</div>"
+);
 
 if ($("#mm-store").length) {
-    $("#mm-store").after("<div style=\"height:50px;line-height:50px;width:120px;background:#769321;border-radius:5px;float:right;margin-right:10px;font-size:18px;cursor:pointer;position:relative;z-index:5;\" id=\"z-setting\"><img alt=\"\" src=\"https://wormatex.github.io/wormate/images/logo.png\" style=\"margin:0px 4px 10px 10px;\" width=\"20\" align=\"middle\"> Settings</div>");
+    $("#mm-store").after(
+        "<div id=\"z-setting\" style=\"float:right;margin-right:10px;position:relative;z-index:5;\">" +
+            "<img alt=\"\" src=\"https://wormatex.github.io/wormate/images/logo.png\" width=\"20\"> Settings" +
+        "</div>"
+    );
 } else {
-    $("body").append("<div style=\"height:50px;line-height:50px;width:120px;background:#769321;border-radius:5px;position:fixed;top:20px;right:20px;font-size:18px;cursor:pointer;z-index:99997;text-align:center;\" id=\"z-setting\"><img alt=\"\" src=\"https://wormatex.github.io/wormate/images/logo.png\" style=\"margin:0px 4px 10px 10px;\" width=\"20\" align=\"middle\"> Settings</div>");
+    $("body").append(
+        "<div id=\"z-setting\" style=\"position:fixed;top:20px;right:20px;z-index:99997;\">" +
+            "<img alt=\"\" src=\"https://wormatex.github.io/wormate/images/logo.png\" width=\"20\"> Settings" +
+        "</div>"
+    );
 }
 
-function renderwormatrixSettings() {
+function wmEscapeHtml(value) {
+    return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+}
+
+function renderWormatrixSettings() {
     var killSet = localStorage.getItem("wm_kill_msg_type") || "default";
-    
-    var settingsHtml = "<div style=\"padding:15px;\">" +
-        "<div style=\"display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:15px;\">" +
-            "<div style=\"font-size:16px;font-weight:bold;min-width:70px;\">User ID</div>" +
-            "<input id=\"wm-user-id\" type=\"text\" readonly value=\"" + wmGetUserId().replace(/"/g, "&quot;") + "\" style=\"flex:1;min-width:220px;height:36px;padding:0 10px;border:1px solid #ccc;border-radius:6px;box-sizing:border-box;background:#fff;color:#222;\">" +
-            "<button id=\"wm-copy-user-id\" type=\"button\" style=\"height:36px;padding:0 14px;border:0;border-radius:6px;background:#769321;color:#fff;font-weight:bold;cursor:pointer;\">Copy</button>" +
-        "</div>" +
-        "<div style=\"display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:15px;\">" +
-            "<div style=\"font-size:16px;font-weight:bold;min-width:70px;\">Kill Message</div>" +
-            "<select id=\"wm-kill-msg-select\" style=\"flex:1;min-width:220px;height:36px;padding:0 10px;border:1px solid #ccc;border-radius:6px;box-sizing:border-box;background:#fff;color:#222;\">" +
-                "<option value=\"default\" " + (killSet === "default" ? "selected" : "") + ">افتراضي (HeadShot)</option>" +
-                "<option value=\"arabic1\" " + (killSet === "arabic1" ? "selected" : "") + ">قتلات عربي (ابلع هيدشوت)</option>" +
-                "<option value=\"arabic2\" " + (killSet === "arabic2" ? "selected" : "") + ">قتلات عربي 2 (هاي شنوو)</option>" +
-            "</select>" +
-        "</div>" +
-    "</div>";
+
+    var settingsHtml =
+        "<div style=\"padding:15px;\">" +
+
+            "<div style=\"display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:15px;\">" +
+                "<div style=\"font-size:16px;font-weight:bold;min-width:90px;color:#222;\">User ID</div>" +
+                "<input id=\"wm-user-id\" type=\"text\" readonly value=\"" + wmEscapeHtml(wmGetUserId()) + "\" style=\"flex:1;min-width:220px;height:36px;padding:0 10px;border:1px solid #ccc;border-radius:6px;box-sizing:border-box;background:#fff;color:#222;\">" +
+                "<button id=\"wm-copy-user-id\" type=\"button\" style=\"height:36px;padding:0 14px;border:0;border-radius:6px;background:#f7941d;color:#fff;font-weight:bold;cursor:pointer;\">Copy</button>" +
+            "</div>" +
+
+            "<div style=\"display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:15px;\">" +
+                "<div style=\"font-size:16px;font-weight:bold;min-width:90px;color:#222;\">Kill Message</div>" +
+                "<select id=\"wm-kill-msg-select\" style=\"flex:1;min-width:220px;height:36px;padding:0 10px;border:1px solid #ccc;border-radius:6px;box-sizing:border-box;background:#fff;color:#222;\">" +
+                    "<option value=\"default\" " + (killSet === "default" ? "selected" : "") + ">افتراضي (HeadShot)</option>" +
+                    "<option value=\"arabic1\" " + (killSet === "arabic1" ? "selected" : "") + ">قتلات عربي (ابلع هيدشوت)</option>" +
+                    "<option value=\"arabic2\" " + (killSet === "arabic2" ? "selected" : "") + ">قتلات عربي 2 (هاي شنوو)</option>" +
+                "</select>" +
+            "</div>" +
+
+        "</div>";
 
     $("#wormatrixSettings").html(settingsHtml);
 }
 
-renderwormatrixtrixSettings();
+renderWormatrixSettings();
 
-$(document).on("change", "#wm-kill-msg-select", function() {
-    localStorage.setItem("wm_kill_msg_type", $(this).val());
-});
+$(document)
+    .off("change", "#wm-kill-msg-select")
+    .on("change", "#wm-kill-msg-select", function () {
+        localStorage.setItem("wm_kill_msg_type", $(this).val());
+    });
 
 function wmOpenSettingsDialog() {
+    renderWormatrixSettings();
     $("#wm-user-id").val(wmGetUserId());
     $("#zDialogOverlay, #zDialog").show();
+
     if ($("#wm-settings-tabs").length && $.fn.tabs) {
-        try { $("#wm-settings-tabs").tabs(); } catch (e) {}
+        try {
+            $("#wm-settings-tabs").tabs();
+        } catch (e) {}
     }
 }
 
@@ -9545,35 +9665,33 @@ function wmCloseSettingsDialog() {
 }
 
 $("#z-setting").off("click").on("click", wmOpenSettingsDialog);
-$(document).on("click", "#zDialogClose, #zDialogOverlay", wmCloseSettingsDialog);
 
-$(document).on("click", "#wm-copy-user-id", function () {
-    var vUserId = wmGetUserId();
-    var vInput = document.getElementById("wm-user-id");
-    if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(vUserId).then(function () {
+$(document)
+    .off("click", "#zDialogClose, #zDialogOverlay")
+    .on("click", "#zDialogClose, #zDialogOverlay", wmCloseSettingsDialog);
+
+$(document)
+    .off("click", "#wm-copy-user-id")
+    .on("click", "#wm-copy-user-id", function () {
+        var vUserId = wmGetUserId();
+        var vInput = document.getElementById("wm-user-id");
+
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(vUserId).then(function () {
+                $("#wm-copy-user-id").text("Copied");
+                setTimeout(function () {
+                    $("#wm-copy-user-id").text("Copy");
+                }, 1200);
+            });
+        } else if (vInput) {
+            vInput.select();
+            document.execCommand("copy");
             $("#wm-copy-user-id").text("Copied");
-            setTimeout(function () { $("#wm-copy-user-id").text("Copy"); }, 1200);
-        });
-    } else if (vInput) {
-        vInput.select();
-        document.execCommand("copy");
-        $("#wm-copy-user-id").text("Copied");
-        setTimeout(function () { $("#wm-copy-user-id").text("Copy"); }, 1200);
-    }
-});
-
-fetch(zUrl + "/setting-wormatrixtrix/", {
-    headers: { "Content-Type": "application/json" },
-    method: "POST",
-    body: JSON.stringify({ userId: wmGetUserId() })
-}).then(function (p757) {
-    return p757.text();
-}).then(function (p758) {
-    if (p758 && p758.trim()) {
-        $("#wormatrixSettings").append("<div id=\"remoteSettings\">" + p758 + "</div>");
-    }
-}).catch(function () {});
+            setTimeout(function () {
+                $("#wm-copy-user-id").text("Copy");
+            }, 1200);
+        }
+    });
 
 function _0x9f75x30(p759) {
     var f100 = new FileReader();
@@ -9587,6 +9705,7 @@ function f101(p760) {
     } else {
         localStorage.setItem("customSkin", p760.target.result);
     }
+
     window.location.reload();
 }
 
@@ -9596,7 +9715,6 @@ if (vFileSkin) {
     vFileSkin.addEventListener("change", _0x9f75x30);
 }
     }
-        
 
  window.zm = vF16;
 
