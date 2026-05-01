@@ -517,58 +517,64 @@ function injectWormatrixConnectUI() {
     $(".description-text").replaceWith(`
 <div class="description-text">
 <style>
+  #load_page_apoiador {
+    position: relative;
+    width: 100%;
+    min-height: 34px;
+    margin: 0 auto 5px auto;
+  }
+
+  .wormatrix-header-box {
+    width: 94%;
+    height: 27px;
+    margin: 2px auto 5px auto;
+    background: #ffffff;
+    border: 1px solid rgba(255,255,255,.95);
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .title-worm-world-connect {
+    width: 100%;
+    color: #111;
+    font-weight: bold;
+    font-size: 9px;
+    line-height: 1;
+    text-align: center;
+    letter-spacing: .1px;
+    text-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    white-space: nowrap;
+  }
+
+  .title-worm-world-connect img {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
   #wormatrix_tabs {
     width: 100%;
     height: 285px;
     overflow-y: auto;
     overflow-x: hidden;
     border: 1px solid rgba(127,176,46,.85);
-    margin: 6px auto;
+    margin: 3px auto 6px auto;
     padding: 4px;
     background: rgba(0,0,0,.28);
     border-radius: 8px;
     box-sizing: border-box;
     box-shadow: inset 0 0 10px rgba(127,176,46,.22);
   }
-
-  .wormatrix-header-box {
-    width: 92%;
-    margin: 6px auto 10px auto;
-    padding: 8px 0;
-
-    background: rgba(255,255,255,0.92); 
-    border-radius: 10px;
-
-    border: 2px solid rgba(255,255,255,0.85);
-    box-shadow:
-        0 0 8px rgba(255,255,255,0.6),
-        inset 0 0 6px rgba(255,255,255,0.5);
-
-    text-align: center;
-    position: relative;
-}
-
-.title-wormatrix-connect {
-    color: #000;
-    font-weight: bold;
-    font-size: 14px;
-    letter-spacing: 1px;
-
-    text-shadow:
-        0 1px 1px rgba(255,255,255,0.8);
-
-    position: relative;
-    z-index: 2;
-}
-
-.wormatrix-header-box::after {
-    content: "";
-    position: absolute;
-    inset: 3px;
-    border-radius: 8px;
-    border: 1px solid rgba(0,0,0,0.08);
-    pointer-events: none;
-}
 
   .wormatrix-grid {
     display: grid;
@@ -588,33 +594,41 @@ function injectWormatrixConnectUI() {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid rgba(127,176,46,.80);
-    border-radius: 7px;
+    border: 2px solid rgba(127,176,46,.85);
+    border-radius: 8px;
     padding: 2px;
     background: rgba(127,176,46,.12);
     box-sizing: border-box;
     overflow: hidden;
+    transition: .15s ease;
+  }
+
+  .wormatrix-grid a:hover {
+    border-color: rgba(255,255,255,.85);
+    background: rgba(127,176,46,.22);
   }
 
   .wormatrix-grid a.active {
-    border: 2px solid red !important;
-    box-shadow: 0 0 8px red;
-    background: rgba(255,0,0,.10);
+    border: 2px solid #ff2424 !important;
+    box-shadow: none !important;
+    background: rgba(255,0,0,.07);
   }
 
   .wormatrix-flag {
     width: 100%;
-    max-width: 42px;
+    max-width: 43px;
     height: 25px;
     display: block;
-    border-radius: 5px;
+    border-radius: 6px;
     overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.45);
   }
 
   .wormatrix-flag svg {
     width: 100%;
     height: 100%;
     display: block;
+    border-radius: 6px;
   }
 
   .tab-pane {
@@ -647,7 +661,7 @@ function injectWormatrixConnectUI() {
   .selectSala:hover {
     background: rgba(127,176,46,.35) !important;
     color: #fff !important;
-    border-color: red !important;
+    border-color: #ff2424 !important;
   }
 
   .selectSala img {
@@ -658,82 +672,80 @@ function injectWormatrixConnectUI() {
     margin-top: 4px;
   }
 
-  .title-wormatrix-connect {
-    position: absolute;
-    top: 0;
-    z-index: 1;
-    width: 92%;
-    color: #7FB02E;
-    font-weight: bold;
-    text-align: center;
-    text-shadow: 0 1px 2px #000, 0 0 8px rgba(127,176,46,.85);
-    letter-spacing: .5px;
-  }
-
   @media (max-width: 380px) {
-    #wormatrix_tabs { height: 285px; padding: 3px; }
-    .wormatrix-grid { gap: 4px; padding: 4px; }
-    .wormatrix-grid a { height: 30px; }
-    .wormatrix-flag { max-width: 38px; height: 23px; }
-    .selectSala { min-height: 72px; font-size: 11px; }
+    #wormatrix_tabs {
+      height: 285px;
+      padding: 3px;
+    }
+
+    .wormatrix-grid {
+      gap: 4px;
+      padding: 4px;
+    }
+
+    .wormatrix-grid a {
+      height: 30px;
+      border-radius: 7px;
+    }
+
+    .wormatrix-flag {
+      max-width: 39px;
+      height: 23px;
+      border-radius: 5px;
+    }
+
+    .wormatrix-flag svg {
+      border-radius: 5px;
+    }
+
+    .selectSala {
+      min-height: 72px;
+      font-size: 11px;
+    }
+
+    .wormatrix-header-box {
+      height: 26px;
+    }
+
+    .title-worm-world-connect {
+      font-size: 8.5px;
+    }
   }
 </style>
 
-<div id="load_page_apoiador" style="position:relative;">
-
-  <div style="
-    position:absolute;
-    top:-5px;
-    left:50%;
-    transform:translateX(-50%);
-    width:94%;
-    height:40px;
-    background:#ffffff;
-    border-radius:6px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.25);
-    z-index:0;
-  "></div>
-
-  <div class="title-worm-world-connect" style="
-    position:absolute;
-    top:0;
-    z-index:1;
-    width:92%;
-    text-align:center;
-    font-weight:bold;
-    color:#222;
-  ">
-    <img src="https://asserts.wormworld.io/images/favicon64x64.png" width="20" align="center" alt="" />
-    WormWorld Connect
+<div id="load_page_apoiador">
+  <div class="wormatrix-header-box">
+    <div class="title-worm-world-connect">
+      <img src="https://asserts.wormworld.io/images/favicon64x64.png" alt="">
+      Worm Matrix Connect
+    </div>
   </div>
-
 </div>
 
-  <div id="wormatrix_tabs">
-    <div class="wormatrix-grid">
-      <a href="#tabs0" class="active" data-flag="br"><span class="wormatrix-flag">${wmFlagSvg("br")}</span></a>
-      <a href="#tabs1" data-flag="us"><span class="wormatrix-flag">${wmFlagSvg("us")}</span></a>
-      <a href="#tabs2" data-flag="ca"><span class="wormatrix-flag">${wmFlagSvg("ca")}</span></a>
-      <a href="#tabs3" data-flag="mx"><span class="wormatrix-flag">${wmFlagSvg("mx")}</span></a>
-      <a href="#tabs4" data-flag="de"><span class="wormatrix-flag">${wmFlagSvg("de")}</span></a>
-      <a href="#tabs5" data-flag="fr"><span class="wormatrix-flag">${wmFlagSvg("fr")}</span></a>
-      <a href="#tabs6" data-flag="sg"><span class="wormatrix-flag">${wmFlagSvg("sg")}</span></a>
-      <a href="#tabs7" data-flag="jp"><span class="wormatrix-flag">${wmFlagSvg("jp")}</span></a>
-      <a href="#tabs8" data-flag="au"><span class="wormatrix-flag">${wmFlagSvg("au")}</span></a>
-      <a href="#tabs9" data-flag="ae"><span class="wormatrix-flag">${wmFlagSvg("ae")}</span></a>
-    </div>
-
-    <div class="tab-pane active servers-brazil" id="tabs0"></div>
-    <div class="tab-pane servers-eeuu" id="tabs1"></div>
-    <div class="tab-pane servers-canada" id="tabs2"></div>
-    <div class="tab-pane servers-mexico" id="tabs3"></div>
-    <div class="tab-pane servers-germany" id="tabs4"></div>
-    <div class="tab-pane servers-france" id="tabs5"></div>
-    <div class="tab-pane servers-singapore" id="tabs6"></div>
-    <div class="tab-pane servers-japan" id="tabs7"></div>
-    <div class="tab-pane servers-australia" id="tabs8"></div>
-    <div class="tab-pane servers-ae" id="tabs9"></div>
+<div id="wormatrix_tabs">
+  <div class="wormatrix-grid">
+    <a href="#tabs0" class="active" data-flag="br"><span class="wormatrix-flag">${wmFlagSvg("br")}</span></a>
+    <a href="#tabs1" data-flag="us"><span class="wormatrix-flag">${wmFlagSvg("us")}</span></a>
+    <a href="#tabs2" data-flag="ca"><span class="wormatrix-flag">${wmFlagSvg("ca")}</span></a>
+    <a href="#tabs3" data-flag="mx"><span class="wormatrix-flag">${wmFlagSvg("mx")}</span></a>
+    <a href="#tabs4" data-flag="de"><span class="wormatrix-flag">${wmFlagSvg("de")}</span></a>
+    <a href="#tabs5" data-flag="fr"><span class="wormatrix-flag">${wmFlagSvg("fr")}</span></a>
+    <a href="#tabs6" data-flag="sg"><span class="wormatrix-flag">${wmFlagSvg("sg")}</span></a>
+    <a href="#tabs7" data-flag="jp"><span class="wormatrix-flag">${wmFlagSvg("jp")}</span></a>
+    <a href="#tabs8" data-flag="au"><span class="wormatrix-flag">${wmFlagSvg("au")}</span></a>
+    <a href="#tabs9" data-flag="ae"><span class="wormatrix-flag">${wmFlagSvg("ae")}</span></a>
   </div>
+
+  <div class="tab-pane active servers-brazil" id="tabs0"></div>
+  <div class="tab-pane servers-eeuu" id="tabs1"></div>
+  <div class="tab-pane servers-canada" id="tabs2"></div>
+  <div class="tab-pane servers-mexico" id="tabs3"></div>
+  <div class="tab-pane servers-germany" id="tabs4"></div>
+  <div class="tab-pane servers-france" id="tabs5"></div>
+  <div class="tab-pane servers-singapore" id="tabs6"></div>
+  <div class="tab-pane servers-japan" id="tabs7"></div>
+  <div class="tab-pane servers-australia" id="tabs8"></div>
+  <div class="tab-pane servers-ae" id="tabs9"></div>
 </div>
 </div>
 `);
