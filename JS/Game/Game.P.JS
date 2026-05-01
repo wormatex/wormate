@@ -713,13 +713,36 @@ function injectWormatrixConnectUI() {
   }
 </style>
 
-<div id="load_page_apoiador">
-  <div class="wormatrix-header-box">
-    <div class="title-worm-world-connect">
-      <img src="https://asserts.wormworld.io/images/favicon64x64.png" alt="">
-      Worm Matrix Connect
-    </div>
+<div id="load_page_apoiador" style="position:relative;">
+
+  <!-- الاطار الابيض -->
+  <div style="
+    position:absolute;
+    top: -35px;
+    left:50%;
+    transform:translateX(-50%);
+    width:106%;
+    height:40px;
+    background:#ffffff;
+    border-radius:6px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.25);
+    z-index:0;
+  "></div>
+
+  <!-- النص الاصلي -->
+  <div class="title-worm-world-connect" style="
+    position:absolute;
+    top: -19;
+    z-index:1;
+    width:92%;
+    text-align:center;
+    font-weight:bold;
+    color:#222;
+  ">
+    <img src="https://asserts.wormworld.io/images/favicon64x64.png" width="20" align="center" alt="" />
+    WormWorld Connect
   </div>
+
 </div>
 
 <div id="wormatrix_tabs">
