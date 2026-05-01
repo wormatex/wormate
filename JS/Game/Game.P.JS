@@ -480,7 +480,7 @@ var GoogleAuth;
 
 async function loadServers() {
     try {
-        const response = await fetch("https://wormatex.github.io/wormate/API/load-sr.json");
+        const response = await fetch("https://skin-matrix.ii7modysmp.workers.dev/servers");
         const data = await response.json();
 
         if (data && data.success) {
