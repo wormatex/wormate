@@ -1214,7 +1214,7 @@ body {display:block !important;}
   height:320px;
   margin:30px 0;
   overflow:scroll;
-  padding:2px 5px;
+  padding:24px 5px;
   box-sizing:border-box;
   color:rgba(255,255,255,.8);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.747);
@@ -3681,10 +3681,6 @@ body {display:block !important;}
 #game-wrap #game-cont #results-view #congrats-bg #congrats-wrap #congrats .controls #final-continue:hover {
   box-shadow:0 1px 1px 0 rgba(0,0,0,.5);
   background-color:#a4d070;
-}
-#game-wrap #game-cont #results-view #congrats-bg #congrats-wrap #congrats .controls #final-continue:hover
-{
- background-color: #f7941d
 }
 #game-wrap #game-cont #results-view #congrats-bg #congrats-wrap #congrats .controls #final-continue:focus {outline:none;}
 #game-wrap #game-cont #results-view #congrats-bg #congrats-wrap #congrats .controls #final-continue * {vertical-align:middle;}
